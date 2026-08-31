@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect width="1200" height="780" fill="#FFFDF7"/>
+<style>text{font-family:Arial,sans-serif;fill:#263548}.title{font-size:25px;font-weight:bold}.label{font-size:17px;font-weight:bold}.small{font-size:14px}.wire{fill:none;stroke:#263548;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}</style>
+<text x="40" y="42" class="title">4×AA IŞIK VE SES KUTUSU — BAĞLANTI ŞEMASI</text>
+<rect x="40" y="75" width="82" height="62" rx="8" fill="#F2E3A0" stroke="#263548" stroke-width="3"/>
+<text x="81" y="101" text-anchor="middle" class="label">4×AA</text>
+<text x="81" y="124" text-anchor="middle" class="small">6,4 V maks.</text>
+<path class="wire" d="M 122 92 H 164"/>
+<rect x="164" y="82" width="72" height="20" rx="4" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>
+<text x="200" y="73" text-anchor="middle" class="small">1 A SİGORTA</text>
+<path class="wire" d="M 236 92 H 285 M 285 92 L 325 76 M 325 92 H 365"/>
+<circle cx="285" cy="92" r="5" fill="#263548"/><circle cx="325" cy="92" r="5" fill="#263548"/>
+<text x="325" y="62" text-anchor="middle" class="small">SS12F15 ANA GÜÇ</text>
+<path class="wire" d="M 365 92 H 1140 V 120 H 85"/>
+<text x="1145" y="112" class="label" fill="#C42D2D">+ BUS</text>
+<path class="wire" d="M 85 690 H 1140"/>
+<path class="wire" d="M 81 137 V 690 H 85"/>
+<text x="1145" y="697" class="label">− BUS</text>
+<rect x="82" y="150" width="136" height="500" rx="18" fill="#E84A5F" opacity="0.14"/>
+<text x="150" y="181" text-anchor="middle" class="label">KIRMIZI</text>
+<path class="wire" d="M 150 120 V 225"/>
+<circle cx="129" cy="248" r="5" fill="#263548"/><circle cx="171" cy="248" r="5" fill="#263548"/>
+<path class="wire" d="M 129 248 L 165 232"/>
+<path class="wire" d="M 150 225 V 248 H 129 M 171 248 H 150 V 300"/>
+<text x="150" y="278" text-anchor="middle" class="small">ANLIK BUTON</text>
+<path class="wire" d="M 150 300 V 335"/>
+<path d="M 125 335 h 10 l 8 -13 l 14 26 l 14 -26 l 8 13 h 10" fill="none" stroke="#263548" stroke-width="3"/>
+<text x="150" y="375" text-anchor="middle" class="small">220 Ω</text>
+<path class="wire" d="M 150 335 V 420"/>
+<path d="M 130 420 H 170 L 150 448 Z" fill="none" stroke="#263548" stroke-width="3"/>
+<path class="wire" d="M 129 455 H 171 M 150 455 V 690"/>
+<path d="M 168 414 l 18 -16 M 177 423 l 18 -16" stroke="#E84A5F" stroke-width="3"/>
+<text x="150" y="495" text-anchor="middle" class="small">LED (uzun bacak +)</text>
+<rect x="262" y="150" width="136" height="500" rx="18" fill="#E0B51B" opacity="0.14"/>
+<text x="330" y="181" text-anchor="middle" class="label">SARI</text>
+<path class="wire" d="M 330 120 V 225"/>
+<circle cx="309" cy="248" r="5" fill="#263548"/><circle cx="351" cy="248" r="5" fill="#263548"/>
+<path class="wire" d="M 309 248 L 345 232"/>
+<path class="wire" d="M 330 225 V 248 H 309 M 351 248 H 330 V 300"/>
+<text x="330" y="278" text-anchor="middle" class="small">ANLIK BUTON</text>
+<path class="wire" d="M 330 300 V 335"/>
+<path d="M 305 335 h 10 l 8 -13 l 14 26 l 14 -26 l 8 13 h 10" fill="none" stroke="#263548" stroke-width="3"/>
+<text x="330" y="375" text-anchor="middle" class="small">220 Ω</text>
+<path class="wire" d="M 330 335 V 420"/>
+<path d="M 310 420 H 350 L 330 448 Z" fill="none" stroke="#263548" stroke-width="3"/>
+<path class="wire" d="M 309 455 H 351 M 330 455 V 690"/>
+<path d="M 348 414 l 18 -16 M 357 423 l 18 -16" stroke="#E0B51B" stroke-width="3"/>
+<text x="330" y="495" text-anchor="middle" class="small">LED (uzun bacak +)</text>
+<rect x="442" y="150" width="136" height="500" rx="18" fill="#F08A24" opacity="0.14"/>
+<text x="510" y="181" text-anchor="middle" class="label">TURUNCU</text>
+<path class="wire" d="M 510 120 V 225"/>
+<circle cx="489" cy="248" r="5" fill="#263548"/><circle cx="531" cy="248" r="5" fill="#263548"/>
+<path class="wire" d="M 489 248 L 525 232"/>
+<path class="wire" d="M 510 225 V 248 H 489 M 531 248 H 510 V 300"/>
+<text x="510" y="278" text-anchor="middle" class="small">ANLIK BUTON</text>
+<path class="wire" d="M 510 300 V 335"/>
+<path d="M 485 335 h 10 l 8 -13 l 14 26 l 14 -26 l 8 13 h 10" fill="none" stroke="#263548" stroke-width="3"/>
+<text x="510" y="375" text-anchor="middle" class="small">220 Ω</text>
+<path class="wire" d="M 510 335 V 420"/>
+<path d="M 490 420 H 530 L 510 448 Z" fill="none" stroke="#263548" stroke-width="3"/>
+<path class="wire" d="M 489 455 H 531 M 510 455 V 690"/>
+<path d="M 528 414 l 18 -16 M 537 423 l 18 -16" stroke="#F08A24" stroke-width="3"/>
+<text x="510" y="495" text-anchor="middle" class="small">LED (uzun bacak +)</text>
+<rect x="622" y="150" width="136" height="500" rx="18" fill="#56A5D8" opacity="0.14"/>
+<text x="690" y="181" text-anchor="middle" class="label">AÇ/KAPA</text>
+<path class="wire" d="M 690 120 V 225"/>
+<circle cx="669" cy="248" r="5" fill="#263548"/><circle cx="711" cy="248" r="5" fill="#263548"/>
+<path class="wire" d="M 669 248 L 705 232"/>
+<path class="wire" d="M 690 225 V 248 H 669 M 711 248 H 690 V 300"/>
+<text x="690" y="278" text-anchor="middle" class="small">ROCKER</text>
+<path class="wire" d="M 690 300 V 335"/>
+<path d="M 665 335 h 10 l 8 -13 l 14 26 l 14 -26 l 8 13 h 10" fill="none" stroke="#263548" stroke-width="3"/>
+<text x="690" y="375" text-anchor="middle" class="small">220 Ω</text>
+<path class="wire" d="M 690 335 V 420"/>
+<path d="M 670 420 H 710 L 690 448 Z" fill="none" stroke="#263548" stroke-width="3"/>
+<path class="wire" d="M 669 455 H 711 M 690 455 V 690"/>
+<path d="M 708 414 l 18 -16 M 717 423 l 18 -16" stroke="#56A5D8" stroke-width="3"/>
+<text x="690" y="495" text-anchor="middle" class="small">LED (uzun bacak +)</text>
+<rect x="802" y="150" width="136" height="500" rx="18" fill="#49B985" opacity="0.14"/>
+<text x="870" y="181" text-anchor="middle" class="label">DİMMER</text>
+<path class="wire" d="M 870 120 V 225"/>
+<circle cx="849" cy="248" r="5" fill="#263548"/><circle cx="891" cy="248" r="5" fill="#263548"/>
+<path class="wire" d="M 849 248 L 885 232"/>
+<path class="wire" d="M 870 225 V 248 H 849 M 891 248 H 870 V 300"/>
+<text x="870" y="278" text-anchor="middle" class="small">B1K POT</text>
+<path class="wire" d="M 870 300 V 325"/>
+<rect x="845" y="325" width="50" height="60" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>
+<path d="M 912 340 L 875 355" stroke="#263548" stroke-width="3"/><path d="M 912 340 l -9 -2 l 4 9 Z" fill="#263548"/>
+<text x="870" y="410" text-anchor="middle" class="small">0–1000 Ω + 220 Ω</text>
+<path class="wire" d="M 870 385 V 430"/>
+<path d="M 850 430 H 890 L 870 458 Z" fill="none" stroke="#263548" stroke-width="3"/>
+<path class="wire" d="M 849 465 H 891 M 870 465 V 690"/>
+<text x="870" y="500" text-anchor="middle" class="small">BEYAZ LED</text>
+<rect x="982" y="150" width="136" height="500" rx="18" fill="#7B62B3" opacity="0.14"/>
+<text x="1050" y="181" text-anchor="middle" class="label">SES</text>
+<path class="wire" d="M 1050 120 V 225"/>
+<circle cx="1029" cy="248" r="5" fill="#263548"/><circle cx="1071" cy="248" r="5" fill="#263548"/>
+<path class="wire" d="M 1029 248 L 1065 232"/>
+<path class="wire" d="M 1050 225 V 248 H 1029 M 1071 248 H 1050 V 300"/>
+<text x="1050" y="278" text-anchor="middle" class="small">ANLIK BUTON</text>
+<path class="wire" d="M 1050 300 V 395"/>
+<circle cx="1050" cy="440" r="44" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>
+<path d="M 1032 440 h 13 l 15 -15 v 30 l -15 -15" fill="none" stroke="#263548" stroke-width="3"/>
+<path d="M 1064 430 q 16 10 0 20 M 1072 419 q 30 21 0 42" fill="none" stroke="#263548" stroke-width="3"/>
+<text x="1050" y="510" text-anchor="middle" class="small">AKTİF BUZZER 5–12 V</text>
+<path class="wire" d="M 1050 484 V 690"/>
+<text x="40" y="735" class="small">Pot bağlantısı: orta uç (süpürücü) ile kullanılan dış ucu birbirine bağla. Diğer dış uç boş kalır.</text>
+<text x="40" y="758" class="small">Önce multimetre ile kısa devre ve kutup kontrolü yap; sonra pilleri tak.</text>
+</svg>

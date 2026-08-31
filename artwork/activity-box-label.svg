@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="204mm" height="164mm" viewBox="0 0 204 164">
+<rect width="204" height="164" rx="15" fill="#FFF4D6"/>
+<rect x="15" y="8" width="54" height="72" rx="12" fill="#F4A6A6"/>
+<rect x="75" y="8" width="54" height="72" rx="12" fill="#F5D76E"/>
+<rect x="135" y="8" width="54" height="72" rx="12" fill="#F3AA63"/>
+<rect x="15" y="87" width="54" height="67" rx="12" fill="#8FD2ED"/>
+<rect x="75" y="87" width="54" height="67" rx="12" fill="#9EDDBB"/>
+<rect x="135" y="87" width="54" height="67" rx="12" fill="#C5B2E8"/>
+<path d="M 33 14 L 35.52 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 37 14 L 38.4 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 47 14 L 45.6 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 51 14 L 48.48 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 93 14 L 95.52 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 97 14 L 98.4 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 107 14 L 105.6 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 111 14 L 108.48 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 153 14 L 155.52 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 157 14 L 158.4 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 167 14 L 165.6 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 171 14 L 168.48 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
+<path d="M 42 92 v 7 M 35 96 a 9 9 0 1 0 14 0" fill="none" stroke="#27364B" stroke-width="1.7" stroke-linecap="round"/>
+<path d="M 88 139 A 17 17 0 0 1 116 139" fill="none" stroke="#27364B" stroke-width="1.5"/>
+<path d="M 102 141 L 111 135" stroke="#27364B" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M 174 96 q 8 6 0 12 M 178 92 q 13 10 0 20" fill="none" stroke="#27364B" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="42" cy="30" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="42" cy="59" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="30" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="59" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="30" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="59" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="42" cy="103" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<rect x="31.4" y="123.4" width="21.2" height="15.2" rx="1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="103" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="130" r="17.0" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="102" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="168.2" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="155.8" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/>
+<circle cx="162" cy="132" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<rect id="trim-line" x="2" y="2" width="200" height="160" rx="14" fill="none" stroke="#D84A4A" stroke-width="0.3" stroke-dasharray="2 1"/>
+</svg>
