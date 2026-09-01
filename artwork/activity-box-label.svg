@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="204mm" height="164mm" viewBox="0 0 204 164">
+<svg xmlns="http://www.w3.org/2000/svg" width="204mm" height="164mm" viewBox="0 0 204 164" font-family="Arial, sans-serif">
 <rect width="204" height="164" rx="15" fill="#FFF4D6"/>
 <rect x="15" y="8" width="54" height="72" rx="12" fill="#F4A6A6"/>
 <rect x="75" y="8" width="54" height="72" rx="12" fill="#F5D76E"/>
@@ -7,33 +7,66 @@
 <rect x="15" y="87" width="54" height="67" rx="12" fill="#8FD2ED"/>
 <rect x="75" y="87" width="54" height="67" rx="12" fill="#9EDDBB"/>
 <rect x="135" y="87" width="54" height="67" rx="12" fill="#C5B2E8"/>
-<path d="M 33 14 L 35.52 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 37 14 L 38.4 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 47 14 L 45.6 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 51 14 L 48.48 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 93 14 L 95.52 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 97 14 L 98.4 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 107 14 L 105.6 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 111 14 L 108.48 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 153 14 L 155.52 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 157 14 L 158.4 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 167 14 L 165.6 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 171 14 L 168.48 19" stroke="#27364B" stroke-width="1.3" stroke-linecap="round"/>
-<path d="M 42 92 v 7 M 35 96 a 9 9 0 1 0 14 0" fill="none" stroke="#27364B" stroke-width="1.7" stroke-linecap="round"/>
-<path d="M 88 139 A 17 17 0 0 1 116 139" fill="none" stroke="#27364B" stroke-width="1.5"/>
-<path d="M 102 141 L 111 135" stroke="#27364B" stroke-width="1.8" stroke-linecap="round"/>
-<path d="M 174 96 q 8 6 0 12 M 178 92 q 13 10 0 20" fill="none" stroke="#27364B" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="42" cy="30" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="42" cy="59" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="102" cy="30" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="102" cy="59" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="162" cy="30" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="162" cy="59" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="42" cy="103" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<rect x="31.4" y="123.4" width="21.2" height="15.2" rx="1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="102" cy="103" r="4.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="102" cy="130" r="17.0" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="162" cy="102" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="168.2" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="155.8" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/>
-<circle cx="162" cy="132" r="12.1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+
+<g id="scene-table-lamp" stroke="#27364B" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M26 36 L32 22 Q42 18 52 22 L58 36 Z" fill="#F3C34F" stroke-width="1.5"/>
+  <path d="M30 38 Q25 43 27 51" fill="none" stroke-width="2.2"/>
+  <path d="M24 52 H35" fill="none" stroke-width="2.2"/>
+  <path d="M22 30 H17 M25 22 L21 18 M59 30 H64 M56 22 L60 18" fill="none" stroke="#F3C34F" stroke-width="1.8"/>
+  <text x="42" y="84" text-anchor="middle" dominant-baseline="middle" fill="#27364B" stroke="none" font-size="3.8" font-weight="700">LAMBA</text>
+</g>
+<g id="scene-hanging-bulb" stroke="#27364B" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M102 8 V20" fill="none" stroke-width="1.8"/>
+  <path d="M94 29 Q94 20 102 20 Q110 20 110 29 Q110 35 106 38 H98 Q94 35 94 29 Z" fill="#F3C34F" stroke-width="1.5"/>
+  <path d="M98 39 H106 M99 42 H105" fill="none" stroke-width="1.5"/>
+  <path d="M88 27 H83 M91 19 L87 15 M116 27 H121 M113 19 L117 15" fill="none" stroke="#F3C34F" stroke-width="1.8"/>
+  <path d="M102 46 V48" fill="none" stroke-width="1.5" stroke-dasharray="1 2"/>
+  <text x="102" y="84" text-anchor="middle" dominant-baseline="middle" fill="#27364B" stroke="none" font-size="3.8" font-weight="700">AMPUL</text>
+</g>
+<g id="scene-lighthouse" stroke="#27364B" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M153 34 Q162 20 171 34 Z" fill="#F3C34F" stroke-width="1.5"/>
+  <path d="M156 36 L154 42 H170 L168 36 Z" fill="#FFF8E8" stroke-width="1.6"/>
+  <path d="M155 41 L169 37" fill="none" stroke="#D94B3D" stroke-width="2.2"/>
+  <path d="M153 42 H171" fill="none" stroke-width="2"/>
+  <path d="M150 26 H142 M174 26 H182 M151 20 L145 16 M173 20 L179 16" fill="none" stroke="#F3C34F" stroke-width="2"/>
+  <text x="162" y="84" text-anchor="middle" dominant-baseline="middle" fill="#27364B" stroke="none" font-size="3.8" font-weight="700">FENER</text>
+</g>
+<g id="scene-room-switch" stroke="#27364B" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M31 108 L35 96 H49 L53 108 Z" fill="#F3C34F" stroke-width="1.5"/>
+  <path d="M42 90 V96" fill="none" stroke-width="1.6"/>
+  <path d="M34 111 L31 115 M42 111 V116 M50 111 L53 115" fill="none" stroke="#F3C34F" stroke-width="1.6"/>
+  <rect x="28" y="118" width="28" height="27" rx="4" fill="#FFF8E8" stroke-width="1.3"/>
+  <text x="42" y="157.2" text-anchor="middle" dominant-baseline="middle" fill="#27364B" stroke="none" font-size="3.4" font-weight="700">AÇ/KAPAT</text>
+</g>
+<g id="scene-dimmer" stroke="#27364B" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M84 105 A7 7 0 1 0 90 114 A5.3 5.3 0 0 1 84 105 Z" fill="#FFF8E8" stroke-width="1.3"/>
+  <circle cx="120" cy="109" r="5" fill="#F3C34F" stroke-width="1.3"/>
+  <path d="M120 100 V97 M120 118 V121 M111 109 H108 M129 109 H132 M114 103 L112 101 M126 115 L128 117 M126 103 L128 101 M114 115 L112 117" fill="none" stroke="#F3C34F" stroke-width="1.4"/>
+  <path d="M88 121 Q102 111 116 121" fill="none" stroke="#2D9C95" stroke-width="1.7" stroke-dasharray="1 2"/>
+  <text x="102" y="157.2" text-anchor="middle" dominant-baseline="middle" fill="#27364B" stroke="none" font-size="3.4" font-weight="700">AZ–ÇOK</text>
+</g>
+<g id="scene-fire-engine" stroke="#27364B" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M154 106 Q154 94 162 92 Q170 94 170 106 Z" fill="#D94B3D" stroke-width="1.4"/>
+  <path d="M151 95 H144 M173 95 H180 M151 90 L146 86 M173 90 L178 86" fill="none" stroke="#D94B3D" stroke-width="1.8"/>
+  <path d="M139 105 H169 L176 98 H183 Q186 98 186 103 V114 H139 Z" fill="#D94B3D" stroke-width="1.6"/>
+  <path d="M176 101 H182 V108 H171 Z" fill="#55B7D9" stroke-width="1.2"/>
+  <path d="M140 96 L181 86 M142 100 L183 90 M147 94 L150 101 M158 91 L161 98 M169 88 L172 95" fill="none" stroke="#FFF8E8" stroke-width="1.6"/>
+  <circle cx="149" cy="112" r="4" fill="#A93632" stroke-width="1.4"/>
+  <circle cx="178" cy="112" r="4" fill="#A93632" stroke-width="1.4"/>
+  <path d="M137 114 H188" fill="none" stroke-width="2"/>
+  <text x="162" y="157.2" text-anchor="middle" dominant-baseline="middle" fill="#27364B" stroke="none" font-size="3.4" font-weight="700">İTFAİYE</text>
+</g>
+<circle cx="42" cy="30" r="4.1" id="cutout-red-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="42" cy="59" r="12.1" id="cutout-red-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="30" r="4.1" id="cutout-yellow-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="59" r="12.1" id="cutout-yellow-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="30" r="4.1" id="cutout-orange-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="59" r="12.1" id="cutout-orange-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="42" cy="103" r="4.1" id="cutout-switch-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<rect id="cutout-rocker" x="31.4" y="123.4" width="21.2" height="15.2" rx="1" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="103" r="4.1" id="cutout-dimmer-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="130" r="17.0" id="cutout-dial" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="102" r="1.5" id="cutout-buzzer" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="168.2" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="155.8" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/>
+<circle cx="162" cy="132" r="12.1" id="cutout-buzzer-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <rect id="trim-line" x="2" y="2" width="200" height="160" rx="14" fill="none" stroke="#D84A4A" stroke-width="0.3" stroke-dasharray="2 1"/>
 </svg>

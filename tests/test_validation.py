@@ -16,6 +16,7 @@ class ValidationTest(unittest.TestCase):
             pathlib.Path("output/stl/activity-box-back.stl"),
             pathlib.Path("output/stl/activity-box-dial.stl"),
             pathlib.Path("output/stl/snap-fit-test.stl"),
+            pathlib.Path("output/stl/component-fit-test.stl"),
         }
         self.assertTrue(expected <= set(REQUIRED_OUTPUTS))
 

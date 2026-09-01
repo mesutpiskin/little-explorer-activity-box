@@ -20,6 +20,7 @@ STL_OUTPUTS = [
     Path("output/stl/activity-box-back.stl"),
     Path("output/stl/activity-box-dial.stl"),
     Path("output/stl/snap-fit-test.stl"),
+    Path("output/stl/component-fit-test.stl"),
 ]
 
 NON_STL_OUTPUTS = [
@@ -28,6 +29,7 @@ NON_STL_OUTPUTS = [
     Path("artwork/activity-box-label.svg"),
     Path("artwork/activity-box-label-a4.pdf"),
     Path("artwork/activity-box-label-preview.png"),
+    Path("artwork/activity-box-assembled-preview.png"),
     Path("docs/circuit.svg"),
     Path("docs/BOM.csv"),
     Path("docs/assembly.md"),
@@ -189,4 +191,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

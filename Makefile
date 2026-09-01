@@ -17,6 +17,7 @@ stl: dimensions
 	$(OPENSCAD) -o output/stl/activity-box-back.stl -D 'part="back"' cad/activity_box.scad
 	$(OPENSCAD) -o output/stl/activity-box-dial.stl -D 'part="dial"' cad/activity_box.scad
 	$(OPENSCAD) -o output/stl/snap-fit-test.stl -D 'part="snap_test"' cad/activity_box.scad
+	$(OPENSCAD) -o output/stl/component-fit-test.stl -D 'part="component_test"' cad/activity_box.scad
 
 artwork:
 	$(PYTHON) tools/generate_artwork.py
@@ -31,4 +32,4 @@ validate-source:
 	$(PYTHON) tools/validate_outputs.py --allow-missing-stl
 
 clean:
-	rm -rf output/stl artwork/activity-box-label.svg artwork/activity-box-label-a4.pdf artwork/activity-box-label-preview.png docs/circuit.svg docs/BOM.csv docs/assembly.md cad/generated_dimensions.scad
+	rm -rf output/stl artwork/activity-box-label.svg artwork/activity-box-label-a4.pdf artwork/activity-box-label-preview.png artwork/activity-box-assembled-preview.png docs/circuit.svg docs/BOM.csv docs/assembly.md cad/generated_dimensions.scad

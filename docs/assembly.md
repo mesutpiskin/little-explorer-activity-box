@@ -18,12 +18,14 @@ düzeltmek çok daha ucuzdur.
 
 ## 2. Baskı
 
-Önce `snap-fit-test.stl` tolerans numunesini basın. Tırnak rahat girip tek elle
+Önce `component-fit-test.stl` plakasını basıp LED yuvasını, büyük butonu,
+rocker anahtarı, dimmer çarkını ve buzzer'ı deneyin. Ardından
+`snap-fit-test.stl` tolerans numunesini basın. Tırnak rahat girip tek elle
 çıkmamalıdır. Çok sıkıysa `clearance` değerini 0,10 mm artırın; gevşekse 0,10 mm
 azaltın. Önerilen ayarlar: PETG, 0,20 mm katman, en az dört çevre, beş alt/üst
-katman, yüzde 25 dolgu. Gövdeyi ön yüzü, kapağı dış yüzü ve çarkı flanşı tabla
-üzerinde olacak şekilde basın. Katman ayrılması, sivri çapak veya tırnak çatlağı
-olan parçayı kullanmayın.
+katman, yüzde 25 dolgu. Test plakasını ve gövdeyi ön yüzleri, kapağı dış yüzü ve
+çarkı flanşı tabla üzerinde olacak şekilde basın. Katman ayrılması, sivri çapak
+veya tırnak çatlağı olan parçayı kullanmayın.
 
 ## 3. Etiket
 

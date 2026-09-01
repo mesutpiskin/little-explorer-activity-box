@@ -1,8 +1,11 @@
 import pathlib
 import unittest
+import xml.etree.ElementTree as ET
 
-from PIL import Image
-from PIL import ImageColor
+from PIL import Image, ImageColor, ImageDraw, ImageFont
+
+from tools.generate_artwork import draw_preview, generate_svg, px
+from tools.project_spec import LABEL, PANEL_FEATURES
 
 
 class ArtworkTest(unittest.TestCase):
@@ -28,6 +31,110 @@ class ArtworkTest(unittest.TestCase):
     def test_a4_pdf_is_generated(self):
         pdf = pathlib.Path("artwork/activity-box-label-a4.pdf").read_bytes()
         self.assertTrue(pdf.startswith(b"%PDF"))
+
+    def test_assembled_preview_is_generated_at_label_size(self):
+        with Image.open("artwork/activity-box-assembled-preview.png") as image:
+            self.assertEqual(image.size, (2409, 1937))
+
+    def test_svg_contains_six_educational_scenes(self):
+        svg = generate_svg()
+        scene_ids = (
+            "scene-table-lamp",
+            "scene-hanging-bulb",
+            "scene-lighthouse",
+            "scene-room-switch",
+            "scene-dimmer",
+            "scene-fire-engine",
+        )
+        for scene_id in scene_ids:
+            self.assertIn(f'id="{scene_id}"', svg)
+        for label in ("LAMBA", "AMPUL", "FENER", "AÇ/KAPAT", "AZ–ÇOK", "İTFAİYE"):
+            self.assertIn(f">{label}</text>", svg)
+        self.assertIn('font-family="Arial, sans-serif"', svg)
+
+    def test_svg_labels_use_the_same_center_anchor_as_the_png(self):
+        root = ET.fromstring(generate_svg())
+        labels = [element for element in root.iter() if element.tag.endswith("text")]
+        self.assertEqual(len(labels), 6)
+        for label in labels:
+            self.assertEqual(label.attrib.get("dominant-baseline"), "middle")
+
+    def test_svg_keeps_every_cutout_at_the_cad_coordinates(self):
+        root = ET.fromstring(generate_svg())
+        elements = {
+            element.attrib.get("id"): element for element in root.iter()
+        }
+        for feature in PANEL_FEATURES:
+            element = elements[f'cutout-{feature["id"].replace("_", "-")}']
+            expected_x = feature["x"] + LABEL["bleed"]
+            expected_y = feature["y"] + LABEL["bleed"]
+            if feature["kind"] == "rect":
+                actual_x = float(element.attrib["x"]) + float(element.attrib["width"]) / 2
+                actual_y = float(element.attrib["y"]) + float(element.attrib["height"]) / 2
+            else:
+                actual_x = float(element.attrib["cx"])
+                actual_y = float(element.attrib["cy"])
+            self.assertAlmostEqual(actual_x, expected_x)
+            self.assertAlmostEqual(actual_y, expected_y)
+
+    def test_preview_renders_fire_engine_illustration(self):
+        image = draw_preview()
+        fire_engine_red = ImageColor.getrgb("#D94B3D")
+        fire_engine_panel = image.crop((1500, 1000, 2300, 1800))
+        red_pixels = sum(pixel == fire_engine_red for pixel in fire_engine_panel.getdata())
+        self.assertGreater(red_pixels, 1000)
+
+    def test_labels_clear_real_component_bezels_by_two_mm(self):
+        root = ET.fromstring(generate_svg())
+        text_elements = {
+            element.text: element for element in root.iter() if element.tag.endswith("text")
+        }
+        component_bottoms = {
+            "LAMBA": 75.5,
+            "AMPUL": 75.5,
+            "FENER": 75.5,
+            "AÇ/KAPAT": 141.0,
+            "AZ–ÇOK": 146.0,
+            "İTFAİYE": 148.5,
+        }
+        draw = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+        for label, component_bottom in component_bottoms.items():
+            element = text_elements[label]
+            size_mm = float(element.attrib["font-size"])
+            font = ImageFont.truetype(
+                "/System/Library/Fonts/Supplemental/Arial Bold.ttf", px(size_mm)
+            )
+            baseline = (px(float(element.attrib["x"])), px(float(element.attrib["y"])))
+            box = draw.textbbox(baseline, label, font=font, anchor="mm")
+            label_top_mm = box[1] / (300 / 25.4)
+            self.assertGreaterEqual(
+                label_top_mm - component_bottom,
+                2.0,
+                f"{label} component bezelinin fazla yakınında",
+            )
+
+    def test_bottom_labels_stay_inside_three_mm_trim_safe_area(self):
+        image = draw_preview()
+        ink = ImageColor.getrgb("#27364B")
+        safe_bottom = px(159)
+        for label, x1, x2 in (
+            ("AÇ/KAPAT", 28, 56),
+            ("AZ–ÇOK", 88, 116),
+            ("İTFAİYE", 148, 176),
+        ):
+            crop = image.crop((px(x1), px(154), px(x2), px(162)))
+            ink_rows = [
+                y
+                for y in range(crop.height)
+                for x in range(crop.width)
+                if crop.getpixel((x, y)) == ink
+            ]
+            self.assertGreater(len(ink_rows), 100, f"{label} etiketi bulunamadı")
+            self.assertLessEqual(
+                px(154) + max(ink_rows),
+                safe_bottom,
+                f"{label} kesim güvenli alanının dışında",
+            )
 
 
 if __name__ == "__main__":

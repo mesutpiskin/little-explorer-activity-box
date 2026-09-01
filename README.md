@@ -19,8 +19,10 @@ OpenSCAD kurulu ve izinli bir bilgisayarda proje klasöründe:
 make stl
 ```
 
-Bu komut gövde, arka kapak, güvenli döner çark ve geçme testi STL'lerini
-`output/stl/` içine yazar. Tam baskıdan önce `snap-fit-test.stl` basılmalıdır.
+Bu komut gövde, arka kapak, güvenli döner çark, geçme testi ve komponent uyum
+plakası STL'lerini `output/stl/` içine yazar. Tam baskıdan önce
+`component-fit-test.stl` ile LED yuvası, büyük buton, rocker anahtar,
+dimmer çarkı ve buzzer; `snap-fit-test.stl` ile kapak geçmesi denenmelidir.
 
 ## Ölçü değiştirme
 
@@ -36,4 +38,3 @@ make validate
 
 Bu ürün sertifikalı oyuncak değildir; 18 aylık çocuk yalnızca yetişkin
 gözetiminde kullanmalıdır.
-

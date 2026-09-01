@@ -217,10 +217,37 @@ module snap_fit_test() {
     }
 }
 
+module component_fit_test() {
+    test_w = 150;
+    test_h = 50;
+    test_r = 5;
+    test_y = test_h / 2;
+    led_pos = [15, box_h - test_y];
+    button_pos = [43, box_h - test_y];
+    rocker_pos = [72, box_h - test_y];
+    dial_pos = [107, box_h - test_y];
+    buzzer_pos = [138, box_h - test_y];
+    buzzer_offset = front_xy(buzzer_pos) - front_xy(pos_buzzer);
+
+    difference() {
+        union() {
+            rounded_box(test_w, test_h, front_t, test_r);
+            led_guard(led_pos);
+            translate([buzzer_offset[0], buzzer_offset[1], 0]) buzzer_cup();
+        }
+        circular_panel_hole(led_pos, led_hole_d);
+        circular_panel_hole(button_pos, button_hole_d);
+        rectangular_panel_hole(rocker_pos, rocker_size);
+        circular_panel_hole(dial_pos, dial_opening_d);
+        translate([buzzer_offset[0], buzzer_offset[1], 0]) buzzer_holes();
+    }
+}
+
 if (part == "body") body();
 else if (part == "back") back();
 else if (part == "dial") dial();
 else if (part == "snap_test") snap_fit_test();
+else if (part == "component_test") component_fit_test();
 else {
     color("wheat") body();
     color("lightgray") translate([0, box_h + 15, 0]) back();
