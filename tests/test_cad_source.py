@@ -25,6 +25,30 @@ class CadSourceTest(unittest.TestCase):
         self.assertIn("dial_grip_d = 32", text)
         self.assertIn("dial_flange_d = 46", text)
 
+    def test_cad_protects_and_mounts_the_purchased_parts(self):
+        text = pathlib.Path("cad/activity_box.scad").read_text(encoding="utf-8")
+        for module in (
+            "open_led_guard",
+            "pot_mount_bridge",
+            "battery_center_divider",
+        ):
+            self.assertIn(f"module {module}(", text)
+        self.assertIn("buzzer_port_depth", text)
+
+    def test_component_coupon_contains_all_fit_choices(self):
+        text = pathlib.Path("cad/activity_box.scad").read_text(encoding="utf-8")
+        for dimension in (
+            "10.0, 10.2",
+            "12.0, 12.2",
+            "16.0, 16.2",
+            "20.0, 20.2",
+            "7.0, 7.2",
+            "5.8, 6.0, 6.2",
+            "[19.0, 13.0]",
+            "[19.4, 13.4]",
+        ):
+            self.assertIn(dimension, text)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 
 from PIL import Image, ImageColor, ImageDraw, ImageFont
 
-from tools.generate_artwork import draw_preview, generate_svg, px
+from tools.generate_artwork import draw_assembled_preview, draw_preview, generate_svg, px
 from tools.project_spec import LABEL, PANEL_FEATURES
 
 
@@ -35,6 +35,19 @@ class ArtworkTest(unittest.TestCase):
     def test_assembled_preview_is_generated_at_label_size(self):
         with Image.open("artwork/activity-box-assembled-preview.png") as image:
             self.assertEqual(image.size, (2409, 1937))
+
+    def test_assembled_preview_matches_purchased_component_colors(self):
+        image = draw_assembled_preview()
+        expected_centers = {
+            (162, 59): "#111820",  # siyah DC180
+            (42, 131): "#303844",  # yuvarlak DC131A
+            (162, 132): "#2878C8",  # mavi DC180
+            (162, 30): "#35B86B",  # yeşil LED
+            (42, 103): "#3F8FE8",  # mavi LED
+            (102, 103): "#F4F7FF",  # beyaz LED
+        }
+        for center, color in expected_centers.items():
+            self.assertEqual(image.getpixel((px(center[0]), px(center[1]))), ImageColor.getrgb(color))
 
     def test_svg_contains_six_educational_scenes(self):
         svg = generate_svg()
@@ -74,6 +87,10 @@ class ArtworkTest(unittest.TestCase):
             else:
                 actual_x = float(element.attrib["cx"])
                 actual_y = float(element.attrib["cy"])
+                if feature["kind"] == "circle":
+                    self.assertAlmostEqual(
+                        float(element.attrib["r"]), feature["radius"]
+                    )
             self.assertAlmostEqual(actual_x, expected_x)
             self.assertAlmostEqual(actual_y, expected_y)
 

@@ -1,15 +1,16 @@
 ﻿durum,adet,parca,ozellik,not
-mevcut,1,1 A sigorta,Uygun kapalı yuvasıyla,Pil artısına en yakın noktaya
-satın al,1,4xAA pil yuvası,"Tek sıra, kablolu, en çok 112×26×18 mm",Alkalin AA pil için
-satın al,4,24 mm anlık buton,"NO, tek parça büyük başlık",Kırmızı/sarı/turuncu/mavi
-satın al,1,KCD1 rocker anahtar,"2 uç, 21,2×15,2 mm kesit",Beyaz LED kolu
-satın al,1,B1K potansiyometre,"Doğrusal, panel tipi, 6 mm D mil",Dimmer
-satın al,6,220 ohm direnç,"0,25 W",5 kullanım + 1 yedek
-opsiyonel,4,270/330 ohm direnç,"0,25 W",LED akımı yüksekse
-mevcut,5,5 mm LED,"Kırmızı, sarı, turuncu, 2×beyaz",İleri gerilimi ölç
-mevcut,5,5 mm LED yuvası,Tek parça,Gerçek delik çapını ölç
-mevcut,1,SS12F15 anahtar,SPDT,Gömme ana güç
-mevcut,1,12 mm aktif buzzer,5–12 V,6 V ile dene
-satın al,2 m,çok telli kablo,"0,22–0,50 mm²",İki renk önerilir
-satın al,1 set,ısıyla daralan makaron,2–4 mm,Tüm lehim ekleri
+temin et,1,1 A sigorta,Kapalı yuva veya kablolu tip,Yuva B artısına en yakın noktaya
+alındı,2,2xAA yarı kapalı pil yuvası,Yaklaşık 58×32×15 mm,Seri bağlanarak 4×AA olur
+alındı,2,DC184 anlık buton,"Kırmızı ve sarı; Ø12,2 mm test deliği",Kırmızı/sarı LED kolları
+alındı,2,DC180 anlık buton,"Siyah ve mavi; Ø16,2 mm test deliği",Yeşil LED ve buzzer
+alındı,1,DC131A aç/kapat anahtar,"Ø20,2 mm; 12 V lambalı",Yalnız anahtar kontakları kullanılır
+alındı,1,DC120 2P aç/kapat anahtar,"Yaklaşık 19,2×13,2 mm kesit",Ana güç
+alındı,1,1K potansiyometre,Yaklaşık 6 mm tırtıllı mil,Beyaz LED dimmeri
+alındı,10,330 ohm 1 W direnç,Turuncu-turuncu-kahverengi,5 kullanım + yedekler
+alındı,4,10 mm LED,"Kırmızı, sarı, yeşil, mavi",Her birine ayrı 330 Ω
+temin et,1,10 mm beyaz LED,"Şeffaf, standart iki bacaklı",Dimmer kolu
+alındı,1,12 mm aktif buzzer,"5–12 V, devreli",Pasif 22 mm buzzer kullanılmaz
+temin et,2 m,çok telli kablo,"0,22–0,50 mm²",Kırmızı ve siyah önerilir
+temin et,1 set,ısıyla daralan makaron,2–4 mm,Tüm lehim ekleri
+temin et,1 tüp,nötr kürlenen silikon,Elektroniğe uygun,LED titreşim desteği; tek tutucu değildir
 baskı,yaklaşık 450 g,PETG filament,"1,75 mm","Gövde, kapak, çark"

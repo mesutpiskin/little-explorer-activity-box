@@ -9,12 +9,15 @@ if __package__ in (None, ""):
 from tools.project_spec import (
     BATTERY_BAY,
     BOX,
-    BUTTON_HOLE_DIAMETER,
+    DC180_BUTTON_HOLE_DIAMETER,
+    DC184_BUTTON_HOLE_DIAMETER,
     DIAL_OPENING_DIAMETER,
     LED_HOLE_DIAMETER,
     MASTER_SWITCH_SIZE,
     PANEL_FEATURES,
-    ROCKER_SIZE,
+    POT_BUSHING_HOLE_DIAMETER,
+    POT_SHAFT_DIAMETER,
+    ROOM_SWITCH_HOLE_DIAMETER,
 )
 
 
@@ -38,9 +41,12 @@ def generate_dimensions_text():
         "back_t": BOX["back"],
         "fit_clearance": BOX["clearance"],
         "led_hole_d": LED_HOLE_DIAMETER,
-        "button_hole_d": BUTTON_HOLE_DIAMETER,
-        "rocker_size": ROCKER_SIZE,
+        "dc184_button_hole_d": DC184_BUTTON_HOLE_DIAMETER,
+        "dc180_button_hole_d": DC180_BUTTON_HOLE_DIAMETER,
+        "room_switch_hole_d": ROOM_SWITCH_HOLE_DIAMETER,
         "dial_opening_d": DIAL_OPENING_DIAMETER,
+        "pot_bushing_hole_d": POT_BUSHING_HOLE_DIAMETER,
+        "pot_shaft_d": POT_SHAFT_DIAMETER,
         "master_switch_size": MASTER_SWITCH_SIZE,
         "battery_bay_size": [BATTERY_BAY["width"], BATTERY_BAY["height"], BATTERY_BAY["depth"]],
         "battery_bay_pos": [BATTERY_BAY["x"], BATTERY_BAY["y"]],

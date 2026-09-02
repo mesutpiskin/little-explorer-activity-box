@@ -12,27 +12,32 @@ from tools.project_spec import ELECTRICAL
 
 def circuit_svg():
     columns = [150, 330, 510, 690, 870, 1050]
-    labels = ["KIRMIZI", "SARI", "TURUNCU", "AÇ/KAPA", "DİMMER", "SES"]
-    colors = ["#E84A5F", "#E0B51B", "#F08A24", "#56A5D8", "#49B985", "#7B62B3"]
+    labels = ["KIRMIZI", "SARI", "YEŞİL", "AÇ/KAPA", "DİMMER", "SES"]
+    colors = ["#E84A5F", "#E0B51B", "#3DAA68", "#56A5D8", "#49B985", "#7B62B3"]
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">',
         '<rect width="1200" height="780" fill="#FFFDF7"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#263548}.title{font-size:25px;font-weight:bold}.label{font-size:17px;font-weight:bold}.small{font-size:14px}.wire{fill:none;stroke:#263548;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}</style>',
-        '<text x="40" y="42" class="title">4×AA IŞIK VE SES KUTUSU — BAĞLANTI ŞEMASI</text>',
-        '<rect x="40" y="75" width="82" height="62" rx="8" fill="#F2E3A0" stroke="#263548" stroke-width="3"/>',
-        '<text x="81" y="101" text-anchor="middle" class="label">4×AA</text>',
-        '<text x="81" y="124" text-anchor="middle" class="small">6,4 V maks.</text>',
-        '<path class="wire" d="M 122 92 H 164"/>',
-        '<rect x="164" y="82" width="72" height="20" rx="4" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
-        '<text x="200" y="73" text-anchor="middle" class="small">1 A SİGORTA</text>',
-        '<path class="wire" d="M 236 92 H 285 M 285 92 L 325 76 M 325 92 H 365"/>',
-        '<circle cx="285" cy="92" r="5" fill="#263548"/><circle cx="325" cy="92" r="5" fill="#263548"/>',
-        '<text x="325" y="62" text-anchor="middle" class="small">SS12F15 ANA GÜÇ</text>',
-        '<path class="wire" d="M 365 92 H 1140 V 120 H 85"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#263548}.title{font-size:25px;font-weight:bold}.label{font-size:17px;font-weight:bold}.power{font-size:13px;font-weight:bold}.tiny{font-size:12px}.small{font-size:14px}.wire{fill:none;stroke:#263548;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}</style>',
+        '<text x="40" y="40" class="title">2× (2×AA) IŞIK VE SES KUTUSU — BAĞLANTI ŞEMASI</text>',
+        '<rect x="40" y="65" width="105" height="48" rx="8" fill="#F2E3A0" stroke="#263548" stroke-width="3"/>',
+        '<text x="92" y="86" text-anchor="middle" class="power">YUVA A — 2×AA</text>',
+        '<text x="92" y="105" text-anchor="middle" class="tiny">siyah = sistem −</text>',
+        '<rect x="165" y="65" width="105" height="48" rx="8" fill="#F2E3A0" stroke="#263548" stroke-width="3"/>',
+        '<text x="217" y="86" text-anchor="middle" class="power">YUVA B — 2×AA</text>',
+        '<text x="217" y="105" text-anchor="middle" class="tiny">kırmızı = sistem +</text>',
+        '<path class="wire" d="M 145 89 H 165"/>',
+        '<text x="155" y="58" text-anchor="middle" class="small">A kırmızı → B siyah</text>',
+        '<path class="wire" d="M 270 89 H 300"/>',
+        '<rect x="300" y="79" width="72" height="20" rx="4" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
+        '<text x="336" y="70" text-anchor="middle" class="small">1 A SİGORTA</text>',
+        '<path class="wire" d="M 372 89 H 410 M 410 89 L 450 73 M 450 89 H 490"/>',
+        '<circle cx="410" cy="89" r="5" fill="#263548"/><circle cx="450" cy="89" r="5" fill="#263548"/>',
+        '<text x="430" y="57" text-anchor="middle" class="small">DC120 ANA GÜÇ</text>',
+        '<path class="wire" d="M 490 89 H 1140 V 120 H 85"/>',
         '<text x="1145" y="112" class="label" fill="#C42D2D">+ BUS</text>',
         '<path class="wire" d="M 85 690 H 1140"/>',
-        '<path class="wire" d="M 81 137 V 690 H 85"/>',
+        '<path class="wire" d="M 40 89 H 25 V 690 H 85"/>',
         '<text x="1145" y="697" class="label">− BUS</text>',
     ]
 
@@ -41,33 +46,47 @@ def circuit_svg():
             f'<rect x="{x - 68}" y="150" width="136" height="500" rx="18" fill="{color}" opacity="0.14"/>',
             f'<text x="{x}" y="181" text-anchor="middle" class="label">{label}</text>',
             f'<path class="wire" d="M {x} 120 V 225"/>',
-            f'<circle cx="{x - 21}" cy="248" r="5" fill="#263548"/><circle cx="{x + 21}" cy="248" r="5" fill="#263548"/>',
-            f'<path class="wire" d="M {x - 21} 248 L {x + 15} 232"/>',
-            f'<path class="wire" d="M {x} 225 V 248 H {x - 21} M {x + 21} 248 H {x} V 300"/>',
         ])
-        switch_label = "ANLIK BUTON" if index in (0, 1, 2, 5) else ("ROCKER" if index == 3 else "B1K POT")
-        parts.append(f'<text x="{x}" y="278" text-anchor="middle" class="small">{switch_label}</text>')
+        if index != 4:
+            switch_label = (
+                "DC184 ANLIK" if index in (0, 1)
+                else "DC180 ANLIK" if index in (2, 5)
+                else "DC131A (yalnız kontak)"
+            )
+            parts.extend([
+                f'<circle cx="{x - 21}" cy="248" r="5" fill="#263548"/><circle cx="{x + 21}" cy="248" r="5" fill="#263548"/>',
+                f'<path class="wire" d="M {x - 21} 248 L {x + 15} 232"/>',
+                f'<path class="wire" d="M {x} 225 V 248 H {x - 21} M {x + 21} 248 H {x} V 300"/>',
+                f'<text x="{x}" y="278" text-anchor="middle" class="small">{switch_label}</text>',
+            ])
+        else:
+            parts.append(f'<path class="wire" d="M {x} 225 V 300"/>')
         if index < 4:
             parts.extend([
-                f'<path class="wire" d="M {x} 300 V 335"/>',
-                f'<path d="M {x - 25} 335 h 10 l 8 -13 l 14 26 l 14 -26 l 8 13 h 10" fill="none" stroke="#263548" stroke-width="3"/>',
-                f'<text x="{x}" y="375" text-anchor="middle" class="small">220 Ω</text>',
-                f'<path class="wire" d="M {x} 335 V 420"/>',
-                f'<path d="M {x - 20} 420 H {x + 20} L {x} 448 Z" fill="none" stroke="#263548" stroke-width="3"/>',
-                f'<path class="wire" d="M {x - 21} 455 H {x + 21} M {x} 455 V 690"/>',
-                f'<path d="M {x + 18} 414 l 18 -16 M {x + 27} 423 l 18 -16" stroke="{color}" stroke-width="3"/>',
-                f'<text x="{x}" y="495" text-anchor="middle" class="small">LED (uzun bacak +)</text>',
+                f'<path class="wire" d="M {x} 300 V 320"/>',
+                f'<rect class="series-resistor" x="{x - 43}" y="320" width="86" height="38" rx="7" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
+                f'<text x="{x}" y="345" text-anchor="middle" class="small">330 Ω / 1 W</text>',
+                f'<path class="wire" d="M {x} 358 V 400"/>',
+                f'<rect class="series-led" x="{x - 43}" y="400" width="86" height="50" rx="12" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
+                f'<circle cx="{x - 23}" cy="425" r="10" fill="{color}" stroke="#263548" stroke-width="2"/>',
+                f'<path d="M {x - 28} 421 L {x - 22} 427 L {x - 17} 418" fill="none" stroke="#FFFFFF" stroke-width="2"/>',
+                f'<text x="{x + 13}" y="430" text-anchor="middle" class="small">LED</text>',
+                f'<path class="wire" d="M {x} 450 V 690"/>',
             ])
         elif index == 4:
             parts.extend([
-                f'<path class="wire" d="M {x} 300 V 325"/>',
-                f'<rect x="{x - 25}" y="325" width="50" height="60" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
-                f'<path d="M {x + 42} 340 L {x + 5} 355" stroke="#263548" stroke-width="3"/><path d="M {x + 42} 340 l -9 -2 l 4 9 Z" fill="#263548"/>',
-                f'<text x="{x}" y="410" text-anchor="middle" class="small">0–1000 Ω + 220 Ω</text>',
-                f'<path class="wire" d="M {x} 385 V 430"/>',
-                f'<path d="M {x - 20} 430 H {x + 20} L {x} 458 Z" fill="none" stroke="#263548" stroke-width="3"/>',
-                f'<path class="wire" d="M {x - 21} 465 H {x + 21} M {x} 465 V 690"/>',
-                f'<text x="{x}" y="500" text-anchor="middle" class="small">BEYAZ LED</text>',
+                f'<path class="wire" d="M {x} 300 V 320"/>',
+                f'<rect x="{x - 43}" y="320" width="86" height="38" rx="7" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
+                f'<text x="{x}" y="345" text-anchor="middle" class="small">1K POT</text>',
+                f'<path d="M {x + 52} 312 L {x + 24} 330" stroke="#263548" stroke-width="3"/><path d="M {x + 52} 312 l -9 0 l 5 8 Z" fill="#263548"/>',
+                f'<path class="wire" d="M {x} 358 V 375"/>',
+                f'<rect class="series-resistor" x="{x - 43}" y="375" width="86" height="38" rx="7" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
+                f'<text x="{x}" y="400" text-anchor="middle" class="small">330 Ω / 1 W</text>',
+                f'<path class="wire" d="M {x} 413 V 430"/>',
+                f'<rect class="series-led" x="{x - 43}" y="430" width="86" height="50" rx="12" fill="#FFFFFF" stroke="#263548" stroke-width="3"/>',
+                f'<circle cx="{x - 23}" cy="455" r="10" fill="#F4F7FF" stroke="#263548" stroke-width="2"/>',
+                f'<text x="{x + 13}" y="460" text-anchor="middle" class="small">LED</text>',
+                f'<path class="wire" d="M {x} 480 V 690"/>',
             ])
         else:
             parts.extend([
@@ -81,26 +100,27 @@ def circuit_svg():
 
     parts.extend([
         '<text x="40" y="735" class="small">Pot bağlantısı: orta uç (süpürücü) ile kullanılan dış ucu birbirine bağla. Diğer dış uç boş kalır.</text>',
-        '<text x="40" y="758" class="small">Önce multimetre ile kısa devre ve kutup kontrolü yap; sonra pilleri tak.</text>',
+        '<text x="40" y="758" class="small">DC131A lamba ucu bağlanmaz. Önce kısa devre ve kutup kontrolü yap; sonra pilleri tak.</text>',
         '</svg>',
     ])
     return "\n".join(parts) + "\n"
 
 
 BOM_ROWS = [
-    ("mevcut", "1", "1 A sigorta", "Uygun kapalı yuvasıyla", "Pil artısına en yakın noktaya"),
-    ("satın al", "1", "4xAA pil yuvası", "Tek sıra, kablolu, en çok 112×26×18 mm", "Alkalin AA pil için"),
-    ("satın al", "4", "24 mm anlık buton", "NO, tek parça büyük başlık", "Kırmızı/sarı/turuncu/mavi"),
-    ("satın al", "1", "KCD1 rocker anahtar", "2 uç, 21,2×15,2 mm kesit", "Beyaz LED kolu"),
-    ("satın al", "1", "B1K potansiyometre", "Doğrusal, panel tipi, 6 mm D mil", "Dimmer"),
-    ("satın al", "6", "220 ohm direnç", "0,25 W", "5 kullanım + 1 yedek"),
-    ("opsiyonel", "4", "270/330 ohm direnç", "0,25 W", "LED akımı yüksekse"),
-    ("mevcut", "5", "5 mm LED", "Kırmızı, sarı, turuncu, 2×beyaz", "İleri gerilimi ölç"),
-    ("mevcut", "5", "5 mm LED yuvası", "Tek parça", "Gerçek delik çapını ölç"),
-    ("mevcut", "1", "SS12F15 anahtar", "SPDT", "Gömme ana güç"),
-    ("mevcut", "1", "12 mm aktif buzzer", "5–12 V", "6 V ile dene"),
-    ("satın al", "2 m", "çok telli kablo", "0,22–0,50 mm²", "İki renk önerilir"),
-    ("satın al", "1 set", "ısıyla daralan makaron", "2–4 mm", "Tüm lehim ekleri"),
+    ("temin et", "1", "1 A sigorta", "Kapalı yuva veya kablolu tip", "Yuva B artısına en yakın noktaya"),
+    ("alındı", "2", "2xAA yarı kapalı pil yuvası", "Yaklaşık 58×32×15 mm", "Seri bağlanarak 4×AA olur"),
+    ("alındı", "2", "DC184 anlık buton", "Kırmızı ve sarı; Ø12,2 mm test deliği", "Kırmızı/sarı LED kolları"),
+    ("alındı", "2", "DC180 anlık buton", "Siyah ve mavi; Ø16,2 mm test deliği", "Yeşil LED ve buzzer"),
+    ("alındı", "1", "DC131A aç/kapat anahtar", "Ø20,2 mm; 12 V lambalı", "Yalnız anahtar kontakları kullanılır"),
+    ("alındı", "1", "DC120 2P aç/kapat anahtar", "Yaklaşık 19,2×13,2 mm kesit", "Ana güç"),
+    ("alındı", "1", "1K potansiyometre", "Yaklaşık 6 mm tırtıllı mil", "Beyaz LED dimmeri"),
+    ("alındı", "10", "330 ohm 1 W direnç", "Turuncu-turuncu-kahverengi", "5 kullanım + yedekler"),
+    ("alındı", "4", "10 mm LED", "Kırmızı, sarı, yeşil, mavi", "Her birine ayrı 330 Ω"),
+    ("temin et", "1", "10 mm beyaz LED", "Şeffaf, standart iki bacaklı", "Dimmer kolu"),
+    ("alındı", "1", "12 mm aktif buzzer", "5–12 V, devreli", "Pasif 22 mm buzzer kullanılmaz"),
+    ("temin et", "2 m", "çok telli kablo", "0,22–0,50 mm²", "Kırmızı ve siyah önerilir"),
+    ("temin et", "1 set", "ısıyla daralan makaron", "2–4 mm", "Tüm lehim ekleri"),
+    ("temin et", "1 tüp", "nötr kürlenen silikon", "Elektroniğe uygun", "LED titreşim desteği; tek tutucu değildir"),
     ("baskı", "yaklaşık 450 g", "PETG filament", "1,75 mm", "Gövde, kapak, çark"),
 ]
 
@@ -111,92 +131,115 @@ ASSEMBLY = """# Montaj ve kontrol kılavuzu
 
 Bu ev yapımı ürün sertifikalı bir oyuncak değildir. 18 aylık çocuk yalnızca
 yetişkin gözetiminde kullanmalıdır. Kırılan, çatlayan, gevşeyen veya ısınan bir
-parça görülürse pilleri hemen çıkarın. Lityum pil kullanmayın.
+parça görülürse pilleri hemen çıkarın. Lityum pil kullanmayın. Vida olmaması,
+kapağın veya parçaların düzenli çekme kontrolü gereğini ortadan kaldırmaz.
 
-## 1. Satın almadan ve baskıdan önce ölç
+## 1. Parçalar gelmeden kullanılan ölçüler
 
-Kumpasla buton gövdesini, rocker tırnakları arasındaki kesiti, LED yuvasının
-geçme çapını, potansiyometrenin D milini ve 4xAA pil yuvasını ölçün. Varsayılan
-değerler sırasıyla 24,2 mm, 21,2×15,2 mm, 8,2 mm, 6 mm ve en fazla
-112×26×18 mm'dir. Pil yuvası tek sıra ince tip olmalıdır. Fark varsa
-`tools/project_spec.py` değerlerini düzeltip
-`make dimensions artwork` çalıştırın; tam gövde baskısından önce ölçüyü
-düzeltmek çok daha ucuzdur.
+Üretici çizimleri temel alınarak ana delikler 10 mm LED için 10,2 mm, DC184
+için 12,2 mm, DC180 için 16,2 mm ve DC131A için 20,2 mm seçildi. DC120 yan
+kesiti şimdilik 19,2×13,2 mm; 1K pot mili 6,0 mm kabul edildi. Her üretim
+partisinde küçük fark olabileceği için tam gövdeyi basmadan önce test kuponunu
+basın. Parçalar gelince kumpasla ölçüp gerekirse `tools/project_spec.py`
+değerlerini düzeltin ve `make dimensions artwork` çalıştırın.
 
-## 2. Baskı
+## 2. Önce komponent test kuponu
 
-Önce `component-fit-test.stl` plakasını basıp LED yuvasını, büyük butonu,
-rocker anahtarı, dimmer çarkını ve buzzer'ı deneyin. Ardından
-`snap-fit-test.stl` tolerans numunesini basın. Tırnak rahat girip tek elle
-çıkmamalıdır. Çok sıkıysa `clearance` değerini 0,10 mm artırın; gevşekse 0,10 mm
-azaltın. Önerilen ayarlar: PETG, 0,20 mm katman, en az dört çevre, beş alt/üst
-katman, yüzde 25 dolgu. Test plakasını ve gövdeyi ön yüzleri, kapağı dış yüzü ve
-çarkı flanşı tabla üzerinde olacak şekilde basın. Katman ayrılması, sivri çapak
-veya tırnak çatlağı olan parçayı kullanmayın.
+`component-fit-test.stl` yatay tutulduğunda delikler soldan sağa şöyledir:
+
+- Üst sıra: LED 10,0 / 10,2; DC184 12,0 / 12,2; DC180 16,0 / 16,2;
+  DC131A 20,0 / 20,2; en sağda 12 mm buzzer kabı.
+- Alt sıra: pot burcu 7,0 / 7,2; mil yuvası 5,8 / 6,0 / 6,2;
+  DC120 19,0×13,0 / 19,4×13,4; 34 mm çark açıklığı.
+
+Parça zorlamadan girmeli, somun veya tırnak bütün yüzeye oturmalı ve elle
+çekildiğinde çıkmamalıdır. En iyi seçeneğin ölçüsünü `project_spec.py` içine
+aktararak ana modeli yeniden üretin. İki 2×AA pil yuvası için ayrılan ortak
+bölme 62×68×18 mm'dir; bu ölçü de parçalar gelince doğrulanmalıdır.
+
+Ardından `snap-fit-test.stl` tolerans numunesini basın. Tırnak rahat girip tek
+elle çıkmamalıdır. Çok sıkıysa `clearance` değerini 0,10 mm artırın; gevşekse
+0,10 mm azaltın. Önerilen ayarlar: PETG, 0,20 mm katman, en az dört çevre, beş
+alt/üst katman ve yüzde 25 dolgu. Katman ayrılması, sivri çapak veya tırnak
+çatlağı olan parçayı kullanmayın.
 
 ## 3. Etiket
 
 `artwork/activity-box-label-a4.pdf` dosyasını **gerçek boyut / yüzde 100**
 seçeneğiyle, sayfaya sığdırmayı kapatarak basın. Önce 20 mm kontrol karesi tam
 20 mm geliyor mu ölçün. Kırmızı dış kesim çizgisinden kesin; komponent
-boşluklarını keskin bir maket bıçağıyla yalnızca yetişkin hazırlamalıdır.
-Yüzeyi yağdan arındırın, etiketi deliklere hizalayın ve ortadan kenarlara doğru
-yapıştırın.
+boşluklarını yalnızca yetişkin hazırlamalıdır. Yüzeyi yağdan arındırın, etiketi
+deliklere hizalayın ve ortadan kenarlara doğru yapıştırın.
 
 ## 4. Ön yüz parçaları
 
-LED'leri önden yuvalarına yerleştirin; uzun bacak artı, kısa bacak/LED'in düz
-kenarı eksidir. Ayırıcı ceplerin içinden bacakları geçirin. Silikon yalnızca
-titreşim önleyici olabilir; mekanik tutmanın yerine geçmez. Dört büyük butonu
-ve rocker anahtarı kendi somun/tırnaklarıyla arkadan kilitleyin. Çarkı arkadan
-34 mm açıklığa sokun; 46 mm flanş içeride kalmalıdır. Potansiyometre milini
-çarkın D yuvasına geçirin ve iç brakete sabitleyin.
+10 mm LED'leri kutunun içinden dışarı doğru yerleştirin. Lens 10,2 mm delikten
+çıkar, daha geniş LED flanşı içeride kalıp dışarı çekilmeyi mekanik olarak
+engeller. Açık baskı halkası flanş çevresini korur. Halkaya az miktarda
+nötr kürlenen silikon uygulayın; silikon yalnızca titreşim desteğidir, tek mekanik
+tutucu değildir. Uzun bacak artı, kısa bacak veya düz kenar eksidir.
 
-## 5. Güç hattı
+Kırmızı ve sarı DC184'leri, siyah ve mavi DC180'leri somunlarıyla sabitleyin.
+DC131A'yı 20,2 mm deliğe, kendi somunuyla takın. Çarkı içeriden 34 mm açıklığa
+sokun; 46 mm flanşı içeride kalmalıdır. 1K potu baskı köprüsüne somunlayın ve
+mil için kuponda seçilen yuva çapını kullanın. Buzzer'ı açık yüzü ses deliklerine
+bakacak biçimde baskı kabına yerleştirip kenarından sabitleyin.
 
-Pil yuvasının kırmızı kablosunu önce 1 A sigortaya, sigortadan çıkan kabloyu
-SS12F15 anahtarın orta ucuna bağlayın. Anahtarın bir dış ucu artı dağıtım
-hattıdır; diğer dış uç kullanılmaz. Pil yuvasının siyah kablosu ortak eksi
-hattıdır. Lehimlerden önce piller takılı olmamalıdır.
+## 5. İki pil yuvasını seri bağlama ve ana güç
+
+Piller takılı değilken iki pil yuvasını seri bağlayın:
+
+1. Yuva A siyah kablo → sistem eksi dağıtım hattı.
+2. Yuva A kırmızı kablo → Yuva B siyah kablo; ek yerini lehimleyip makaronla
+   tamamen kapatın.
+3. Yuva B kırmızı kablo → 1 A sigorta → DC120 2P ana güç anahtarı → sistem
+   artı dağıtım hattı.
+
+Bu bağlantı dört AA pili seri yapar: nominal 6 V, taze alkalin pillerle en çok
+yaklaşık 6,4 V. İki pil yuvasına da aynı marka, tip ve dolulukta pil takın.
 
 ## 6. Altı paralel kol
 
-1. Artı hat → kırmızı anlık buton → 220 ohm → kırmızı LED uzun bacak; LED kısa
+1. Artı hat → kırmızı DC184 → 330 ohm 1 W → kırmızı LED uzun bacak; LED kısa
    bacak → eksi hat.
-2. Aynı bağlantıyı sarı buton/LED için yapın.
-3. Aynı bağlantıyı turuncu buton/LED için yapın.
-4. Artı hat → rocker → 220 ohm → beyaz LED → eksi hat.
-5. Artı hat → B1K potun birbirine bağlanmış orta ucu ve bir dış ucu → 220 ohm
+2. Artı hat → sarı DC184 → 330 ohm 1 W → sarı LED → eksi hat.
+3. Artı hat → siyah DC180 → 330 ohm 1 W → yeşil LED → eksi hat.
+4. Artı hat → DC131A anahtar kontakları → 330 ohm 1 W → mavi LED → eksi hat.
+   DC131A'nın 12 V lamba ucu boş kalır. Pin dizilimini varsaymayın; kullanılacak
+   iki anahtar kontağını multimetrenin süreklilik moduyla bulun.
+5. Artı hat → 1K potun birbirine bağlı orta ucu ve bir dış ucu → 330 ohm 1 W
    → beyaz LED → eksi hat. Potun diğer dış ucu boş kalır.
-6. Artı hat → mavi anlık buton → buzzer artı; buzzer eksi → eksi hat.
+6. Artı hat → mavi DC180 → aktif buzzer artı; buzzer eksi → eksi hat.
 
-Mevcut 0 ohm veya 1 ohm dirençleri LED'lerde kullanmayın. Kalıcı montajda
-jumper kablo bırakmayın; çok telli kabloyu lehimleyip her açık ek yerine ısıyla
-daralan makaron uygulayın. Kablo klipsleri lehimlere çekme yükü gelmeyecek
-şekilde kullanılmalıdır.
+Dirençlerin yönü yoktur; her LED kendi 330 ohm direncini kullanır. 1 W direnç
+elektriksel olarak uygundur, yalnızca 0,25 W tipten fiziksel olarak büyüktür.
+Kalıcı oyuncakta breadboard kullanmayın ve jumper kablo bırakmayın. Çok telli
+kabloyu lehimleyip her açık ek yerine ısıyla daralan makaron uygulayın.
 
 ## 7. Elektrik kontrolü
 
-Piller yokken multimetrenin süreklilik moduyla artı ve eksi arasında kısa devre
-olmadığını doğrulayın. Ana güç kapalıyken pil akımı sıfır olmalıdır. Her LED
-kolunu ayrı çalıştırıp seri akımı ölçün; değer 20 mA altında olmalıdır. Daha
-yüksekse 220 ohm yerine 270 veya 330 ohm kullanın. Buzzer'ı birkaç saniye
-deneyip rahatsız edici yüksekliği azaltmak için önüne ince keçe koyabilirsiniz;
-elektrik bandıyla ses deliklerini tamamen kapatmayın.
+Piller yokken artı ve eksi arasında kısa devre olmadığını multimetreyle
+doğrulayın. Ana güç kapalıyken pil akımı sıfır olmalıdır. Taze pillerle teorik
+en yüksek LED akımları kırmızıda yaklaşık 13,3 mA, sarıda 13,0 mA, yeşil/mavi/
+beyazda 10,3 mA'dır; her kolu ayrı çalıştırıp ölçülen değerin 20 mA altında
+olduğunu kontrol edin. Buzzer'ı birkaç saniye deneyin; sesi fazla yüksekse önüne
+ince keçe koyun, ses deliklerini tamamen kapatmayın.
 
 ## 8. Kapatma ve son mekanik kontrol
 
-Pil yuvasını arka kapaktaki raya yerleştirip kabloların tırnaklara gelmediğini
-kontrol edin. Kapağın dilini gövdenin yivine düz biçimde bastırın; dört tırnak
-oturmalıdır. Kapak, karşılıklı iki servis mandalı aynı anda ince iki aletle
-bastırılmadan elle açılmamalıdır. Her buton, LED yuvası, rocker ve çarkı önden
-kuvvetlice çekerek gevşeklik kontrolü yapın. İlk kullanımdan sonra ve sonra her
-hafta bu kontrolü tekrarlayın.
+İki pil yuvasını arka kapaktaki ayrı raylara yerleştirip kabloların tırnaklara
+gelmediğini kontrol edin. Kapağın dilini gövdenin yivine düz biçimde bastırın;
+dört tırnak oturmalıdır. Kapak, karşılıklı iki servis mandalı aynı anda ince iki
+aletle bastırılmadan elle açılmamalıdır. Her buton, LED, anahtar ve çarkı önden
+kuvvetlice çekerek gevşeklik kontrolü yapın. İlk kullanımdan sonra ve ardından
+her hafta bu kontrolü tekrarlayın.
 
-## Devre özeti
+## Kullanılmayan satın alınmış parçalar
 
-Ayrıntılı renkli şema için `docs/circuit.svg` dosyasını açın. Devrede hiçbir
-mikrodenetleyici, LM2596 veya motor sürücü kullanılmaz.
+Mini breadboardlar, 22 mm devresiz buzzer, DHT11, 4,7K/22K potlar, toggle
+anahtarlar ve diğer ışıklı anahtarlar bu basit devrede kullanılmaz. Ayrıntılı
+renkli şema `docs/circuit.svg` dosyasındadır; mikrodenetleyici veya elektronik
+kart gerekmez.
 """
 
 
@@ -205,7 +248,7 @@ def main():
     docs.mkdir(parents=True, exist_ok=True)
     (docs / "circuit.svg").write_text(circuit_svg(), encoding="utf-8")
     with (docs / "BOM.csv").open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["durum", "adet", "parca", "ozellik", "not"])
         writer.writerows(BOM_ROWS)
     (docs / "assembly.md").write_text(ASSEMBLY, encoding="utf-8")

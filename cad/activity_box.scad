@@ -4,6 +4,7 @@ $fn = 48;
 part = is_undef(part) ? "assembly" : part;
 dial_grip_d = 32;
 dial_flange_d = 46;
+buzzer_port_depth = front_t + 1.4;
 eps = 0.15;
 
 module rounded_rect_2d(w, h, r) {
@@ -31,45 +32,66 @@ module rectangular_panel_hole(position, size) {
         cube([size[0], size[1], front_t + 2 * eps]);
 }
 
-module buzzer_holes() {
-    xy = front_xy(pos_buzzer);
+module buzzer_holes_at(xy) {
     for (angle = [0 : 60 : 300])
         translate([xy[0] + 6.2 * cos(angle), xy[1] + 6.2 * sin(angle), -eps])
-            cylinder(h = front_t + 2 * eps, d = 3);
+            cylinder(h = buzzer_port_depth + 2 * eps, d = 3);
     translate([xy[0], xy[1], -eps])
-        cylinder(h = front_t + 2 * eps, d = 3);
+        cylinder(h = buzzer_port_depth + 2 * eps, d = 3);
+}
+
+module buzzer_holes() {
+    buzzer_holes_at(front_xy(pos_buzzer));
 }
 
 module panel_cutouts() {
-    for (position = [pos_red_led, pos_yellow_led, pos_orange_led,
+    for (position = [pos_red_led, pos_yellow_led, pos_green_led,
                      pos_switch_led, pos_dimmer_led])
         circular_panel_hole(position, led_hole_d);
-    for (position = [pos_red_button, pos_yellow_button, pos_orange_button,
-                     pos_buzzer_button])
-        circular_panel_hole(position, button_hole_d);
-    rectangular_panel_hole(pos_rocker, rocker_size);
+    for (position = [pos_red_button, pos_yellow_button])
+        circular_panel_hole(position, dc184_button_hole_d);
+    for (position = [pos_green_button, pos_buzzer_button])
+        circular_panel_hole(position, dc180_button_hole_d);
+    circular_panel_hole(pos_rocker, room_switch_hole_d);
     circular_panel_hole(pos_dial, dial_opening_d);
     buzzer_holes();
 }
 
-module led_guard(position) {
+module open_led_guard(position) {
     xy = front_xy(position);
     translate([xy[0], xy[1], front_t - eps])
         difference() {
-            cylinder(h = 11, d = 15);
-            translate([0, 0, -eps]) cylinder(h = 8.2, d = 9.4);
-            for (x = [-1.4, 1.4])
-                translate([x, 0, 7.8]) cylinder(h = 3.5, d = 1.5);
+            cylinder(h = 6, d = 16);
+            translate([0, 0, -eps]) cylinder(h = 6 + 2 * eps, d = 12.4);
         }
 }
 
-module buzzer_cup() {
-    xy = front_xy(pos_buzzer);
+module buzzer_cup_at(xy) {
     translate([xy[0], xy[1], front_t - eps])
         difference() {
             cylinder(h = 8, d = 17);
             translate([0, 0, 1]) cylinder(h = 7.2, d = 12.4);
         }
+}
+
+module buzzer_cup() {
+    buzzer_cup_at(front_xy(pos_buzzer));
+}
+
+module pot_mount_bridge() {
+    xy = front_xy(pos_dial);
+    bridge_z = front_t + 13;
+    union() {
+        for (x = [xy[0] - 28, xy[0] + 24])
+            translate([x, xy[1] - 6, front_t - eps])
+                cube([4, 12, bridge_z - front_t + eps]);
+        difference() {
+            translate([xy[0] - 28, xy[1] - 6, bridge_z])
+                cube([56, 12, 2.8]);
+            translate([xy[0], xy[1], bridge_z - eps])
+                cylinder(h = 2.8 + 2 * eps, d = pot_bushing_hole_d);
+        }
+    }
 }
 
 module wire_clip(x, y) {
@@ -112,10 +134,11 @@ module body() {
                     rounded_box(box_w - 2 * wall, box_h - 2 * wall,
                                 box_d - front_t + eps, corner_r - wall);
             }
-            for (position = [pos_red_led, pos_yellow_led, pos_orange_led,
+            for (position = [pos_red_led, pos_yellow_led, pos_green_led,
                              pos_switch_led, pos_dimmer_led])
-                led_guard(position);
+                open_led_guard(position);
             buzzer_cup();
+            pot_mount_bridge();
             wire_clip(63, 77);
             wire_clip(126, 77);
             back_stop_ring();
@@ -173,6 +196,15 @@ module battery_rails() {
         translate([x0, y, back_t - eps]) cube([bay_w, 2.2, rail_h]);
 }
 
+module battery_center_divider() {
+    bay_w = battery_bay_size[0] + 1;
+    bay_h = battery_bay_size[1] + 1;
+    x0 = battery_bay_pos[0];
+    y0 = battery_bay_pos[1];
+    translate([x0 + bay_w / 2 - 1.1, y0, back_t - eps])
+        cube([2.2, bay_h, 5]);
+}
+
 module back() {
     union() {
         back_plate();
@@ -182,6 +214,7 @@ module back() {
         passive_lock(true);
         passive_lock(false);
         battery_rails();
+        battery_center_divider();
     }
 }
 
@@ -194,11 +227,7 @@ module dial() {
                 rotate([0, 0, angle]) translate([dial_grip_d / 2 - 1, 0, 3])
                     cube([1.2, 1.8, 7]);
         }
-        translate([0, 0, -eps])
-            intersection() {
-                cylinder(h = 8, d = 6.2);
-                translate([-3.1, -3.1, 0]) cube([5.1, 6.2, 8]);
-            }
+        translate([0, 0, -eps]) cylinder(h = 8, d = pot_shaft_d);
     }
 }
 
@@ -218,28 +247,64 @@ module snap_fit_test() {
 }
 
 module component_fit_test() {
-    test_w = 150;
-    test_h = 50;
+    test_w = 200;
+    test_h = 76;
     test_r = 5;
-    test_y = test_h / 2;
-    led_pos = [15, box_h - test_y];
-    button_pos = [43, box_h - test_y];
-    rocker_pos = [72, box_h - test_y];
-    dial_pos = [107, box_h - test_y];
-    buzzer_pos = [138, box_h - test_y];
-    buzzer_offset = front_xy(buzzer_pos) - front_xy(pos_buzzer);
+    led_fit_diameters = [10.0, 10.2];
+    dc184_fit_diameters = [12.0, 12.2];
+    dc180_fit_diameters = [16.0, 16.2];
+    dc131a_fit_diameters = [20.0, 20.2];
+    pot_bushing_fit_diameters = [7.0, 7.2];
+    shaft_fit_diameters = [5.8, 6.0, 6.2];
+    dc120_fit_sizes = [[19.0, 13.0], [19.4, 13.4]];
+    top_y = 58;
+    bottom_y = 20;
+    led_x = [10, 24];
+    dc184_x = [42, 59];
+    dc180_x = [81, 102];
+    dc131a_x = [130, 155];
+    pot_bushing_x = [10, 22];
+    shaft_x = [38, 54, 70];
+    dc120_x = [94, 120];
+    dial_xy = [153, bottom_y];
+    buzzer_xy = [187, top_y];
 
     difference() {
         union() {
             rounded_box(test_w, test_h, front_t, test_r);
-            led_guard(led_pos);
-            translate([buzzer_offset[0], buzzer_offset[1], 0]) buzzer_cup();
+            open_led_guard([led_x[1], box_h - top_y]);
+            buzzer_cup_at(buzzer_xy);
+            for (index = [0 : len(shaft_x) - 1])
+                translate([shaft_x[index], bottom_y, front_t - eps])
+                    cylinder(h = 8, d = 12);
         }
-        circular_panel_hole(led_pos, led_hole_d);
-        circular_panel_hole(button_pos, button_hole_d);
-        rectangular_panel_hole(rocker_pos, rocker_size);
-        circular_panel_hole(dial_pos, dial_opening_d);
-        translate([buzzer_offset[0], buzzer_offset[1], 0]) buzzer_holes();
+        for (index = [0 : len(led_x) - 1])
+            translate([led_x[index], top_y, -eps])
+                cylinder(h = front_t + 2 * eps, d = led_fit_diameters[index]);
+        for (index = [0 : len(dc184_x) - 1])
+            translate([dc184_x[index], top_y, -eps])
+                cylinder(h = front_t + 2 * eps, d = dc184_fit_diameters[index]);
+        for (index = [0 : len(dc180_x) - 1])
+            translate([dc180_x[index], top_y, -eps])
+                cylinder(h = front_t + 2 * eps, d = dc180_fit_diameters[index]);
+        for (index = [0 : len(dc131a_x) - 1])
+            translate([dc131a_x[index], top_y, -eps])
+                cylinder(h = front_t + 2 * eps, d = dc131a_fit_diameters[index]);
+        for (index = [0 : len(pot_bushing_x) - 1])
+            translate([pot_bushing_x[index], bottom_y, -eps])
+                cylinder(h = front_t + 2 * eps,
+                         d = pot_bushing_fit_diameters[index]);
+        for (index = [0 : len(shaft_x) - 1])
+            translate([shaft_x[index], bottom_y, front_t + 1])
+                cylinder(h = 7.2, d = shaft_fit_diameters[index]);
+        for (index = [0 : len(dc120_x) - 1])
+            translate([dc120_x[index] - dc120_fit_sizes[index][0] / 2,
+                       bottom_y - dc120_fit_sizes[index][1] / 2, -eps])
+                cube([dc120_fit_sizes[index][0], dc120_fit_sizes[index][1],
+                      front_t + 2 * eps]);
+        translate([dial_xy[0], dial_xy[1], -eps])
+            cylinder(h = front_t + 2 * eps, d = dial_opening_d);
+        buzzer_holes_at(buzzer_xy);
     }
 }
 

@@ -18,6 +18,7 @@ PALETTE = {
     "red": "#F4A6A6",
     "yellow": "#F5D76E",
     "orange": "#F3AA63",
+    "green": "#A8DDA7",
     "blue": "#8FD2ED",
     "mint": "#9EDDBB",
     "purple": "#C5B2E8",
@@ -141,7 +142,7 @@ def generate_svg():
     panels = [
         (15, 8, 54, 72, PALETTE["red"]),
         (75, 8, 54, 72, PALETTE["yellow"]),
-        (135, 8, 54, 72, PALETTE["orange"]),
+        (135, 8, 54, 72, PALETTE["green"]),
         (15, 87, 54, 67, PALETTE["blue"]),
         (75, 87, 54, 67, PALETTE["mint"]),
         (135, 87, 54, 67, PALETTE["purple"]),
@@ -213,7 +214,7 @@ def draw_educational_scenes(draw):
         draw_line_mm(draw, (start, end), gold, 1.8)
     draw_named_label(draw, "AMPUL")
 
-    # Lighthouse with the real orange LED as its beacon.
+    # Lighthouse with the real green LED as its beacon.
     draw.polygon([point_mm(*p) for p in ((153, 34), (162, 20), (171, 34))], fill=gold)
     draw_line_mm(draw, ((153, 34), (162, 20), (171, 34), (153, 34)), ink, 1.5)
     draw.polygon([point_mm(*p) for p in ((156, 36), (168, 36), (170, 42), (154, 42))], fill=cream)
@@ -274,35 +275,40 @@ def draw_round_component(draw, center, outer_diameter, color):
     )
 
 
+def draw_led_component(draw, center, diameter, color):
+    cx, cy = center
+    radius = diameter / 2
+    draw.ellipse(
+        mm_box((cx - radius, cy - radius, cx + radius, cy + radius)),
+        fill=color,
+        outline="#354052",
+        width=px(0.55),
+    )
+    draw.ellipse(
+        mm_box((cx - radius * 0.48, cy - radius * 0.58,
+                cx - radius * 0.05, cy - radius * 0.18)),
+        fill="#FFFFFF",
+    )
+
+
 def draw_assembled_preview():
     image = draw_preview().convert("RGB")
     draw = ImageDraw.Draw(image)
-    draw_round_component(draw, (42, 59), 33, "#DF4C52")
-    draw_round_component(draw, (102, 59), 33, "#F1C52F")
-    draw_round_component(draw, (162, 59), 33, "#F08B2E")
-    draw_round_component(draw, (162, 132), 33, "#3B82D0")
+    draw_round_component(draw, (42, 59), 17.5, "#DF4C52")
+    draw_round_component(draw, (102, 59), 17.5, "#F1C52F")
+    draw_round_component(draw, (162, 59), 20, "#111820")
+    draw_round_component(draw, (162, 132), 20, "#2878C8")
 
     for center, color in (
         ((42, 30), "#E33C45"),
         ((102, 30), "#FFD52E"),
-        ((162, 30), "#F39A2E"),
-        ((42, 103), "#F8F5D8"),
-        ((102, 103), "#F8F5D8"),
+        ((162, 30), "#35B86B"),
+        ((42, 103), "#3F8FE8"),
+        ((102, 103), "#F4F7FF"),
     ):
-        draw_round_component(draw, center, 10.5, color)
+        draw_led_component(draw, center, 10.5, color)
 
-    draw.rounded_rectangle(
-        mm_box((29, 121, 55, 141)),
-        radius=px(2),
-        fill="#202A37",
-    )
-    draw.rounded_rectangle(
-        mm_box((31.5, 123, 52.5, 139)),
-        radius=px(1.4),
-        fill="#4B87C5",
-        outline="#D7E9FF",
-        width=px(0.5),
-    )
+    draw_round_component(draw, (42, 131), 22.8, "#303844")
 
     draw_round_component(draw, (102, 130), 32, "#4B87C5")
     draw_line_mm(draw, ((102, 130), (111, 122)), "#FFFFFF", 1.2)
@@ -315,7 +321,7 @@ def draw_preview():
     panels = [
         (15, 8, 69, 80, PALETTE["red"]),
         (75, 8, 129, 80, PALETTE["yellow"]),
-        (135, 8, 189, 80, PALETTE["orange"]),
+        (135, 8, 189, 80, PALETTE["green"]),
         (15, 87, 69, 154, PALETTE["blue"]),
         (75, 87, 129, 154, PALETTE["mint"]),
         (135, 87, 189, 154, PALETTE["purple"]),
