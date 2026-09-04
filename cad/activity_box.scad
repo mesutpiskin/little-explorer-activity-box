@@ -247,27 +247,27 @@ module snap_fit_test() {
 }
 
 module component_fit_test() {
-    test_w = 200;
-    test_h = 76;
-    test_r = 5;
-    led_fit_diameters = [10.0, 10.2];
-    dc184_fit_diameters = [12.0, 12.2];
-    dc180_fit_diameters = [16.0, 16.2];
-    dc131a_fit_diameters = [20.0, 20.2];
-    pot_bushing_fit_diameters = [7.0, 7.2];
-    shaft_fit_diameters = [5.8, 6.0, 6.2];
-    dc120_fit_sizes = [[19.0, 13.0], [19.4, 13.4]];
-    top_y = 58;
-    bottom_y = 20;
-    led_x = [10, 24];
-    dc184_x = [42, 59];
-    dc180_x = [81, 102];
-    dc131a_x = [130, 155];
-    pot_bushing_x = [10, 22];
-    shaft_x = [38, 54, 70];
-    dc120_x = [94, 120];
-    dial_xy = [153, bottom_y];
-    buzzer_xy = [187, top_y];
+    test_w = fit_size[0];
+    test_h = fit_size[1];
+    test_r = fit_corner_radius;
+    led_fit_diameters = fit_led_diameters;
+    dc184_fit_diameters = fit_dc184_diameters;
+    dc180_fit_diameters = fit_dc180_diameters;
+    dc131a_fit_diameters = fit_dc131a_diameters;
+    pot_bushing_fit_diameters = fit_pot_bushing_diameters;
+    shaft_fit_diameters = fit_shaft_diameters;
+    dc120_fit_sizes = fit_dc120_sizes;
+    top_y = fit_top_y;
+    bottom_y = fit_bottom_y;
+    led_x = fit_led_x;
+    dc184_x = fit_dc184_x;
+    dc180_x = fit_dc180_x;
+    dc131a_x = fit_dc131a_x;
+    pot_bushing_x = fit_pot_bushing_x;
+    shaft_x = fit_shaft_x;
+    dc120_x = fit_dc120_x;
+    dial_xy = fit_dial_xy;
+    buzzer_xy = fit_buzzer_xy;
 
     difference() {
         union() {

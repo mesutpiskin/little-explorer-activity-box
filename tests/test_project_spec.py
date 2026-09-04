@@ -2,6 +2,7 @@ import unittest
 import subprocess
 import sys
 
+from tools import project_spec
 from tools.project_spec import BATTERY_BAY, BOX, ELECTRICAL, LABEL, PANEL_FEATURES
 
 
@@ -71,6 +72,18 @@ class ProjectSpecTest(unittest.TestCase):
             text=True,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_fit_coupon_layout_is_a_shared_project_spec(self):
+        fit_test = getattr(project_spec, "FIT_TEST", None)
+        self.assertIsNotNone(fit_test)
+        self.assertEqual(fit_test["size"], (200, 76))
+        self.assertEqual(fit_test["top_y"], 58)
+        self.assertEqual(fit_test["bottom_y"], 20)
+        self.assertEqual(fit_test["led_diameters"], (10.0, 10.2))
+        self.assertEqual(fit_test["dc184_diameters"], (12.0, 12.2))
+        self.assertEqual(fit_test["dc180_diameters"], (16.0, 16.2))
+        self.assertEqual(fit_test["dc131a_diameters"], (20.0, 20.2))
+        self.assertEqual(fit_test["shaft_diameters"], (5.8, 6.0, 6.2))
 
 
 if __name__ == "__main__":

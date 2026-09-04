@@ -36,18 +36,20 @@ class CadSourceTest(unittest.TestCase):
         self.assertIn("buzzer_port_depth", text)
 
     def test_component_coupon_contains_all_fit_choices(self):
-        text = pathlib.Path("cad/activity_box.scad").read_text(encoding="utf-8")
-        for dimension in (
-            "10.0, 10.2",
-            "12.0, 12.2",
-            "16.0, 16.2",
-            "20.0, 20.2",
-            "7.0, 7.2",
-            "5.8, 6.0, 6.2",
-            "[19.0, 13.0]",
-            "[19.4, 13.4]",
+        text = pathlib.Path("cad/generated_dimensions.scad").read_text(
+            encoding="utf-8"
+        )
+        for assignment in (
+            "fit_size = [200, 76]",
+            "fit_led_diameters = [10.0, 10.2]",
+            "fit_dc184_diameters = [12.0, 12.2]",
+            "fit_dc180_diameters = [16.0, 16.2]",
+            "fit_dc131a_diameters = [20.0, 20.2]",
+            "fit_pot_bushing_diameters = [7.0, 7.2]",
+            "fit_shaft_diameters = [5.8, 6.0, 6.2]",
+            "fit_dc120_sizes = [[19.0, 13.0], [19.4, 13.4]]",
         ):
-            self.assertIn(dimension, text)
+            self.assertIn(assignment, text)
 
 
 if __name__ == "__main__":

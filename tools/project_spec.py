@@ -64,3 +64,26 @@ BATTERY_BAY = {
     "x": 69,
     "y": 46,
 }
+
+FIT_TEST = {
+    "size": (200, 76),
+    "corner_radius": 5,
+    "top_y": 58,
+    "bottom_y": 20,
+    "led_diameters": (10.0, 10.2),
+    "dc184_diameters": (12.0, 12.2),
+    "dc180_diameters": (16.0, 16.2),
+    "dc131a_diameters": (20.0, 20.2),
+    "pot_bushing_diameters": (7.0, 7.2),
+    "shaft_diameters": (5.8, 6.0, 6.2),
+    "dc120_sizes": ((19.0, 13.0), (19.4, 13.4)),
+    "led_x": (10, 24),
+    "dc184_x": (42, 59),
+    "dc180_x": (81, 102),
+    "dc131a_x": (130, 155),
+    "pot_bushing_x": (10, 22),
+    "shaft_x": (38, 54, 70),
+    "dc120_x": (94, 120),
+    "dial_xy": (153, 20),
+    "buzzer_xy": (187, 58),
+}

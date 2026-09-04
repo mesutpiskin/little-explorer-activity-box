@@ -147,6 +147,8 @@ değerlerini düzeltin ve `make dimensions artwork` çalıştırın.
 
 `component-fit-test.stl` yatay tutulduğunda delikler soldan sağa şöyledir:
 
+![Komponent test plakası kılavuzu](component-fit-test-guide.png)
+
 - Üst sıra: LED 10,0 / 10,2; DC184 12,0 / 12,2; DC180 16,0 / 16,2;
   DC131A 20,0 / 20,2; en sağda 12 mm buzzer kabı.
 - Alt sıra: pot burcu 7,0 / 7,2; mil yuvası 5,8 / 6,0 / 6,2;

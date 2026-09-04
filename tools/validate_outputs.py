@@ -31,6 +31,8 @@ NON_STL_OUTPUTS = [
     Path("artwork/activity-box-label-preview.png"),
     Path("artwork/activity-box-assembled-preview.png"),
     Path("docs/circuit.svg"),
+    Path("docs/component-fit-test-guide.svg"),
+    Path("docs/component-fit-test-guide.png"),
     Path("docs/BOM.csv"),
     Path("docs/assembly.md"),
 ]
@@ -157,6 +159,7 @@ def validate_project(root, allow_missing_stl=False):
         Path("cad/generated_dimensions.scad"),
         Path("artwork/activity-box-label.svg"),
         Path("docs/circuit.svg"),
+        Path("docs/component-fit-test-guide.svg"),
         Path("docs/BOM.csv"),
         Path("docs/assembly.md"),
     ]

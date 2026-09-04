@@ -63,6 +63,8 @@ make stl
   toleranslarını dener.
 - `output/stl/snap-fit-test.stl`: vidasız kapak tırnağını dener.
 
+![Komponent test plakası kılavuzu](docs/component-fit-test-guide.png)
+
 Komponent kuponunun üst sırasında soldan sağa LED, DC184, DC180, DC131A ve
 buzzer; alt sırasında pot burcu, üç pot mili yuvası, iki DC120 kesiti ve çark
 açıklığı bulunur. Her grupta soldaki seçenek daha sıkıdır. Parça zorlanmadan
@@ -175,7 +177,7 @@ ve [docs/assembly.md](docs/assembly.md).
 |---|---|
 | [cad](cad/activity_box.scad) | Parametrik OpenSCAD modeli |
 | [artwork](artwork/activity-box-label-preview.png) | Etiket, baskı PDF'si ve ön izlemeler |
-| [docs](docs/assembly.md) | Montaj kılavuzu, devre şeması ve BOM |
+| [docs](docs/assembly.md) | Montaj kılavuzu, test plakası kılavuzu, devre şeması ve BOM |
 | [tools](tools/project_spec.py) | Ölçülerin tek kaynağı ve çıktı üreticileri |
 | [tests](tests/test_project_spec.py) | Geometri, görsel, belge ve doğrulama testleri |
 | [output/stl](output/stl/README.md) | Yerel olarak oluşturulan STL dosyalarının hedefi |
