@@ -107,21 +107,21 @@ def circuit_svg():
 
 
 BOM_ROWS = [
-    ("temin et", "1", "1 A sigorta", "Kapalı yuva veya kablolu tip", "Yuva B artısına en yakın noktaya"),
-    ("alındı", "2", "2xAA yarı kapalı pil yuvası", "Yaklaşık 58×32×15 mm", "Seri bağlanarak 4×AA olur"),
-    ("alındı", "2", "DC184 anlık buton", "Kırmızı ve sarı; Ø12,2 mm test deliği", "Kırmızı/sarı LED kolları"),
-    ("alındı", "2", "DC180 anlık buton", "Siyah ve mavi; Ø16,2 mm test deliği", "Yeşil LED ve buzzer"),
-    ("alındı", "1", "DC131A aç/kapat anahtar", "Ø20,2 mm; 12 V lambalı", "Yalnız anahtar kontakları kullanılır"),
-    ("alındı", "1", "DC120 2P aç/kapat anahtar", "Yaklaşık 19,2×13,2 mm kesit", "Ana güç"),
-    ("alındı", "1", "1K potansiyometre", "Yaklaşık 6 mm tırtıllı mil", "Beyaz LED dimmeri"),
-    ("alındı", "10", "330 ohm 1 W direnç", "Turuncu-turuncu-kahverengi", "5 kullanım + yedekler"),
-    ("alındı", "4", "10 mm LED", "Kırmızı, sarı, yeşil, mavi", "Her birine ayrı 330 Ω"),
-    ("temin et", "1", "10 mm beyaz LED", "Şeffaf, standart iki bacaklı", "Dimmer kolu"),
-    ("alındı", "1", "12 mm aktif buzzer", "5–12 V, devreli", "Pasif 22 mm buzzer kullanılmaz"),
-    ("temin et", "2 m", "çok telli kablo", "0,22–0,50 mm²", "Kırmızı ve siyah önerilir"),
-    ("temin et", "1 set", "ısıyla daralan makaron", "2–4 mm", "Tüm lehim ekleri"),
-    ("temin et", "1 tüp", "nötr kürlenen silikon", "Elektroniğe uygun", "LED titreşim desteği; tek tutucu değildir"),
-    ("baskı", "yaklaşık 450 g", "PETG filament", "1,75 mm", "Gövde, kapak, çark"),
+    ("1", "1 A sigorta", "Kapalı yuva veya kablolu tip", "Yuva B artısına en yakın noktaya"),
+    ("2", "2xAA yarı kapalı pil yuvası", "Yaklaşık 58×32×15 mm", "Seri bağlanarak 4×AA olur"),
+    ("2", "DC184 anlık buton", "Kırmızı ve sarı; Ø12,2 mm test deliği", "Kırmızı/sarı LED kolları"),
+    ("2", "DC180 anlık buton", "Siyah ve mavi; Ø16,2 mm test deliği", "Yeşil LED ve buzzer"),
+    ("1", "DC131A aç/kapat anahtar", "Ø20,2 mm; 12 V lambalı", "Yalnız anahtar kontakları kullanılır"),
+    ("1", "DC120 2P aç/kapat anahtar", "Yaklaşık 19,2×13,2 mm kesit", "Ana güç"),
+    ("1", "1K potansiyometre", "Yaklaşık 6 mm tırtıllı mil", "Beyaz LED dimmeri"),
+    ("10", "330 ohm 1 W direnç", "Turuncu-turuncu-kahverengi", "5 kullanım + yedekler"),
+    ("4", "10 mm LED", "Kırmızı, sarı, yeşil, mavi", "Her birine ayrı 330 Ω"),
+    ("1", "10 mm beyaz LED", "Şeffaf, standart iki bacaklı", "Dimmer kolu"),
+    ("1", "12 mm aktif buzzer", "5–12 V, devreli", "Pasif 22 mm buzzer kullanılmaz"),
+    ("2 m", "çok telli kablo", "0,22–0,50 mm²", "Kırmızı ve siyah önerilir"),
+    ("1 set", "ısıyla daralan makaron", "2–4 mm", "Tüm lehim ekleri"),
+    ("1 tüp", "nötr kürlenen silikon", "Elektroniğe uygun", "LED titreşim desteği; tek tutucu değildir"),
+    ("baskı", "yaklaşık 450 g", "PETG filament, 1,75 mm", "Gövde, kapak, çark"),
 ]
 
 
@@ -249,9 +249,9 @@ def main():
     docs = Path("docs")
     docs.mkdir(parents=True, exist_ok=True)
     (docs / "circuit.svg").write_text(circuit_svg(), encoding="utf-8")
-    with (docs / "BOM.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+    with (docs / "BOM.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\n")
-        writer.writerow(["durum", "adet", "parca", "ozellik", "not"])
+        writer.writerow(["adet", "parca", "ozellik", "not"])
         writer.writerows(BOM_ROWS)
     (docs / "assembly.md").write_text(ASSEMBLY, encoding="utf-8")
     print("wrote circuit.svg, BOM.csv, and assembly.md")

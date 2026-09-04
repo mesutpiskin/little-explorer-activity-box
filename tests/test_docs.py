@@ -1,6 +1,9 @@
 import csv
 import pathlib
 import re
+import subprocess
+import sys
+import tempfile
 import unittest
 
 
@@ -52,6 +55,30 @@ class DocumentationTest(unittest.TestCase):
     def test_bom_uses_repository_line_endings(self):
         data = pathlib.Path("docs/BOM.csv").read_bytes()
         self.assertNotIn(b"\r\n", data)
+
+    def test_generated_bom_uses_public_four_column_schema(self):
+        generator = pathlib.Path("tools/generate_docs.py").resolve()
+        with tempfile.TemporaryDirectory() as directory:
+            subprocess.run(
+                [sys.executable, str(generator)],
+                cwd=directory,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            with (pathlib.Path(directory) / "docs/BOM.csv").open(
+                encoding="utf-8-sig"
+            ) as handle:
+                rows = list(csv.reader(handle))
+            bom_bytes = (pathlib.Path(directory) / "docs/BOM.csv").read_bytes()
+
+        self.assertEqual(rows[0], ["adet", "parca", "ozellik", "not"])
+        self.assertTrue(all(len(row) == 4 for row in rows))
+        self.assertEqual(
+            rows[-1],
+            ["baskı", "yaklaşık 450 g", "PETG filament, 1,75 mm", "Gövde, kapak, çark"],
+        )
+        self.assertFalse(bom_bytes.startswith(b"\xef\xbb\xbf"))
 
     def test_assembly_contains_measured_checks(self):
         text = pathlib.Path("docs/assembly.md").read_text(encoding="utf-8")
