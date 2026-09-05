@@ -7,14 +7,14 @@ yetişkin gözetiminde kullanmalıdır. Kırılan, çatlayan, gevşeyen veya ıs
 parça görülürse pilleri hemen çıkarın. Lityum pil kullanmayın. Vida olmaması,
 kapağın veya parçaların düzenli çekme kontrolü gereğini ortadan kaldırmaz.
 
-## 1. Parçalar gelmeden kullanılan ölçüler
+## 1. Test baskısında doğrulanan ölçüler
 
-Üretici çizimleri temel alınarak ana delikler 10 mm LED için 10,2 mm, DC184
-için 12,2 mm, DC180 için 16,2 mm ve DC131A için 20,2 mm seçildi. DC120 yan
-kesiti şimdilik 19,2×13,2 mm; 1K pot mili 6,0 mm kabul edildi. Her üretim
-partisinde küçük fark olabileceği için tam gövdeyi basmadan önce test kuponunu
-basın. Parçalar gelince kumpasla ölçüp gerekirse `tools/project_spec.py`
-değerlerini düzeltin ve `make dimensions artwork` çalıştırın.
+Komponent test kuponuyla ana delikler 10 mm LED için 10,2 mm, DC184 için
+12,0 mm, DC180 için 16,0 mm ve DC131A için 20,2 mm olarak doğrulandı. Pot
+burcu 7,0 mm, pot mili 6,2 mm ve DC120 kesiti 19,0×13,0 mm seçildi. Buzzer
+kabı test edildi; 34 mm çark açıklığı varsayılan ölçüde bırakıldı. Yazıcı,
+filament veya komponent partisi değişirse tam gövdeden önce test kuponunu
+yeniden basın ve gerekirse `tools/project_spec.py` değerlerini düzeltin.
 
 ## 2. Önce komponent test kuponu
 

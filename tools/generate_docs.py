@@ -109,11 +109,11 @@ def circuit_svg():
 BOM_ROWS = [
     ("1", "1 A sigorta", "Kapalı yuva veya kablolu tip", "Yuva B artısına en yakın noktaya"),
     ("2", "2xAA yarı kapalı pil yuvası", "Yaklaşık 58×32×15 mm", "Seri bağlanarak 4×AA olur"),
-    ("2", "DC184 anlık buton", "Kırmızı ve sarı; Ø12,2 mm test deliği", "Kırmızı/sarı LED kolları"),
-    ("2", "DC180 anlık buton", "Siyah ve mavi; Ø16,2 mm test deliği", "Yeşil LED ve buzzer"),
+    ("2", "DC184 anlık buton", "Kırmızı ve sarı; Ø12,0 mm test deliği", "Kırmızı/sarı LED kolları"),
+    ("2", "DC180 anlık buton", "Siyah ve mavi; Ø16,0 mm test deliği", "Yeşil LED ve buzzer"),
     ("1", "DC131A aç/kapat anahtar", "Ø20,2 mm; 12 V lambalı", "Yalnız anahtar kontakları kullanılır"),
-    ("1", "DC120 2P aç/kapat anahtar", "Yaklaşık 19,2×13,2 mm kesit", "Ana güç"),
-    ("1", "1K potansiyometre", "Yaklaşık 6 mm tırtıllı mil", "Beyaz LED dimmeri"),
+    ("1", "DC120 2P aç/kapat anahtar", "19,0×13,0 mm test kesiti", "Ana güç"),
+    ("1", "1K potansiyometre", "7,0 mm burç; 6,2 mm mil yuvası", "Beyaz LED dimmeri"),
     ("10", "330 ohm 1 W direnç", "Turuncu-turuncu-kahverengi", "5 kullanım + yedekler"),
     ("4", "10 mm LED", "Kırmızı, sarı, yeşil, mavi", "Her birine ayrı 330 Ω"),
     ("1", "10 mm beyaz LED", "Şeffaf, standart iki bacaklı", "Dimmer kolu"),
@@ -134,14 +134,14 @@ yetişkin gözetiminde kullanmalıdır. Kırılan, çatlayan, gevşeyen veya ıs
 parça görülürse pilleri hemen çıkarın. Lityum pil kullanmayın. Vida olmaması,
 kapağın veya parçaların düzenli çekme kontrolü gereğini ortadan kaldırmaz.
 
-## 1. Parçalar gelmeden kullanılan ölçüler
+## 1. Test baskısında doğrulanan ölçüler
 
-Üretici çizimleri temel alınarak ana delikler 10 mm LED için 10,2 mm, DC184
-için 12,2 mm, DC180 için 16,2 mm ve DC131A için 20,2 mm seçildi. DC120 yan
-kesiti şimdilik 19,2×13,2 mm; 1K pot mili 6,0 mm kabul edildi. Her üretim
-partisinde küçük fark olabileceği için tam gövdeyi basmadan önce test kuponunu
-basın. Parçalar gelince kumpasla ölçüp gerekirse `tools/project_spec.py`
-değerlerini düzeltin ve `make dimensions artwork` çalıştırın.
+Komponent test kuponuyla ana delikler 10 mm LED için 10,2 mm, DC184 için
+12,0 mm, DC180 için 16,0 mm ve DC131A için 20,2 mm olarak doğrulandı. Pot
+burcu 7,0 mm, pot mili 6,2 mm ve DC120 kesiti 19,0×13,0 mm seçildi. Buzzer
+kabı test edildi; 34 mm çark açıklığı varsayılan ölçüde bırakıldı. Yazıcı,
+filament veya komponent partisi değişirse tam gövdeden önce test kuponunu
+yeniden basın ve gerekirse `tools/project_spec.py` değerlerini düzeltin.
 
 ## 2. Önce komponent test kuponu
 

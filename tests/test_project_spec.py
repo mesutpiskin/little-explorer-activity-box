@@ -3,6 +3,7 @@ import subprocess
 import sys
 
 from tools import project_spec
+from tools.generate_dimensions import generate_dimensions_text
 from tools.project_spec import BATTERY_BAY, BOX, ELECTRICAL, LABEL, PANEL_FEATURES
 
 
@@ -55,15 +56,29 @@ class ProjectSpecTest(unittest.TestCase):
             "green_led": 10.2,
             "switch_led": 10.2,
             "dimmer_led": 10.2,
-            "red_button": 12.2,
-            "yellow_button": 12.2,
-            "green_button": 16.2,
+            "red_button": 12.0,
+            "yellow_button": 12.0,
+            "green_button": 16.0,
             "rocker": 20.2,
-            "buzzer_button": 16.2,
+            "buzzer_button": 16.0,
         }
         for feature_id, expected_diameter in expected_diameters.items():
             self.assertEqual(features[feature_id]["kind"], "circle")
             self.assertAlmostEqual(features[feature_id]["radius"] * 2, expected_diameter)
+
+    def test_exported_dimensions_use_confirmed_fit_choices(self):
+        dimensions = generate_dimensions_text()
+        for line in (
+            "led_hole_d = 10.2;",
+            "dc184_button_hole_d = 12.0;",
+            "dc180_button_hole_d = 16.0;",
+            "room_switch_hole_d = 20.2;",
+            "pot_bushing_hole_d = 7.0;",
+            "pot_shaft_d = 6.2;",
+            "master_switch_size = [19.0, 13.0];",
+            "dial_opening_d = 34.0;",
+        ):
+            self.assertIn(line, dimensions)
 
     def test_dimensions_generator_runs_as_a_script(self):
         result = subprocess.run(

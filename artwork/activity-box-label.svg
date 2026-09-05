@@ -57,16 +57,16 @@
   <text x="162" y="157.2" text-anchor="middle" dominant-baseline="middle" fill="#27364B" stroke="none" font-size="3.4" font-weight="700">İTFAİYE</text>
 </g>
 <circle cx="42" cy="30" r="5.1" id="cutout-red-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="42" cy="59" r="6.1" id="cutout-red-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="42" cy="59" r="6.0" id="cutout-red-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <circle cx="102" cy="30" r="5.1" id="cutout-yellow-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="102" cy="59" r="6.1" id="cutout-yellow-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="102" cy="59" r="6.0" id="cutout-yellow-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <circle cx="162" cy="30" r="5.1" id="cutout-green-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
-<circle cx="162" cy="59" r="8.1" id="cutout-green-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="59" r="8.0" id="cutout-green-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <circle cx="42" cy="103" r="5.1" id="cutout-switch-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <circle cx="42" cy="131" r="10.1" id="cutout-rocker" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <circle cx="102" cy="103" r="5.1" id="cutout-dimmer-led" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <circle cx="102" cy="130" r="17.0" id="cutout-dial" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <circle cx="162" cy="102" r="1.5" id="cutout-buzzer" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="168.2" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="107.36935750346352" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="155.8" cy="102.0" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="158.9" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/><circle cx="165.1" cy="96.63064249653648" r="1.5" fill="#FFFFFF" stroke="#27364B" stroke-width="0.35"/>
-<circle cx="162" cy="132" r="8.1" id="cutout-buzzer-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
+<circle cx="162" cy="132" r="8.0" id="cutout-buzzer-button" fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"/>
 <rect id="trim-line" x="2" y="2" width="200" height="160" rx="14" fill="none" stroke="#D84A4A" stroke-width="0.3" stroke-dasharray="2 1"/>
 </svg>
