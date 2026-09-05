@@ -47,13 +47,21 @@ def px(mm):
     return round(mm * MM_TO_PX)
 
 
+def front_view_x(label_x):
+    return LABEL["width"] - label_x
+
+
+def front_view_point(center):
+    return (front_view_x(center[0]), center[1])
+
+
 def svg_circle(cx, cy, radius, **attrs):
     rendered = " ".join(f'{key.replace("_", "-")}="{value}"' for key, value in attrs.items())
     return f'<circle cx="{cx}" cy="{cy}" r="{radius}" {rendered}/>'
 
 
 def cutout_svg(feature):
-    x = feature["x"] + LABEL["bleed"]
+    x = front_view_x(feature["x"] + LABEL["bleed"])
     y = feature["y"] + LABEL["bleed"]
     cutout_id = f'cutout-{feature["id"].replace("_", "-")}'
     common = 'fill="#FFFFFF" stroke="#27364B" stroke-width="0.45" stroke-dasharray="1.5 1.5"'
@@ -88,7 +96,7 @@ def educational_scenes_svg():
     red_dark = SCENE["red_dark"]
     teal = SCENE["teal"]
     return f"""
-<g id="scene-table-lamp" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
+<g id="scene-table-lamp" transform="translate(120 0)" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M26 36 L32 22 Q42 18 52 22 L58 36 Z" fill="{gold}" stroke-width="1.5"/>
   <path d="M30 38 Q25 43 27 51" fill="none" stroke-width="2.2"/>
   <path d="M24 52 H35" fill="none" stroke-width="2.2"/>
@@ -103,7 +111,7 @@ def educational_scenes_svg():
   <path d="M102 46 V48" fill="none" stroke-width="1.5" stroke-dasharray="1 2"/>
   {svg_label("AMPUL")}
 </g>
-<g id="scene-lighthouse" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
+<g id="scene-lighthouse" transform="translate(-120 0)" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M153 34 Q162 20 171 34 Z" fill="{gold}" stroke-width="1.5"/>
   <path d="M156 36 L154 42 H170 L168 36 Z" fill="{SCENE['cream']}" stroke-width="1.6"/>
   <path d="M155 41 L169 37" fill="none" stroke="{red}" stroke-width="2.2"/>
@@ -111,7 +119,7 @@ def educational_scenes_svg():
   <path d="M150 26 H142 M174 26 H182 M151 20 L145 16 M173 20 L179 16" fill="none" stroke="{gold}" stroke-width="2"/>
   {svg_label("FENER")}
 </g>
-<g id="scene-room-switch" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
+<g id="scene-room-switch" transform="translate(120 0)" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M31 108 L35 96 H49 L53 108 Z" fill="{gold}" stroke-width="1.5"/>
   <path d="M42 90 V96" fill="none" stroke-width="1.6"/>
   <path d="M34 111 L31 115 M42 111 V116 M50 111 L53 115" fill="none" stroke="{gold}" stroke-width="1.6"/>
@@ -125,7 +133,7 @@ def educational_scenes_svg():
   <path d="M88 121 Q102 111 116 121" fill="none" stroke="{teal}" stroke-width="1.7" stroke-dasharray="1 2"/>
   {svg_label("AZ–ÇOK")}
 </g>
-<g id="scene-fire-engine" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
+<g id="scene-fire-engine" transform="translate(-120 0)" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M154 106 Q154 94 162 92 Q170 94 170 106 Z" fill="{red}" stroke-width="1.4"/>
   <path d="M151 95 H144 M173 95 H180 M151 90 L146 86 M173 90 L178 86" fill="none" stroke="{red}" stroke-width="1.8"/>
   <path d="M139 105 H169 L176 98 H183 Q186 98 186 103 V114 H139 Z" fill="{red}" stroke-width="1.6"/>
@@ -153,6 +161,7 @@ def generate_svg():
         f'<rect width="204" height="164" rx="15" fill="{PALETTE["background"]}"/>',
     ]
     for x, y, width, height, color in panels:
+        x = LABEL["width"] - x - width
         parts.append(f'<rect x="{x}" y="{y}" width="{width}" height="{height}" rx="12" fill="{color}"/>')
     parts.append(educational_scenes_svg())
     parts.extend(cutout_svg(feature) for feature in PANEL_FEATURES)
@@ -294,21 +303,21 @@ def draw_led_component(draw, center, diameter, color):
 def draw_assembled_preview():
     image = draw_preview().convert("RGB")
     draw = ImageDraw.Draw(image)
-    draw_round_component(draw, (42, 59), 17.5, "#DF4C52")
+    draw_round_component(draw, front_view_point((42, 59)), 17.5, "#DF4C52")
     draw_round_component(draw, (102, 59), 17.5, "#F1C52F")
-    draw_round_component(draw, (162, 59), 20, "#111820")
-    draw_round_component(draw, (162, 132), 20, "#2878C8")
+    draw_round_component(draw, front_view_point((162, 59)), 20, "#111820")
+    draw_round_component(draw, front_view_point((162, 132)), 20, "#2878C8")
 
     for center, color in (
-        ((42, 30), "#E33C45"),
+        (front_view_point((42, 30)), "#E33C45"),
         ((102, 30), "#FFD52E"),
-        ((162, 30), "#35B86B"),
-        ((42, 103), "#3F8FE8"),
+        (front_view_point((162, 30)), "#35B86B"),
+        (front_view_point((42, 103)), "#3F8FE8"),
         ((102, 103), "#F4F7FF"),
     ):
         draw_led_component(draw, center, 10.5, color)
 
-    draw_round_component(draw, (42, 131), 22.8, "#303844")
+    draw_round_component(draw, front_view_point((42, 131)), 22.8, "#303844")
 
     draw_round_component(draw, (102, 130), 32, "#4B87C5")
     draw_line_mm(draw, ((102, 130), (111, 122)), "#FFFFFF", 1.2)
@@ -355,6 +364,12 @@ def draw_preview():
 
     trim = mm_box((2, 2, 202, 162))
     draw.rounded_rectangle(trim, radius=px(14), outline="#D84A4A", width=3)
+    left_box = mm_box((14, 5, 70, 160))
+    right_box = mm_box((134, 5, 190, 160))
+    left_column = image.crop(left_box)
+    right_column = image.crop(right_box)
+    image.paste(right_column, left_box[:2])
+    image.paste(left_column, right_box[:2])
     return image
 
 

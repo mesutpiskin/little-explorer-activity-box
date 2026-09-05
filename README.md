@@ -101,7 +101,8 @@ olacak şekilde basın. Baskı ayrıntıları için
 
 [A4 etiket PDF'sini](artwork/activity-box-label-a4.pdf) yüzde 100 / gerçek
 boyutta ve “sayfaya sığdır” kapalıyken yapışkanlı kâğıda basın. Sayfadaki
-kontrol karesi tam 20 mm olmalıdır.
+kontrol karesi tam 20 mm olmalıdır. Normal beyaz yapışkanlı kâğıtta yazıcı
+ayarındaki “ayna/transfer” seçeneği kapalı olmalıdır; baskılı yüz dışa bakar.
 
 1. Kırmızı dış kesim çizgisinden etiketi kesin.
 2. Beyaz komponent boşluklarını çıkarın.
@@ -118,12 +119,12 @@ Vektör kaynak dosyası: [artwork/activity-box-label.svg](artwork/activity-box-l
 
 | Konum | Üst parça | Alt kumanda | Sabitleme |
 |---|---|---|---|
-| Sol üst | Kırmızı 10 mm LED | Kırmızı DC184 | LED iç taraftan; buton somunla |
+| Sol üst | Yeşil 10 mm LED | Siyah DC180 | LED iç taraftan; buton somunla |
 | Orta üst | Sarı 10 mm LED | Sarı DC184 | LED iç taraftan; buton somunla |
-| Sağ üst | Yeşil 10 mm LED | Siyah DC180 | LED iç taraftan; buton somunla |
-| Sol alt | Mavi 10 mm LED | DC131A | İkisi de iç taraftan, somunla |
+| Sağ üst | Kırmızı 10 mm LED | Kırmızı DC184 | LED iç taraftan; buton somunla |
+| Sol alt | 12 mm aktif buzzer | Mavi DC180 | Buzzer baskı kabına, buton somunla |
 | Orta alt | Beyaz 10 mm LED | Baskı çarkı + 1K pot | Pot iç köprüye somunla |
-| Sağ alt | 12 mm aktif buzzer | Mavi DC180 | Buzzer baskı kabına, buton somunla |
+| Sağ alt | Mavi 10 mm LED | DC131A | İkisi de iç taraftan, somunla |
 | Sağ yan yüz | — | DC120 2P | Kendi tırnaklarıyla |
 | Arka kapak | — | İki 2×AA yuva | Ayrı raylara; gerekirse ince köpük bantla |
 

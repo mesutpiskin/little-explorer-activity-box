@@ -4,8 +4,14 @@ import xml.etree.ElementTree as ET
 
 from PIL import Image, ImageColor, ImageDraw, ImageFont
 
-from tools.generate_artwork import draw_assembled_preview, draw_preview, generate_svg, px
-from tools.project_spec import LABEL, PANEL_FEATURES
+from tools.generate_artwork import (
+    draw_assembled_preview,
+    draw_preview,
+    generate_a4_pdf,
+    generate_svg,
+    px,
+)
+from tools.project_spec import BOX, LABEL, PANEL_FEATURES
 
 
 class ArtworkTest(unittest.TestCase):
@@ -32,6 +38,19 @@ class ArtworkTest(unittest.TestCase):
         pdf = pathlib.Path("artwork/activity-box-label-a4.pdf").read_bytes()
         self.assertTrue(pdf.startswith(b"%PDF"))
 
+    def test_a4_layout_matches_the_box_exterior_view(self):
+        label = draw_preview()
+        page = generate_a4_pdf(label)
+        left = round((page.width - label.width) / 2)
+        self.assertEqual(
+            page.getpixel((left + px(30), px(12 + 70))),
+            ImageColor.getrgb("#A8DDA7"),
+        )
+        self.assertEqual(
+            page.getpixel((left + px(150), px(12 + 70))),
+            ImageColor.getrgb("#F4A6A6"),
+        )
+
     def test_assembled_preview_is_generated_at_label_size(self):
         with Image.open("artwork/activity-box-assembled-preview.png") as image:
             self.assertEqual(image.size, (2409, 1937))
@@ -39,11 +58,11 @@ class ArtworkTest(unittest.TestCase):
     def test_assembled_preview_matches_purchased_component_colors(self):
         image = draw_assembled_preview()
         expected_centers = {
-            (162, 59): "#111820",  # siyah DC180
-            (42, 131): "#303844",  # yuvarlak DC131A
-            (162, 132): "#2878C8",  # mavi DC180
-            (162, 30): "#35B86B",  # yeşil LED
-            (42, 103): "#3F8FE8",  # mavi LED
+            (42, 59): "#111820",  # siyah DC180
+            (162, 131): "#303844",  # yuvarlak DC131A
+            (42, 132): "#2878C8",  # mavi DC180
+            (42, 30): "#35B86B",  # yeşil LED
+            (162, 103): "#3F8FE8",  # mavi LED
             (102, 103): "#F4F7FF",  # beyaz LED
         }
         for center, color in expected_centers.items():
@@ -79,7 +98,7 @@ class ArtworkTest(unittest.TestCase):
         }
         for feature in PANEL_FEATURES:
             element = elements[f'cutout-{feature["id"].replace("_", "-")}']
-            expected_x = feature["x"] + LABEL["bleed"]
+            expected_x = LABEL["bleed"] + BOX["width"] - feature["x"]
             expected_y = feature["y"] + LABEL["bleed"]
             if feature["kind"] == "rect":
                 actual_x = float(element.attrib["x"]) + float(element.attrib["width"]) / 2
@@ -97,7 +116,7 @@ class ArtworkTest(unittest.TestCase):
     def test_preview_renders_fire_engine_illustration(self):
         image = draw_preview()
         fire_engine_red = ImageColor.getrgb("#D94B3D")
-        fire_engine_panel = image.crop((1500, 1000, 2300, 1800))
+        fire_engine_panel = image.crop((100, 1000, 900, 1800))
         red_pixels = sum(pixel == fire_engine_red for pixel in fire_engine_panel.getdata())
         self.assertGreater(red_pixels, 1000)
 

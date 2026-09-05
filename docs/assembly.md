@@ -42,9 +42,11 @@ alt/üst katman ve yüzde 25 dolgu. Katman ayrılması, sivri çapak veya tırna
 
 `artwork/activity-box-label-a4.pdf` dosyasını **gerçek boyut / yüzde 100**
 seçeneğiyle, sayfaya sığdırmayı kapatarak basın. Önce 20 mm kontrol karesi tam
-20 mm geliyor mu ölçün. Kırmızı dış kesim çizgisinden kesin; komponent
-boşluklarını yalnızca yetişkin hazırlamalıdır. Yüzeyi yağdan arındırın, etiketi
-deliklere hizalayın ve ortadan kenarlara doğru yapıştırın.
+20 mm geliyor mu ölçün. Normal beyaz yapışkanlı kâğıtta “ayna/transfer”
+seçeneğini kapalı tutun; baskılı yüz dışa bakmalıdır. Kırmızı dış kesim
+çizgisinden kesin; komponent boşluklarını yalnızca yetişkin hazırlamalıdır.
+Yüzeyi yağdan arındırın, etiketi deliklere hizalayın ve ortadan kenarlara doğru
+yapıştırın.
 
 ## 4. Ön yüz parçaları
 

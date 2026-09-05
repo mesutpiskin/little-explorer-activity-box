@@ -6,24 +6,24 @@
 <text x="160" y="17" text-anchor="middle" class="subtitle" fill="#5C6D7E">Parçaları ön yüzden bu sıraya göre yerleştir; somun ve kablolar kutunun içinde kalır.</text>
 <text x="18" y="25" text-anchor="start" class="view">ÖNDEN GÖRÜNÜŞ</text>
 <rect x="18" y="29" width="180.0" height="144.0" rx="12.6" fill="#E8F0F5" stroke="#263548" stroke-width="1.2"/>
-<rect x="31.5" y="36.2" width="48.6" height="58.5" rx="8" fill="#F8D6D7"/>
+<rect x="31.5" y="36.2" width="48.6" height="58.5" rx="8" fill="#D3EDDB"/>
 <rect x="85.5" y="36.2" width="48.6" height="58.5" rx="8" fill="#FAEDB9"/>
-<rect x="139.5" y="36.2" width="48.6" height="58.5" rx="8" fill="#D3EDDB"/>
-<rect x="31.5" y="107.3" width="48.6" height="58.5" rx="8" fill="#D7E9F6"/>
+<rect x="139.5" y="36.2" width="48.6" height="58.5" rx="8" fill="#F8D6D7"/>
+<rect x="31.5" y="107.3" width="48.6" height="58.5" rx="8" fill="#E5DCF4"/>
 <rect x="85.5" y="107.3" width="48.6" height="58.5" rx="8" fill="#D9EFE4"/>
-<rect x="139.5" y="107.3" width="48.6" height="58.5" rx="8" fill="#E5DCF4"/>
-<g id="placement-red_led"><circle cx="54.0" cy="54.2" r="4.59" fill="#DF4C52" stroke="#263548" stroke-width="1"/><text x="54.0" y="55.400000000000006" text-anchor="middle" class="badge" fill="#FFFFFF">1</text></g>
-<g id="placement-red_button"><circle cx="54.0" cy="80.30000000000001" r="5.4" fill="#DF4C52" stroke="#263548" stroke-width="1"/><text x="54.0" y="81.50000000000001" text-anchor="middle" class="badge" fill="#FFFFFF">2</text></g>
+<rect x="139.5" y="107.3" width="48.6" height="58.5" rx="8" fill="#D7E9F6"/>
+<g id="placement-red_led"><circle cx="162.0" cy="54.2" r="4.59" fill="#DF4C52" stroke="#263548" stroke-width="1"/><text x="162.0" y="55.400000000000006" text-anchor="middle" class="badge" fill="#FFFFFF">1</text></g>
+<g id="placement-red_button"><circle cx="162.0" cy="80.30000000000001" r="5.4" fill="#DF4C52" stroke="#263548" stroke-width="1"/><text x="162.0" y="81.50000000000001" text-anchor="middle" class="badge" fill="#FFFFFF">2</text></g>
 <g id="placement-yellow_led"><circle cx="108.0" cy="54.2" r="4.59" fill="#E9B92D" stroke="#263548" stroke-width="1"/><text x="108.0" y="55.400000000000006" text-anchor="middle" class="badge" fill="#263548">3</text></g>
 <g id="placement-yellow_button"><circle cx="108.0" cy="80.30000000000001" r="5.4" fill="#E9B92D" stroke="#263548" stroke-width="1"/><text x="108.0" y="81.50000000000001" text-anchor="middle" class="badge" fill="#263548">4</text></g>
-<g id="placement-green_led"><circle cx="162.0" cy="54.2" r="4.59" fill="#3BA66B" stroke="#263548" stroke-width="1"/><text x="162.0" y="55.400000000000006" text-anchor="middle" class="badge" fill="#FFFFFF">5</text></g>
-<g id="placement-green_button"><circle cx="162.0" cy="80.30000000000001" r="7.2" fill="#303640" stroke="#263548" stroke-width="1"/><text x="162.0" y="81.50000000000001" text-anchor="middle" class="badge" fill="#FFFFFF">6</text></g>
-<g id="placement-switch_led"><circle cx="54.0" cy="119.9" r="4.59" fill="#438DCA" stroke="#263548" stroke-width="1"/><text x="54.0" y="121.10000000000001" text-anchor="middle" class="badge" fill="#FFFFFF">7</text></g>
-<g id="placement-rocker"><circle cx="54.0" cy="145.10000000000002" r="9.09" fill="#DF4C52" stroke="#263548" stroke-width="1"/><text x="54.0" y="146.3" text-anchor="middle" class="badge" fill="#FFFFFF">8</text></g>
+<g id="placement-green_led"><circle cx="54.0" cy="54.2" r="4.59" fill="#3BA66B" stroke="#263548" stroke-width="1"/><text x="54.0" y="55.400000000000006" text-anchor="middle" class="badge" fill="#FFFFFF">5</text></g>
+<g id="placement-green_button"><circle cx="54.0" cy="80.30000000000001" r="7.2" fill="#303640" stroke="#263548" stroke-width="1"/><text x="54.0" y="81.50000000000001" text-anchor="middle" class="badge" fill="#FFFFFF">6</text></g>
+<g id="placement-switch_led"><circle cx="162.0" cy="119.9" r="4.59" fill="#438DCA" stroke="#263548" stroke-width="1"/><text x="162.0" y="121.10000000000001" text-anchor="middle" class="badge" fill="#FFFFFF">7</text></g>
+<g id="placement-rocker"><circle cx="162.0" cy="145.10000000000002" r="9.09" fill="#DF4C52" stroke="#263548" stroke-width="1"/><text x="162.0" y="146.3" text-anchor="middle" class="badge" fill="#FFFFFF">8</text></g>
 <g id="placement-dimmer_led"><circle cx="108.0" cy="119.9" r="4.59" fill="#FFFFFF" stroke="#263548" stroke-width="1"/><text x="108.0" y="121.10000000000001" text-anchor="middle" class="badge" fill="#263548">9</text></g>
 <g id="placement-dial"><circle cx="108.0" cy="144.2" r="15.3" fill="#E6893B" stroke="#263548" stroke-width="1"/><path d="M108.0 130.89999999999998 V140.2" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round"/><text x="108.0" y="145.39999999999998" text-anchor="middle" class="badge" fill="#FFFFFF">10</text></g>
-<g id="placement-buzzer"><circle cx="162.0" cy="119.0" r="7.2" fill="#FFFFFF" stroke="#7A63B5" stroke-width="1.2"/><circle cx="167.2" cy="119.0" r="1.2" fill="#7A63B5"/><circle cx="164.6" cy="123.50333209967908" r="1.2" fill="#7A63B5"/><circle cx="159.4" cy="123.50333209967908" r="1.2" fill="#7A63B5"/><circle cx="156.8" cy="119.0" r="1.2" fill="#7A63B5"/><circle cx="159.4" cy="114.49666790032092" r="1.2" fill="#7A63B5"/><circle cx="164.6" cy="114.49666790032092" r="1.2" fill="#7A63B5"/><circle cx="162.0" cy="119.0" r="3.3" fill="#7A63B5"/><text x="162.0" y="120.2" text-anchor="middle" class="badge" fill="#FFFFFF">11</text></g>
-<g id="placement-buzzer_button"><circle cx="162.0" cy="146.0" r="7.2" fill="#438DCA" stroke="#263548" stroke-width="1"/><text x="162.0" y="147.2" text-anchor="middle" class="badge" fill="#FFFFFF">12</text></g>
+<g id="placement-buzzer"><circle cx="54.0" cy="119.0" r="7.2" fill="#FFFFFF" stroke="#7A63B5" stroke-width="1.2"/><circle cx="59.2" cy="119.0" r="1.2" fill="#7A63B5"/><circle cx="56.6" cy="123.50333209967908" r="1.2" fill="#7A63B5"/><circle cx="51.4" cy="123.50333209967908" r="1.2" fill="#7A63B5"/><circle cx="48.8" cy="119.0" r="1.2" fill="#7A63B5"/><circle cx="51.4" cy="114.49666790032092" r="1.2" fill="#7A63B5"/><circle cx="56.6" cy="114.49666790032092" r="1.2" fill="#7A63B5"/><circle cx="54.0" cy="119.0" r="3.3" fill="#7A63B5"/><text x="54.0" y="120.2" text-anchor="middle" class="badge" fill="#FFFFFF">11</text></g>
+<g id="placement-buzzer_button"><circle cx="54.0" cy="146.0" r="7.2" fill="#438DCA" stroke="#263548" stroke-width="1"/><text x="54.0" y="147.2" text-anchor="middle" class="badge" fill="#FFFFFF">12</text></g>
 <rect x="207" y="27" width="105" height="147" rx="6" fill="#FFFFFF" stroke="#B9C7D3" stroke-width="0.8"/>
 <text x="212" y="34" text-anchor="start" class="view">NUMARA → TAKILACAK PARÇA</text>
 <circle cx="213" cy="41.0" r="3.2" fill="#DF4C52" stroke="#263548" stroke-width="0.5"/>

@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from tools.project_spec import PANEL_FEATURES
+from tools.project_spec import BOX, PANEL_FEATURES
 
 
 DPI = 300
@@ -88,7 +88,7 @@ def svg_text(x, y, value, css_class, anchor="start", fill=None):
 
 def front_xy(feature):
     return (
-        FRONT_ORIGIN[0] + feature["x"] * FRONT_SCALE,
+        FRONT_ORIGIN[0] + (BOX["width"] - feature["x"]) * FRONT_SCALE,
         FRONT_ORIGIN[1] + feature["y"] * FRONT_SCALE,
     )
 
@@ -147,7 +147,7 @@ def generate_svg():
         f'<rect x="{FRONT_ORIGIN[0]}" y="{FRONT_ORIGIN[1]}" width="{panel_w}" height="{panel_h}" rx="12.6" fill="{COLORS["panel"]}" stroke="{COLORS["panel_line"]}" stroke-width="1.2"/>',
     ]
 
-    zone_colors = ("#F8D6D7", "#FAEDB9", "#D3EDDB", "#D7E9F6", "#D9EFE4", "#E5DCF4")
+    zone_colors = ("#D3EDDB", "#FAEDB9", "#F8D6D7", "#E5DCF4", "#D9EFE4", "#D7E9F6")
     for index, (column, row) in enumerate(
         ((0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (2, 1))
     ):
@@ -264,7 +264,7 @@ def draw_png():
         outline=COLORS["panel_line"],
         width=px(1.2),
     )
-    zone_colors = ("#F8D6D7", "#FAEDB9", "#D3EDDB", "#D7E9F6", "#D9EFE4", "#E5DCF4")
+    zone_colors = ("#D3EDDB", "#FAEDB9", "#F8D6D7", "#E5DCF4", "#D9EFE4", "#D7E9F6")
     for index, (column, row) in enumerate(
         ((0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (2, 1))
     ):

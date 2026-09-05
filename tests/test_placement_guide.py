@@ -56,6 +56,14 @@ class PlacementGuideTest(unittest.TestCase):
         ):
             self.assertIn(label, text)
 
+    def test_front_numbers_follow_the_box_exterior_view(self):
+        root = ET.parse("docs/component-placement-guide.svg").getroot()
+        elements = {element.attrib.get("id"): element for element in root.iter()}
+        red_led = next(iter(elements["placement-red_led"]))
+        green_led = next(iter(elements["placement-green_led"]))
+        self.assertAlmostEqual(float(red_led.attrib["cx"]), 162.0)
+        self.assertAlmostEqual(float(green_led.attrib["cx"]), 54.0)
+
     def test_public_guides_display_the_placement_image(self):
         for path in ("README.md", "docs/assembly.md"):
             text = pathlib.Path(path).read_text(encoding="utf-8")
