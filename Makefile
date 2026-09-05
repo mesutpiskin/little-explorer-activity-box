@@ -25,6 +25,7 @@ artwork:
 docs:
 	$(PYTHON) tools/generate_docs.py
 	$(PYTHON) tools/generate_fit_guide.py
+	$(PYTHON) tools/generate_placement_guide.py
 
 validate:
 	$(PYTHON) tools/validate_outputs.py
@@ -33,4 +34,4 @@ validate-source:
 	$(PYTHON) tools/validate_outputs.py --allow-missing-stl
 
 clean:
-	rm -rf output/stl artwork/activity-box-label.svg artwork/activity-box-label-a4.pdf artwork/activity-box-label-preview.png artwork/activity-box-assembled-preview.png docs/circuit.svg docs/BOM.csv docs/assembly.md docs/component-fit-test-guide.svg docs/component-fit-test-guide.png cad/generated_dimensions.scad
+	rm -rf output/stl artwork/activity-box-label.svg artwork/activity-box-label-a4.pdf artwork/activity-box-label-preview.png artwork/activity-box-assembled-preview.png docs/circuit.svg docs/BOM.csv docs/assembly.md docs/component-fit-test-guide.svg docs/component-fit-test-guide.png docs/component-placement-guide.svg docs/component-placement-guide.png cad/generated_dimensions.scad

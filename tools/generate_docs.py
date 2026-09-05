@@ -175,6 +175,8 @@ deliklere hizalayın ve ortadan kenarlara doğru yapıştırın.
 
 ## 4. Ön yüz parçaları
 
+![Bileşen yerleşim şeması](component-placement-guide.png)
+
 10 mm LED'leri kutunun içinden dışarı doğru yerleştirin. Lens 10,2 mm delikten
 çıkar, daha geniş LED flanşı içeride kalıp dışarı çekilmeyi mekanik olarak
 engeller. Açık baskı halkası flanş çevresini korur. Halkaya az miktarda

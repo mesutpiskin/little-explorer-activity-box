@@ -75,11 +75,11 @@ Varsayılan ana model ölçüleri:
 | Parça | Kesit |
 |---|---:|
 | 10 mm LED | Ø10,2 mm |
-| DC184 | Ø12,2 mm |
-| DC180 | Ø16,2 mm |
+| DC184 | Ø12,0 mm |
+| DC180 | Ø16,0 mm |
 | DC131A | Ø20,2 mm |
-| DC120 | 19,2 × 13,2 mm |
-| Pot burcu / mil | Ø7,2 / Ø6,0 mm |
+| DC120 | 19,0 × 13,0 mm |
+| Pot burcu / mil | Ø7,0 / Ø6,2 mm |
 
 Farklı ölçü daha iyi oturursa [tools/project_spec.py](tools/project_spec.py)
 içindeki ilgili değeri değiştirip `make dimensions` çalıştırın.
@@ -111,6 +111,8 @@ kontrol karesi tam 20 mm olmalıdır.
 Vektör kaynak dosyası: [artwork/activity-box-label.svg](artwork/activity-box-label.svg).
 
 ### 5. Bileşenleri yerleştirin
+
+![Bileşen yerleşim şeması](docs/component-placement-guide.png)
 
 Ön yüzden bakıldığında yerleşim şöyledir:
 
@@ -195,5 +197,5 @@ make stl
 make validate
 ```
 
-Bu depodaki ölçüler üretici çizimlerinden alınmış başlangıç değerleridir.
-Komponent üretim toleransları değişebileceğinden test kuponunu atlamayın.
+Ana kesit ölçüleri mevcut komponentler ve yazıcıyla test kuponunda doğrulandı.
+Yazıcı, filament veya komponent partisi değişirse test kuponunu yeniden basın.
