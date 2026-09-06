@@ -3,7 +3,8 @@ include <generated_dimensions.scad>
 $fn = 48;
 part = is_undef(part) ? "assembly" : part;
 dial_grip_d = 32;
-dial_flange_d = 46;
+dial_flange_d = 36;
+dial_flange_t = 4;
 buzzer_port_depth = front_t + 1.4;
 eps = 0.15;
 
@@ -221,10 +222,12 @@ module back() {
 module dial() {
     difference() {
         union() {
-            cylinder(h = 2.8, d = dial_flange_d);
-            translate([0, 0, 2.7]) cylinder(h = 8, d = dial_grip_d);
+            cylinder(h = dial_flange_t, d = dial_flange_d);
+            translate([0, 0, dial_flange_t - 0.1])
+                cylinder(h = 8, d = dial_grip_d);
             for (angle = [0 : 30 : 330])
-                rotate([0, 0, angle]) translate([dial_grip_d / 2 - 1, 0, 3])
+                rotate([0, 0, angle])
+                    translate([dial_grip_d / 2 - 1, 0, dial_flange_t + 0.2])
                     cube([1.2, 1.8, 7]);
         }
         translate([0, 0, -eps]) cylinder(h = 8, d = pot_shaft_d);
