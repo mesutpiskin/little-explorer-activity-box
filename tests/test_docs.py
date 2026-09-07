@@ -70,6 +70,21 @@ class DocumentationTest(unittest.TestCase):
                     (root / link).exists(), f"Missing link in {readme}: {link}"
                 )
 
+    def test_readmes_publish_real_build_media(self):
+        media = (
+            pathlib.Path("media/activity-box-hero.jpg"),
+            pathlib.Path("media/activity-box-demo-poster.jpg"),
+            pathlib.Path("media/activity-box-demo.mp4"),
+        )
+        for path in media:
+            self.assertTrue(path.exists(), f"Missing public media: {path}")
+            self.assertGreater(path.stat().st_size, 10_000)
+
+        for readme in ("README.md", "README.tr.md"):
+            text = pathlib.Path(readme).read_text(encoding="utf-8")
+            for path in media:
+                self.assertIn(path.as_posix(), text)
+
     def test_raw_inventory_and_reference_photo_are_not_published(self):
         self.assertFalse(pathlib.Path("docs/items.txt").exists())
         self.assertFalse(pathlib.Path("docs/example.png").exists())

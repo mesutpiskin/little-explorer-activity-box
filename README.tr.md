@@ -7,13 +7,21 @@ yazılım, mikrodenetleyici ve özel elektronik kart gerektirmeyen bir etkinlik
 kutusu. Parametrik gövde standart bir 3B yazıcıda basılır ve vidasız servis
 tırnaklarıyla kapanır.
 
-![Tamamlanmış etkinlik kutusu](artwork/tr/activity-box-assembled-preview.png)
+![Tamamlanmış gerçek etkinlik kutusu](media/activity-box-hero.jpg)
 
 > [!WARNING]
 > Bu topluluk donanım projesi sertifikalı bir oyuncak değildir. 18 aylık çocuk
 > yalnızca bir yetişkinin doğrudan gözetiminde kullanmalıdır. Her kullanımdan
 > önce dış parçaları ve arka kapağı çekerek kontrol edin. Kırık, gevşek, akan
 > veya ısınan bir parça varsa pilleri hemen çıkarın.
+
+## Çalışırken görün
+
+[![Minik Keşif Etkinlik Kutusu videosunu izle](media/activity-box-demo-poster.jpg)](media/activity-box-demo.mp4)
+
+▶ **[17 saniyelik gerçek yapım videosunu izleyin](media/activity-box-demo.mp4).**
+Videoda butonla çalışan ışıklar, kalıcı aç/kapat anahtarı, dimmer ve ses
+kumandası tamamlanmış kutu üzerinde gösterilir.
 
 ## Çocuk neyi keşfeder?
 
@@ -148,6 +156,7 @@ kullanılan dış uçla birleştirin.
 | [`artwork/tr/`](artwork/tr/activity-box-label.svg) | Türkçe etiket ve ön izlemeler |
 | [`docs/`](docs/assembly.md) | İngilizce montaj, BOM, devre ve yerleşim kılavuzları |
 | [`docs/tr/`](docs/tr/assembly.md) | Türkçe belge paketi |
+| [`media/`](media/activity-box-hero.jpg) | Gerçek yapım fotoğrafı, videosu ve video kapağı |
 | [`assets/fonts/`](assets/fonts/LICENSE.txt) | Tekrarlanabilir görseller için paketlenmiş font ve kaynak lisansı |
 | [`tools/`](tools/project_spec.py) | Ortak ölçüler ve çıktı üreticileri |
 | [`tests/`](tests/test_project_spec.py) | Geometri, çıktı ve belge kontrolleri |

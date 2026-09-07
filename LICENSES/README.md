@@ -12,6 +12,7 @@ The [CERN Open Hardware Licence Version 2 — Permissive](../LICENSE) applies to
 - `cad/`
 - `artwork/`
 - `docs/`
+- `media/`
 - `output/`
 - `assets/`, except the third-party `assets/fonts/` directory covered below
 - `README.md` and `README.tr.md`

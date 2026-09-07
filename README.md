@@ -6,13 +6,21 @@ A no-code, no-PCB activity box that teaches cause and effect through lights,
 switches, a dimmer, and sound. The enclosure is parametric, printable on a
 standard 3D printer, and closed with serviceable snap fits instead of screws.
 
-![Completed activity box](artwork/activity-box-assembled-preview.png)
+![Completed real-world activity box](media/activity-box-hero.jpg)
 
 > [!WARNING]
 > This community hardware project is not a certified toy. A child aged 18
 > months must use it only under direct adult supervision. Pull-test every
 > exposed component and the back plate before each use. Remove the batteries
 > immediately if anything cracks, loosens, leaks, or becomes warm.
+
+## See it in action
+
+[![Watch the Little Explorer Activity Box demo](media/activity-box-demo-poster.jpg)](media/activity-box-demo.mp4)
+
+▶ **[Watch the 17-second real-build demo](media/activity-box-demo.mp4).** It
+shows the push-button lights, maintained on/off switch, dimmer, and sound
+control working on the completed box.
 
 ## What children can explore
 
@@ -150,6 +158,7 @@ order. Join the pot wiper to the outer terminal being used.
 | [`artwork/tr/`](artwork/tr/activity-box-label.svg) | Turkish printable label and previews |
 | [`docs/`](docs/assembly.md) | English assembly, BOM, circuit, and placement guides |
 | [`docs/tr/`](docs/tr/assembly.md) | Turkish documentation set |
+| [`media/`](media/activity-box-hero.jpg) | Real-build photo, video, and video poster |
 | [`assets/fonts/`](assets/fonts/LICENSE.txt) | Bundled font and its upstream license for reproducible graphics |
 | [`tools/`](tools/project_spec.py) | Shared dimensions and deterministic generators |
 | [`tests/`](tests/test_project_spec.py) | Geometry, output, and documentation checks |

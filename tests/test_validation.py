@@ -32,6 +32,14 @@ class ValidationTest(unittest.TestCase):
         }
         self.assertTrue(expected <= set(REQUIRED_OUTPUTS))
 
+    def test_required_outputs_include_real_build_media(self):
+        expected = {
+            pathlib.Path("media/activity-box-hero.jpg"),
+            pathlib.Path("media/activity-box-demo-poster.jpg"),
+            pathlib.Path("media/activity-box-demo.mp4"),
+        }
+        self.assertTrue(expected <= set(REQUIRED_OUTPUTS))
+
     def test_tetrahedron_is_closed_manifold(self):
         a, b, c, d = (0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1)
         triangles = [(a, c, b), (a, b, d), (b, c, d), (c, a, d)]

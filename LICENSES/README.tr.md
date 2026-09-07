@@ -13,6 +13,7 @@ geçerlidir:
 - `cad/`
 - `artwork/`
 - `docs/`
+- `media/`
 - `output/`
 - Aşağıda belirtilen üçüncü taraf `assets/fonts/` dizini hariç `assets/`
 - `README.md` ve `README.tr.md`
