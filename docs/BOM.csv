@@ -1,16 +1,17 @@
-adet,parca,ozellik,not
-1,1 A sigorta,Kapalı yuva veya kablolu tip,Yuva B artısına en yakın noktaya
-2,2xAA yarı kapalı pil yuvası,Yaklaşık 58×32×15 mm,Seri bağlanarak 4×AA olur
-2,DC184 anlık buton,"Kırmızı ve sarı; Ø12,0 mm test deliği",Kırmızı/sarı LED kolları
-2,DC180 anlık buton,"Siyah ve mavi; Ø16,0 mm test deliği",Yeşil LED ve buzzer
-1,DC131A aç/kapat anahtar,"Ø20,2 mm; 12 V lambalı",Yalnız anahtar kontakları kullanılır
-1,DC120 2P aç/kapat anahtar,"19,0×13,0 mm test kesiti",Ana güç
-1,1K potansiyometre,"7,0 mm burç; 6,2 mm mil yuvası",Beyaz LED dimmeri
-10,330 ohm 1 W direnç,Turuncu-turuncu-kahverengi,5 kullanım + yedekler
-4,10 mm LED,"Kırmızı, sarı, yeşil, mavi",Her birine ayrı 330 Ω
-1,10 mm beyaz LED,"Şeffaf, standart iki bacaklı",Dimmer kolu
-1,12 mm aktif buzzer,"5–12 V, devreli",Pasif 22 mm buzzer kullanılmaz
-2 m,çok telli kablo,"0,22–0,50 mm²",Kırmızı ve siyah önerilir
-1 set,ısıyla daralan makaron,2–4 mm,Tüm lehim ekleri
-1 tüp,nötr kürlenen silikon,Elektroniğe uygun,LED titreşim desteği; tek tutucu değildir
-baskı,yaklaşık 450 g,"PETG filament, 1,75 mm","Gövde, kapak, çark"
+quantity,part,specification,use
+1,1 A fuse,Enclosed holder or inline type,As close as possible to Holder B positive
+2,2×AA semi-enclosed battery holder,Approx. 58×32×15 mm,Series connection for 4×AA
+4,AA alkaline battery,1.5 V; matching brand and state of charge,6 V nominal supply
+2,DC184 momentary push button,Red and yellow; Ø12.0 mm tested hole,Red and yellow LED branches
+2,DC180 momentary push button,Black and blue; Ø16.0 mm tested hole,Green LED and buzzer
+1,DC131A on/off switch,Ø20.2 mm; 12 V illuminated type,Use switch contacts only
+1,DC120 2P on/off switch,19.0×13.0 mm tested cutout,Main power
+1,1K potentiometer,7.0 mm bushing; 6.2 mm shaft socket,White LED dimmer
+10,330 ohm 1 W resistor,Orange-orange-brown,5 used plus spares
+4,10 mm LED,"Red, yellow, green, blue",One 330 Ω resistor per LED
+1,10 mm white LED,"Clear, standard two-lead",Dimmer branch
+1,12 mm active buzzer,"5–12 V, self-driven",Do not use the passive 22 mm buzzer
+2 m,stranded wire,0.22–0.50 mm²,Red and black recommended
+1 set,heat-shrink tubing,2–4 mm,Insulate every solder joint
+1 tube,neutral-cure silicone,Electronics-safe,LED vibration support; not the sole retainer
+print,approximately 450 g,1.75 mm PETG filament,"Body, back plate, and dial"

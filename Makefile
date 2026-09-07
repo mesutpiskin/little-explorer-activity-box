@@ -1,7 +1,7 @@
 PYTHON ?= python3
-OPENSCAD ?= $(shell command -v openscad 2>/dev/null || echo /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD)
+OPENSCAD ?= $(shell if command -v openscad >/dev/null 2>&1; then command -v openscad; elif [ -x /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD ]; then echo /Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD; else echo openscad; fi)
 
-.PHONY: all dimensions stl artwork docs test validate clean
+.PHONY: all dimensions stl artwork docs test validate validate-source clean
 
 all: dimensions stl artwork docs
 
@@ -34,4 +34,4 @@ validate-source:
 	$(PYTHON) tools/validate_outputs.py --allow-missing-stl
 
 clean:
-	rm -rf output/stl artwork/activity-box-label.svg artwork/activity-box-label-a4.pdf artwork/activity-box-label-preview.png artwork/activity-box-assembled-preview.png docs/circuit.svg docs/BOM.csv docs/assembly.md docs/component-fit-test-guide.svg docs/component-fit-test-guide.png docs/component-placement-guide.svg docs/component-placement-guide.png cad/generated_dimensions.scad
+	rm -rf output/stl/*.stl artwork/activity-box-label.svg artwork/activity-box-label-a4.pdf artwork/activity-box-label-preview.png artwork/activity-box-assembled-preview.png artwork/tr docs/circuit.svg docs/BOM.csv docs/assembly.md docs/component-fit-test-guide.svg docs/component-fit-test-guide.png docs/component-placement-guide.svg docs/component-placement-guide.png docs/tr cad/generated_dimensions.scad

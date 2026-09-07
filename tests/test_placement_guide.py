@@ -36,23 +36,23 @@ class PlacementGuideTest(unittest.TestCase):
         self.assertTrue(guide.exists())
         text = guide.read_text(encoding="utf-8")
         for label in (
-            "KIRMIZI 10 mm LED",
-            "KIRMIZI DC184",
-            "SARI 10 mm LED",
-            "SARI DC184",
-            "YEŞİL 10 mm LED",
-            "SİYAH DC180",
-            "MAVİ 10 mm LED",
+            "RED 10 mm LED",
+            "RED DC184",
+            "YELLOW 10 mm LED",
+            "YELLOW DC184",
+            "GREEN 10 mm LED",
+            "BLACK DC180",
+            "BLUE 10 mm LED",
             "DC131A",
-            "BEYAZ 10 mm LED",
-            "1K POT + ÇARK",
-            "12 mm AKTİF BUZZER",
-            "MAVİ DC180",
+            "WHITE 10 mm LED",
+            "1K POT + DIAL",
+            "12 mm ACTIVE BUZZER",
+            "BLUE DC180",
             "DC120 2P",
-            "2×AA PİL YUVASI ×2",
-            "ÖNDEN GÖRÜNÜŞ",
-            "SAĞ YAN",
-            "ARKA KAPAK",
+            "2×AA BATTERY HOLDER ×2",
+            "FRONT VIEW",
+            "RIGHT SIDE",
+            "BACK PLATE",
         ):
             self.assertIn(label, text)
 

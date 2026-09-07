@@ -2,11 +2,12 @@ import pathlib
 import unittest
 import xml.etree.ElementTree as ET
 
-from PIL import Image, ImageColor, ImageDraw, ImageFont
+from PIL import Image, ImageColor, ImageDraw
 
 from tools.generate_artwork import (
     draw_assembled_preview,
     draw_preview,
+    font,
     generate_a4_pdf,
     generate_svg,
     px,
@@ -80,9 +81,9 @@ class ArtworkTest(unittest.TestCase):
         )
         for scene_id in scene_ids:
             self.assertIn(f'id="{scene_id}"', svg)
-        for label in ("LAMBA", "AMPUL", "FENER", "AÇ/KAPAT", "AZ–ÇOK", "İTFAİYE"):
+        for label in ("LAMP", "BULB", "BEACON", "ON/OFF", "DIMMER", "FIRE ENGINE"):
             self.assertIn(f">{label}</text>", svg)
-        self.assertIn('font-family="Arial, sans-serif"', svg)
+        self.assertIn("font-family:'DejaVu Sans',sans-serif", svg)
 
     def test_svg_labels_use_the_same_center_anchor_as_the_png(self):
         root = ET.fromstring(generate_svg())
@@ -126,22 +127,20 @@ class ArtworkTest(unittest.TestCase):
             element.text: element for element in root.iter() if element.tag.endswith("text")
         }
         component_bottoms = {
-            "LAMBA": 75.5,
-            "AMPUL": 75.5,
-            "FENER": 75.5,
-            "AÇ/KAPAT": 141.0,
-            "AZ–ÇOK": 146.0,
-            "İTFAİYE": 148.5,
+            "LAMP": 75.5,
+            "BULB": 75.5,
+            "BEACON": 75.5,
+            "ON/OFF": 141.0,
+            "DIMMER": 146.0,
+            "FIRE ENGINE": 148.5,
         }
         draw = ImageDraw.Draw(Image.new("RGB", (10, 10)))
         for label, component_bottom in component_bottoms.items():
             element = text_elements[label]
             size_mm = float(element.attrib["font-size"])
-            font = ImageFont.truetype(
-                "/System/Library/Fonts/Supplemental/Arial Bold.ttf", px(size_mm)
-            )
+            label_font = font(size_mm, bold=True)
             baseline = (px(float(element.attrib["x"])), px(float(element.attrib["y"])))
-            box = draw.textbbox(baseline, label, font=font, anchor="mm")
+            box = draw.textbbox(baseline, label, font=label_font, anchor="mm")
             label_top_mm = box[1] / (300 / 25.4)
             self.assertGreaterEqual(
                 label_top_mm - component_bottom,
@@ -154,9 +153,9 @@ class ArtworkTest(unittest.TestCase):
         ink = ImageColor.getrgb("#27364B")
         safe_bottom = px(159)
         for label, x1, x2 in (
-            ("AÇ/KAPAT", 28, 56),
-            ("AZ–ÇOK", 88, 116),
-            ("İTFAİYE", 148, 176),
+            ("ON/OFF", 28, 56),
+            ("DIMMER", 88, 116),
+            ("FIRE ENGINE", 148, 176),
         ):
             crop = image.crop((px(x1), px(154), px(x2), px(162)))
             ink_rows = [

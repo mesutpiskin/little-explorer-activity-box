@@ -1,10 +1,16 @@
-# STL dışa aktarma
+# STL export
 
-Şirket bilgisayarındaki uygulama politikası OpenSCAD'i çalıştırmadığı için STL
-ikili dosyaları bu ortamda oluşturulamadı. Parametrik model tamamlandı.
+[English](README.md) | [Türkçe](README.tr.md)
 
-OpenSCAD'in çalıştığı bir bilgisayarda proje kökünde `make stl` komutunu
-çalıştırın. Şu beş dosya üretilecektir:
+Generated STL files are intentionally not committed. Install OpenSCAD, then
+run the following commands from the repository root:
+
+```sh
+make stl
+make validate
+```
+
+The export creates:
 
 - `activity-box-body.stl`
 - `activity-box-back.stl`
@@ -12,4 +18,10 @@ OpenSCAD'in çalıştığı bir bilgisayarda proje kökünde `make stl` komutunu
 - `snap-fit-test.stl`
 - `component-fit-test.stl`
 
-Ardından `make validate` çalıştırın.
+Print and verify the two test models before printing the enclosure.
+
+## Print orientation
+
+- Body: print with the front face down on the build plate.
+- Back plate: print with the outer face down on the build plate.
+- Dial: print with the flange down on the build plate.

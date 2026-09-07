@@ -3,11 +3,12 @@
 from pathlib import Path
 import sys
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from tools.font_assets import load_font, svg_font_faces
 from tools.project_spec import LABEL, PANEL_FEATURES
 
 
@@ -33,18 +34,32 @@ SCENE = {
     "red_dark": "#A93632",
     "sky": "#55B7D9",
 }
-LABEL_SPECS = {
-    "LAMBA": (42, 84, 3.8),
-    "AMPUL": (102, 84, 3.8),
-    "FENER": (162, 84, 3.8),
-    "AÇ/KAPAT": (42, 157.2, 3.4),
-    "AZ–ÇOK": (102, 157.2, 3.4),
-    "İTFAİYE": (162, 157.2, 3.4),
+LABEL_COPY = {
+    "en": {
+        "table_lamp": ("LAMP", 42, 84, 3.8),
+        "hanging_bulb": ("BULB", 102, 84, 3.8),
+        "lighthouse": ("BEACON", 162, 84, 3.8),
+        "room_switch": ("ON/OFF", 42, 157.2, 3.4),
+        "dimmer": ("DIMMER", 102, 157.2, 3.4),
+        "fire_engine": ("FIRE ENGINE", 162, 157.2, 3.0),
+        "control_square": "20 mm CONTROL SQUARE",
+    },
+    "tr": {
+        "table_lamp": ("LAMBA", 42, 84, 3.8),
+        "hanging_bulb": ("AMPUL", 102, 84, 3.8),
+        "lighthouse": ("FENER", 162, 84, 3.8),
+        "room_switch": ("AÇ/KAPAT", 42, 157.2, 3.4),
+        "dimmer": ("AZ–ÇOK", 102, 157.2, 3.4),
+        "fire_engine": ("İTFAİYE", 162, 157.2, 3.4),
+        "control_square": "20 mm KONTROL KARESİ",
+    },
 }
-
-
 def px(mm):
     return round(mm * MM_TO_PX)
+
+
+def font(size_mm, bold=False):
+    return load_font(px(size_mm), bold=bold)
 
 
 def front_view_x(label_x):
@@ -81,15 +96,15 @@ def cutout_svg(feature):
     return svg_circle(x, y, feature["radius"], id=cutout_id, fill="#FFFFFF", stroke="#27364B", stroke_width="0.45", stroke_dasharray="1.5 1.5")
 
 
-def svg_label(text):
-    x, y, size = LABEL_SPECS[text]
+def svg_label(scene, locale):
+    text, x, y, size = LABEL_COPY[locale][scene]
     return (
         f'<text x="{x}" y="{y}" text-anchor="middle" dominant-baseline="middle" fill="{SCENE["navy"]}" '
         f'stroke="none" font-size="{size}" font-weight="700">{text}</text>'
     )
 
 
-def educational_scenes_svg():
+def educational_scenes_svg(locale="en"):
     ink = SCENE["navy"]
     gold = SCENE["gold"]
     red = SCENE["red"]
@@ -101,7 +116,7 @@ def educational_scenes_svg():
   <path d="M30 38 Q25 43 27 51" fill="none" stroke-width="2.2"/>
   <path d="M24 52 H35" fill="none" stroke-width="2.2"/>
   <path d="M22 30 H17 M25 22 L21 18 M59 30 H64 M56 22 L60 18" fill="none" stroke="{gold}" stroke-width="1.8"/>
-  {svg_label("LAMBA")}
+  {svg_label("table_lamp", locale)}
 </g>
 <g id="scene-hanging-bulb" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M102 8 V20" fill="none" stroke-width="1.8"/>
@@ -109,7 +124,7 @@ def educational_scenes_svg():
   <path d="M98 39 H106 M99 42 H105" fill="none" stroke-width="1.5"/>
   <path d="M88 27 H83 M91 19 L87 15 M116 27 H121 M113 19 L117 15" fill="none" stroke="{gold}" stroke-width="1.8"/>
   <path d="M102 46 V48" fill="none" stroke-width="1.5" stroke-dasharray="1 2"/>
-  {svg_label("AMPUL")}
+  {svg_label("hanging_bulb", locale)}
 </g>
 <g id="scene-lighthouse" transform="translate(-120 0)" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M153 34 Q162 20 171 34 Z" fill="{gold}" stroke-width="1.5"/>
@@ -117,21 +132,21 @@ def educational_scenes_svg():
   <path d="M155 41 L169 37" fill="none" stroke="{red}" stroke-width="2.2"/>
   <path d="M153 42 H171" fill="none" stroke-width="2"/>
   <path d="M150 26 H142 M174 26 H182 M151 20 L145 16 M173 20 L179 16" fill="none" stroke="{gold}" stroke-width="2"/>
-  {svg_label("FENER")}
+  {svg_label("lighthouse", locale)}
 </g>
 <g id="scene-room-switch" transform="translate(120 0)" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M31 108 L35 96 H49 L53 108 Z" fill="{gold}" stroke-width="1.5"/>
   <path d="M42 90 V96" fill="none" stroke-width="1.6"/>
   <path d="M34 111 L31 115 M42 111 V116 M50 111 L53 115" fill="none" stroke="{gold}" stroke-width="1.6"/>
   <rect x="28" y="118" width="28" height="27" rx="4" fill="{SCENE['cream']}" stroke-width="1.3"/>
-  {svg_label("AÇ/KAPAT")}
+  {svg_label("room_switch", locale)}
 </g>
 <g id="scene-dimmer" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M84 105 A7 7 0 1 0 90 114 A5.3 5.3 0 0 1 84 105 Z" fill="{SCENE['cream']}" stroke-width="1.3"/>
   <circle cx="120" cy="109" r="5" fill="{gold}" stroke-width="1.3"/>
   <path d="M120 100 V97 M120 118 V121 M111 109 H108 M129 109 H132 M114 103 L112 101 M126 115 L128 117 M126 103 L128 101 M114 115 L112 117" fill="none" stroke="{gold}" stroke-width="1.4"/>
   <path d="M88 121 Q102 111 116 121" fill="none" stroke="{teal}" stroke-width="1.7" stroke-dasharray="1 2"/>
-  {svg_label("AZ–ÇOK")}
+  {svg_label("dimmer", locale)}
 </g>
 <g id="scene-fire-engine" transform="translate(-120 0)" stroke="{ink}" stroke-linecap="round" stroke-linejoin="round">
   <path d="M154 106 Q154 94 162 92 Q170 94 170 106 Z" fill="{red}" stroke-width="1.4"/>
@@ -142,11 +157,14 @@ def educational_scenes_svg():
   <circle cx="149" cy="112" r="4" fill="{red_dark}" stroke-width="1.4"/>
   <circle cx="178" cy="112" r="4" fill="{red_dark}" stroke-width="1.4"/>
   <path d="M137 114 H188" fill="none" stroke-width="2"/>
-  {svg_label("İTFAİYE")}
+  {svg_label("fire_engine", locale)}
 </g>"""
 
 
-def generate_svg():
+def generate_svg(locale="en"):
+    font_css = svg_font_faces(
+        "../../assets/fonts" if locale == "tr" else "../assets/fonts"
+    )
     panels = [
         (15, 8, 54, 72, PALETTE["red"]),
         (75, 8, 54, 72, PALETTE["yellow"]),
@@ -157,13 +175,14 @@ def generate_svg():
     ]
     parts = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<svg xmlns="http://www.w3.org/2000/svg" width="204mm" height="164mm" viewBox="0 0 204 164" font-family="Arial, sans-serif">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="204mm" height="164mm" viewBox="0 0 204 164">',
+        f"<style>{font_css}text{{font-family:'DejaVu Sans',sans-serif}}</style>",
         f'<rect width="204" height="164" rx="15" fill="{PALETTE["background"]}"/>',
     ]
     for x, y, width, height, color in panels:
         x = LABEL["width"] - x - width
         parts.append(f'<rect x="{x}" y="{y}" width="{width}" height="{height}" rx="12" fill="{color}"/>')
-    parts.append(educational_scenes_svg())
+    parts.append(educational_scenes_svg(locale))
     parts.extend(cutout_svg(feature) for feature in PANEL_FEATURES)
     parts.append('<rect id="trim-line" x="2" y="2" width="200" height="160" rx="14" fill="none" stroke="#D84A4A" stroke-width="0.3" stroke-dasharray="2 1"/>')
     parts.append('</svg>')
@@ -188,18 +207,21 @@ def draw_line_mm(draw, points, fill, width, joint="curve"):
 
 
 def draw_label(draw, x, y, text, size=3.8):
-    font = ImageFont.truetype(
-        "/System/Library/Fonts/Supplemental/Arial Bold.ttf", px(size)
+    draw.text(
+        point_mm(x, y),
+        text,
+        font=font(size, bold=True),
+        fill=SCENE["navy"],
+        anchor="mm",
     )
-    draw.text(point_mm(x, y), text, font=font, fill=SCENE["navy"], anchor="mm")
 
 
-def draw_named_label(draw, text):
-    x, y, size = LABEL_SPECS[text]
+def draw_named_label(draw, scene, locale):
+    text, x, y, size = LABEL_COPY[locale][scene]
     draw_label(draw, x, y, text, size)
 
 
-def draw_educational_scenes(draw):
+def draw_educational_scenes(draw, locale="en"):
     ink = SCENE["navy"]
     gold = SCENE["gold"]
     cream = SCENE["cream"]
@@ -213,7 +235,7 @@ def draw_educational_scenes(draw):
     draw_line_mm(draw, ((24, 52), (35, 52)), ink, 2.2)
     for start, end in (((22, 30), (17, 30)), ((25, 22), (21, 18)), ((59, 30), (64, 30)), ((56, 22), (60, 18))):
         draw_line_mm(draw, (start, end), gold, 1.8)
-    draw_named_label(draw, "LAMBA")
+    draw_named_label(draw, "table_lamp", locale)
 
     # Hanging bulb.
     draw_line_mm(draw, ((102, 8), (102, 20)), ink, 1.8)
@@ -221,7 +243,7 @@ def draw_educational_scenes(draw):
     draw.rectangle(mm_box((98, 36, 106, 42)), fill=cream, outline=ink, width=px(1.2))
     for start, end in (((88, 27), (83, 27)), ((91, 19), (87, 15)), ((116, 27), (121, 27)), ((113, 19), (117, 15))):
         draw_line_mm(draw, (start, end), gold, 1.8)
-    draw_named_label(draw, "AMPUL")
+    draw_named_label(draw, "hanging_bulb", locale)
 
     # Lighthouse with the real green LED as its beacon.
     draw.polygon([point_mm(*p) for p in ((153, 34), (162, 20), (171, 34))], fill=gold)
@@ -231,7 +253,7 @@ def draw_educational_scenes(draw):
     draw_line_mm(draw, ((155, 41), (169, 37)), red, 2.2)
     for start, end in (((150, 26), (142, 26)), ((174, 26), (182, 26)), ((151, 20), (145, 16)), ((173, 20), (179, 16))):
         draw_line_mm(draw, (start, end), gold, 2)
-    draw_named_label(draw, "FENER")
+    draw_named_label(draw, "lighthouse", locale)
 
     # Room lamp and wall switch.
     draw_line_mm(draw, ((42, 89), (42, 96)), ink, 1.6)
@@ -240,7 +262,7 @@ def draw_educational_scenes(draw):
     draw.rounded_rectangle(mm_box((28, 118, 56, 145)), radius=px(4), fill=cream, outline=ink, width=px(1.3))
     for start, end in (((34, 111), (31, 115)), ((42, 111), (42, 116)), ((50, 111), (53, 115))):
         draw_line_mm(draw, (start, end), gold, 1.6)
-    draw_named_label(draw, "AÇ/KAPAT")
+    draw_named_label(draw, "room_switch", locale)
 
     # Dimmer: moon to sun, with the real dial centered below the lesson.
     draw.ellipse(mm_box((77, 102, 91, 116)), fill=cream, outline=ink, width=px(1.3))
@@ -249,7 +271,7 @@ def draw_educational_scenes(draw):
     for start, end in (((120, 100), (120, 97)), ((120, 118), (120, 121)), ((111, 109), (108, 109)), ((129, 109), (132, 109))):
         draw_line_mm(draw, (start, end), gold, 1.4)
     draw.arc(mm_box((87, 113, 117, 132)), 200, 340, fill=teal, width=px(1.7))
-    draw_named_label(draw, "AZ–ÇOK")
+    draw_named_label(draw, "dimmer", locale)
 
     # Fire engine: buzzer holes become its roof siren; blue button becomes a wheel.
     draw.pieslice(mm_box((154, 92, 170, 108)), 180, 360, fill=red, outline=ink, width=px(1.4))
@@ -260,7 +282,7 @@ def draw_educational_scenes(draw):
     draw_line_mm(draw, ((142, 100), (183, 90)), cream, 1.6)
     draw.ellipse(mm_box((145, 108, 153, 116)), fill=SCENE["red_dark"], outline=ink, width=px(1.4))
     draw.ellipse(mm_box((174, 108, 182, 116)), fill=SCENE["red_dark"], outline=ink, width=px(1.4))
-    draw_named_label(draw, "İTFAİYE")
+    draw_named_label(draw, "fire_engine", locale)
 
 
 def draw_round_component(draw, center, outer_diameter, color):
@@ -300,8 +322,8 @@ def draw_led_component(draw, center, diameter, color):
     )
 
 
-def draw_assembled_preview():
-    image = draw_preview().convert("RGB")
+def draw_assembled_preview(locale="en"):
+    image = draw_preview(locale).convert("RGB")
     draw = ImageDraw.Draw(image)
     draw_round_component(draw, front_view_point((42, 59)), 17.5, "#DF4C52")
     draw_round_component(draw, (102, 59), 17.5, "#F1C52F")
@@ -324,7 +346,7 @@ def draw_assembled_preview():
     return image
 
 
-def draw_preview():
+def draw_preview(locale="en"):
     image = Image.new("RGB", (px(LABEL["width"]), px(LABEL["height"])), PALETTE["background"])
     draw = ImageDraw.Draw(image)
     panels = [
@@ -338,7 +360,7 @@ def draw_preview():
     for x1, y1, x2, y2, color in panels:
         draw.rounded_rectangle(mm_box((x1, y1, x2, y2)), radius=px(12), fill=color)
 
-    draw_educational_scenes(draw)
+    draw_educational_scenes(draw, locale)
 
     bleed = LABEL["bleed"]
     for feature in PANEL_FEATURES:
@@ -373,7 +395,7 @@ def draw_preview():
     return image
 
 
-def generate_a4_pdf(label):
+def generate_a4_pdf(label, locale="en"):
     page = Image.new("RGB", (px(210), px(297)), "white")
     left = round((page.width - label.width) / 2)
     top = px(12)
@@ -385,24 +407,38 @@ def generate_a4_pdf(label):
         outline="black",
         width=3,
     )
-    draw.text((square_left + px(24), square_top + px(6)), "20 mm KONTROL KARESI", fill="black")
+    draw.text(
+        (square_left + px(24), square_top + px(6)),
+        LABEL_COPY[locale]["control_square"],
+        font=font(3),
+        fill="black",
+    )
     return page
 
 
 def main():
-    output = Path("artwork")
-    output.mkdir(parents=True, exist_ok=True)
-    (output / "activity-box-label.svg").write_text(generate_svg(), encoding="utf-8")
-    preview = draw_preview()
-    preview.save(output / "activity-box-label-preview.png", dpi=(LABEL["dpi"], LABEL["dpi"]))
-    draw_assembled_preview().save(
-        output / "activity-box-assembled-preview.png",
-        dpi=(LABEL["dpi"], LABEL["dpi"]),
-    )
-    generate_a4_pdf(preview).save(
-        output / "activity-box-label-a4.pdf", "PDF", resolution=float(LABEL["dpi"])
-    )
-    print("wrote sticker SVG, PNG, and A4 PDF")
+    for locale, output in (("en", Path("artwork")), ("tr", Path("artwork/tr"))):
+        output.mkdir(parents=True, exist_ok=True)
+        (output / "activity-box-label.svg").write_text(
+            generate_svg(locale), encoding="utf-8"
+        )
+        preview = draw_preview(locale)
+        preview.save(
+            output / "activity-box-label-preview.png",
+            dpi=(LABEL["dpi"], LABEL["dpi"]),
+        )
+        draw_assembled_preview(locale).save(
+            output / "activity-box-assembled-preview.png",
+            dpi=(LABEL["dpi"], LABEL["dpi"]),
+        )
+        generate_a4_pdf(preview, locale).save(
+            output / "activity-box-label-a4.pdf",
+            "PDF",
+            resolution=float(LABEL["dpi"]),
+            creationDate=False,
+            modDate=False,
+        )
+    print("wrote English and Turkish sticker SVG, PNG, and A4 PDF sets")
 
 
 if __name__ == "__main__":

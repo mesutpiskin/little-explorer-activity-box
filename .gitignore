@@ -4,3 +4,6 @@ __pycache__/
 .pytest_cache/
 .coverage
 
+# Local measurements and annotated fit-test results; never publish these.
+/local/
+/output/stl/*.stl

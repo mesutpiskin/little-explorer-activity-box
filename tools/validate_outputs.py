@@ -4,6 +4,7 @@ import argparse
 from collections import Counter
 from pathlib import Path
 import re
+import subprocess
 import struct
 import sys
 
@@ -24,12 +25,28 @@ STL_OUTPUTS = [
 ]
 
 NON_STL_OUTPUTS = [
+    Path("README.md"),
+    Path("README.tr.md"),
+    Path("CONTRIBUTING.md"),
+    Path("CONTRIBUTING.tr.md"),
+    Path("LICENSE"),
+    Path("LICENSES/MIT.txt"),
+    Path("LICENSES/README.md"),
+    Path("LICENSES/README.tr.md"),
+    Path("requirements.txt"),
+    Path("assets/fonts/DejaVuSans.ttf"),
+    Path("assets/fonts/DejaVuSans-Bold.ttf"),
+    Path("assets/fonts/LICENSE.txt"),
     Path("cad/activity_box.scad"),
     Path("cad/generated_dimensions.scad"),
     Path("artwork/activity-box-label.svg"),
     Path("artwork/activity-box-label-a4.pdf"),
     Path("artwork/activity-box-label-preview.png"),
     Path("artwork/activity-box-assembled-preview.png"),
+    Path("artwork/tr/activity-box-label.svg"),
+    Path("artwork/tr/activity-box-label-a4.pdf"),
+    Path("artwork/tr/activity-box-label-preview.png"),
+    Path("artwork/tr/activity-box-assembled-preview.png"),
     Path("docs/circuit.svg"),
     Path("docs/component-fit-test-guide.svg"),
     Path("docs/component-fit-test-guide.png"),
@@ -37,9 +54,76 @@ NON_STL_OUTPUTS = [
     Path("docs/component-placement-guide.png"),
     Path("docs/BOM.csv"),
     Path("docs/assembly.md"),
+    Path("docs/tr/circuit.svg"),
+    Path("docs/tr/component-fit-test-guide.svg"),
+    Path("docs/tr/component-fit-test-guide.png"),
+    Path("docs/tr/component-placement-guide.svg"),
+    Path("docs/tr/component-placement-guide.png"),
+    Path("docs/tr/BOM.csv"),
+    Path("docs/tr/assembly.md"),
+    Path("output/stl/README.md"),
+    Path("output/stl/README.tr.md"),
 ]
 
 REQUIRED_OUTPUTS = NON_STL_OUTPUTS + STL_OUTPUTS
+
+PUBLIC_TEXT_SUFFIXES = {
+    ".csv",
+    ".json",
+    ".md",
+    ".py",
+    ".scad",
+    ".svg",
+    ".toml",
+    ".txt",
+    ".yaml",
+    ".yml",
+}
+PRIVATE_REFERENCE_PATTERNS = (
+    re.compile("/" + r"Users/[^/\s]+", re.IGNORECASE),
+    re.compile("/" + r"home/[^/\s]+", re.IGNORECASE),
+    re.compile(r"\b[A-Z]:[\\/]+Users[\\/]+[^\\/\s]+", re.IGNORECASE),
+    re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE),
+    re.compile("şirket " + "bilgisayar", re.IGNORECASE),
+)
+
+
+def public_text_files(root):
+    """Yield publishable text artifacts while ignoring local and VCS state."""
+    excluded_parts = {".git", ".pytest_cache", "__pycache__", "local"}
+    try:
+        result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(root),
+                "ls-files",
+                "--cached",
+                "--others",
+                "--exclude-standard",
+                "-z",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except FileNotFoundError:
+        result = None
+
+    if result is not None and result.returncode == 0:
+        candidates = (root / relative for relative in result.stdout.split("\0") if relative)
+    else:
+        candidates = root.rglob("*")
+
+    for path in candidates:
+        if not path.is_file() or excluded_parts.intersection(path.relative_to(root).parts):
+            continue
+        if path.suffix.casefold() in PUBLIC_TEXT_SUFFIXES or path.name in {
+            ".gitignore",
+            "LICENSE",
+            "Makefile",
+        }:
+            yield path
 
 
 def read_stl_triangles(path):
@@ -131,47 +215,45 @@ def validate_project(root, allow_missing_stl=False):
             if any(actual > limit for actual, limit in zip(bounds, limits)):
                 errors.append(f"body exceeds envelope: {bounds}")
 
-    svg_path = root / "artwork/activity-box-label.svg"
-    if svg_path.exists():
-        svg = svg_path.read_text(encoding="utf-8")
-        if f'width="{LABEL["width"]}mm"' not in svg or f'height="{LABEL["height"]}mm"' not in svg:
-            errors.append("label SVG physical dimensions are incorrect")
+    for artwork_dir in (Path("artwork"), Path("artwork/tr")):
+        svg_path = root / artwork_dir / "activity-box-label.svg"
+        if svg_path.exists():
+            svg = svg_path.read_text(encoding="utf-8")
+            if (
+                f'width="{LABEL["width"]}mm"' not in svg
+                or f'height="{LABEL["height"]}mm"' not in svg
+            ):
+                errors.append(f"label SVG physical dimensions are incorrect: {svg_path}")
 
-    png_path = root / "artwork/activity-box-label-preview.png"
-    if png_path.exists():
-        with Image.open(png_path) as image:
-            expected = (
-                round(LABEL["width"] * LABEL["dpi"] / 25.4),
-                round(LABEL["height"] * LABEL["dpi"] / 25.4),
-            )
-            if image.size != expected:
-                errors.append(f"label PNG dimensions {image.size}, expected {expected}")
+        png_path = root / artwork_dir / "activity-box-label-preview.png"
+        if png_path.exists():
+            with Image.open(png_path) as image:
+                expected = (
+                    round(LABEL["width"] * LABEL["dpi"] / 25.4),
+                    round(LABEL["height"] * LABEL["dpi"] / 25.4),
+                )
+                if image.size != expected:
+                    errors.append(
+                        f"label PNG dimensions {image.size}, expected {expected}: {png_path}"
+                    )
 
-    pdf_path = root / "artwork/activity-box-label-a4.pdf"
-    if pdf_path.exists() and not pdf_path.read_bytes().startswith(b"%PDF"):
-        errors.append("A4 label is not a PDF")
+        pdf_path = root / artwork_dir / "activity-box-label-a4.pdf"
+        if pdf_path.exists() and not pdf_path.read_bytes().startswith(b"%PDF"):
+            errors.append(f"A4 label is not a PDF: {pdf_path}")
 
     for name, forward_voltage in ELECTRICAL["led_forward_voltages"].items():
         current = (ELECTRICAL["supply_max"] - forward_voltage) / ELECTRICAL["resistor"]
         if current > 0.020:
             errors.append(f"{name} LED current exceeds 20 mA: {current * 1000:.2f} mA")
 
-    text_outputs = [
-        Path("cad/activity_box.scad"),
-        Path("cad/generated_dimensions.scad"),
-        Path("artwork/activity-box-label.svg"),
-        Path("docs/circuit.svg"),
-        Path("docs/component-fit-test-guide.svg"),
-        Path("docs/component-placement-guide.svg"),
-        Path("docs/BOM.csv"),
-        Path("docs/assembly.md"),
-    ]
-    for relative in text_outputs:
-        path = root / relative
-        if path.exists():
-            text = path.read_text(encoding="utf-8-sig")
-            if re.search(r"\b(?:TODO|TBD)\b", text, flags=re.IGNORECASE):
-                errors.append(f"placeholder found in {relative}")
+    for path in public_text_files(root):
+        relative = path.relative_to(root)
+        text = path.read_text(encoding="utf-8-sig")
+        placeholder_pattern = r"\b(?:TO" + r"DO|T" + r"BD)\b"
+        if re.search(placeholder_pattern, text, flags=re.IGNORECASE):
+            errors.append(f"placeholder found in {relative}")
+        if any(pattern.search(text) for pattern in PRIVATE_REFERENCE_PATTERNS):
+            errors.append(f"private environment reference found in {relative}")
 
     return errors, warnings
 

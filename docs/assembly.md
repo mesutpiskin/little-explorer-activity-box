@@ -1,121 +1,116 @@
-# Montaj ve kontrol kılavuzu
+# Assembly and verification guide
 
-## Önemli güvenlik notu
+## Important safety notice
 
-Bu ev yapımı ürün sertifikalı bir oyuncak değildir. 18 aylık çocuk yalnızca
-yetişkin gözetiminde kullanmalıdır. Kırılan, çatlayan, gevşeyen veya ısınan bir
-parça görülürse pilleri hemen çıkarın. Lityum pil kullanmayın. Vida olmaması,
-kapağın veya parçaların düzenli çekme kontrolü gereğini ortadan kaldırmaz.
+This community hardware project is not a certified toy. A child aged 18
+months must use it only under direct adult supervision. Remove the batteries
+immediately if any part cracks, loosens, or becomes warm. Do not use lithium
+batteries. A screwless enclosure still requires regular pull testing of the
+back plate and every exposed component.
 
-## 1. Test baskısında doğrulanan ölçüler
+## 1. Verified fit dimensions
 
-Komponent test kuponuyla ana delikler 10 mm LED için 10,2 mm, DC184 için
-12,0 mm, DC180 için 16,0 mm ve DC131A için 20,2 mm olarak doğrulandı. Pot
-burcu 7,0 mm, pot mili 6,2 mm ve DC120 kesiti 19,0×13,0 mm seçildi. Buzzer
-kabı test edildi; 34 mm çark açıklığı varsayılan ölçüde bırakıldı. Yazıcı,
-filament veya komponent partisi değişirse tam gövdeden önce test kuponunu
-yeniden basın ve gerekirse `tools/project_spec.py` değerlerini düzeltin.
+The component coupon confirmed 10.2 mm for 10 mm LEDs, 12.0 mm for DC184,
+16.0 mm for DC180, and 20.2 mm for DC131A. The selected potentiometer sizes
+are a 7.0 mm bushing hole and a 6.2 mm shaft socket. The DC120 cutout is
+19.0×13.0 mm. The buzzer cup was tested and the dial opening remains 34 mm.
+Print the coupon again whenever the printer, filament, or component batch
+changes, then update `tools/project_spec.py` if needed.
 
-## 2. Önce komponent test kuponu
+## 2. Print the component coupon first
 
-`component-fit-test.stl` yatay tutulduğunda delikler soldan sağa şöyledir:
+With `component-fit-test.stl` horizontal, read the openings from left to right:
 
-![Komponent test plakası kılavuzu](component-fit-test-guide.png)
+![Component fit-test guide](component-fit-test-guide.png)
 
-- Üst sıra: LED 10,0 / 10,2; DC184 12,0 / 12,2; DC180 16,0 / 16,2;
-  DC131A 20,0 / 20,2; en sağda 12 mm buzzer kabı.
-- Alt sıra: pot burcu 7,0 / 7,2; mil yuvası 5,8 / 6,0 / 6,2;
-  DC120 19,0×13,0 / 19,4×13,4; 34 mm çark açıklığı.
+- Top row: LED 10.0 / 10.2; DC184 12.0 / 12.2; DC180 16.0 / 16.2;
+  DC131A 20.0 / 20.2; 12 mm buzzer cup at the far right.
+- Bottom row: pot bushing 7.0 / 7.2; shaft socket 5.8 / 6.0 / 6.2;
+  DC120 19.0×13.0 / 19.4×13.4; 34 mm dial opening.
 
-Parça zorlamadan girmeli, somun veya tırnak bütün yüzeye oturmalı ve elle
-çekildiğinde çıkmamalıdır. En iyi seçeneğin ölçüsünü `project_spec.py` içine
-aktararak ana modeli yeniden üretin. İki 2×AA pil yuvası için ayrılan ortak
-bölme 62×68×18 mm'dir; bu ölçü de parçalar gelince doğrulanmalıdır.
+The part should enter without force while its nut or clips seat fully. It must
+not pull out by hand. Transfer the best dimension to `tools/project_spec.py`
+before regenerating the body. The shared bay for two 2×AA holders measures
+62×68×18 mm and must also be checked against the purchased parts.
 
-Ardından `snap-fit-test.stl` tolerans numunesini basın. Tırnak rahat girip tek
-elle çıkmamalıdır. Çok sıkıysa `clearance` değerini 0,10 mm artırın; gevşekse
-0,10 mm azaltın. Önerilen ayarlar: PETG, 0,20 mm katman, en az dört çevre, beş
-alt/üst katman ve yüzde 25 dolgu. Katman ayrılması, sivri çapak veya tırnak
-çatlağı olan parçayı kullanmayın.
+Print `snap-fit-test.stl` next. The tab should engage easily but resist opening
+with one hand. Increase `clearance` by 0.10 mm if too tight or reduce it by
+0.10 mm if loose. Recommended print settings: PETG, 0.20 mm layers, at least
+four walls, five top/bottom layers, and 25% infill. Reject parts with sharp
+burrs, layer separation, or cracked clips.
 
-## 3. Etiket
+## 3. Apply the label
 
-`artwork/activity-box-label-a4.pdf` dosyasını **gerçek boyut / yüzde 100**
-seçeneğiyle, sayfaya sığdırmayı kapatarak basın. Önce 20 mm kontrol karesi tam
-20 mm geliyor mu ölçün. Normal beyaz yapışkanlı kâğıtta “ayna/transfer”
-seçeneğini kapalı tutun; baskılı yüz dışa bakmalıdır. Kırmızı dış kesim
-çizgisinden kesin; komponent boşluklarını yalnızca yetişkin hazırlamalıdır.
-Yüzeyi yağdan arındırın, etiketi deliklere hizalayın ve ortadan kenarlara doğru
-yapıştırın.
+Print `artwork/activity-box-label-a4.pdf` at **actual size / 100%** with
+“fit to page” disabled. Verify that the control square measures exactly 20 mm.
+For ordinary white adhesive paper, keep mirror/transfer printing disabled; the
+printed face points outward. Cut on the red trim line and have an adult remove
+the component openings. Degrease the panel, align the label to the holes, and
+apply it from the center outward.
 
-## 4. Ön yüz parçaları
+## 4. Install front-panel components
 
-![Bileşen yerleşim şeması](component-placement-guide.png)
+![Component placement guide](component-placement-guide.png)
 
-10 mm LED'leri kutunun içinden dışarı doğru yerleştirin. Lens 10,2 mm delikten
-çıkar, daha geniş LED flanşı içeride kalıp dışarı çekilmeyi mekanik olarak
-engeller. Açık baskı halkası flanş çevresini korur. Halkaya az miktarda
-nötr kürlenen silikon uygulayın; silikon yalnızca titreşim desteğidir, tek mekanik
-tutucu değildir. Uzun bacak artı, kısa bacak veya düz kenar eksidir.
+Insert each 10 mm LED from inside the enclosure. The lens passes through the
+10.2 mm hole while the wider flange remains inside as the mechanical retainer.
+Apply a small amount of neutral-cure silicone around the printed guard for
+vibration support only. Keep silicone away from the lens. The long lead is
+positive; the short lead or flat edge is negative.
 
-Kırmızı ve sarı DC184'leri, siyah ve mavi DC180'leri somunlarıyla sabitleyin.
-DC131A'yı 20,2 mm deliğe, kendi somunuyla takın. Çarkı içeriden 34 mm açıklığa
-sokun; 46 mm flanşı içeride kalmalıdır. 1K potu baskı köprüsüne somunlayın ve
-mil için kuponda seçilen yuva çapını kullanın. Buzzer'ı açık yüzü ses deliklerine
-bakacak biçimde baskı kabına yerleştirip kenarından sabitleyin.
+Secure the red and yellow DC184 buttons and the black and blue DC180 buttons
+with their nuts. Fit the DC131A in the 20.2 mm opening. Insert the dial from
+inside the 34 mm opening; its 36 mm diameter, 4 mm thick flange remains captive
+and clears the LED guard. Fasten the 1K pot to the printed bridge, using the
+shaft socket selected with the coupon. Place the buzzer in its cup with its
+opening toward the sound holes and retain it only around the edge.
 
-## 5. İki pil yuvasını seri bağlama ve ana güç
+## 5. Wire the battery holders and main power
 
-Piller takılı değilken iki pil yuvasını seri bağlayın:
+With all batteries removed, connect the holders in series:
 
-1. Yuva A siyah kablo → sistem eksi dağıtım hattı.
-2. Yuva A kırmızı kablo → Yuva B siyah kablo; ek yerini lehimleyip makaronla
-   tamamen kapatın.
-3. Yuva B kırmızı kablo → 1 A sigorta → DC120 2P ana güç anahtarı → sistem
-   artı dağıtım hattı.
+1. Holder A black wire → system negative bus.
+2. Holder A red wire → Holder B black wire; solder and fully cover the joint
+   with heat-shrink tubing.
+3. Holder B red wire → 1 A fuse → DC120 2P main switch → system positive bus.
 
-Bu bağlantı dört AA pili seri yapar: nominal 6 V, taze alkalin pillerle en çok
-yaklaşık 6,4 V. İki pil yuvasına da aynı marka, tip ve dolulukta pil takın.
+This produces four AA cells in series: 6 V nominal and approximately 6.4 V
+with fresh alkaline cells. Use matching cells of the same brand, chemistry,
+and state of charge in both holders.
 
-## 6. Altı paralel kol
+## 6. Wire the six parallel branches
 
-1. Artı hat → kırmızı DC184 → 330 ohm 1 W → kırmızı LED uzun bacak; LED kısa
-   bacak → eksi hat.
-2. Artı hat → sarı DC184 → 330 ohm 1 W → sarı LED → eksi hat.
-3. Artı hat → siyah DC180 → 330 ohm 1 W → yeşil LED → eksi hat.
-4. Artı hat → DC131A anahtar kontakları → 330 ohm 1 W → mavi LED → eksi hat.
-   DC131A'nın 12 V lamba ucu boş kalır. Pin dizilimini varsaymayın; kullanılacak
-   iki anahtar kontağını multimetrenin süreklilik moduyla bulun.
-5. Artı hat → 1K potun birbirine bağlı orta ucu ve bir dış ucu → 330 ohm 1 W
-   → beyaz LED → eksi hat. Potun diğer dış ucu boş kalır.
-6. Artı hat → mavi DC180 → aktif buzzer artı; buzzer eksi → eksi hat.
+1. Positive → red DC184 → 330 ohm 1 W → red LED long lead; short lead → negative.
+2. Positive → yellow DC184 → 330 ohm 1 W → yellow LED → negative.
+3. Positive → black DC180 → 330 ohm 1 W → green LED → negative.
+4. Positive → DC131A switch contacts → 330 ohm 1 W → blue LED → negative.
+   Leave the DC131A 12 V lamp terminal disconnected. Do not assume pin order;
+   identify the two switch contacts with a multimeter in continuity mode.
+5. Positive → joined pot wiper and one outer terminal → 330 ohm 1 W → white
+   LED → negative. Leave the other outer pot terminal disconnected.
+6. Positive → blue DC180 → active buzzer positive; buzzer negative → negative.
 
-Dirençlerin yönü yoktur; her LED kendi 330 ohm direncini kullanır. 1 W direnç
-elektriksel olarak uygundur, yalnızca 0,25 W tipten fiziksel olarak büyüktür.
-Kalıcı oyuncakta breadboard kullanmayın ve jumper kablo bırakmayın. Çok telli
-kabloyu lehimleyip her açık ek yerine ısıyla daralan makaron uygulayın.
+Resistors have no polarity, and every LED requires its own 330 ohm resistor.
+The 1 W resistor is electrically suitable but physically larger than a 0.25 W
+part. Do not leave breadboards or loose jumper wires in the finished product.
+Use stranded wire, solder every joint, and cover all exposed conductors with
+heat-shrink tubing.
 
-## 7. Elektrik kontrolü
+## 7. Electrical verification
 
-Piller yokken artı ve eksi arasında kısa devre olmadığını multimetreyle
-doğrulayın. Ana güç kapalıyken pil akımı sıfır olmalıdır. Taze pillerle teorik
-en yüksek LED akımları kırmızıda yaklaşık 13,3 mA, sarıda 13,0 mA, yeşil/mavi/
-beyazda 10,3 mA'dır; her kolu ayrı çalıştırıp ölçülen değerin 20 mA altında
-olduğunu kontrol edin. Buzzer'ı birkaç saniye deneyin; sesi fazla yüksekse önüne
-ince keçe koyun, ses deliklerini tamamen kapatmayın.
+With batteries removed, use a multimeter to verify there is no short between
+the positive and negative buses. Battery current must be zero when DC120 is
+off. With fresh cells, theoretical maximum LED currents are approximately
+13.3 mA red, 13.0 mA yellow, and 10.3 mA green/blue/white. Test one branch at a
+time and confirm each measured LED current stays below 20 mA. Sound the buzzer
+for only a few seconds; if it is too loud, place thin felt in front without
+blocking every sound hole.
 
-## 8. Kapatma ve son mekanik kontrol
+## 8. Close and inspect the enclosure
 
-İki pil yuvasını arka kapaktaki ayrı raylara yerleştirip kabloların tırnaklara
-gelmediğini kontrol edin. Kapağın dilini gövdenin yivine düz biçimde bastırın;
-dört tırnak oturmalıdır. Kapak, karşılıklı iki servis mandalı aynı anda ince iki
-aletle bastırılmadan elle açılmamalıdır. Her buton, LED, anahtar ve çarkı önden
-kuvvetlice çekerek gevşeklik kontrolü yapın. İlk kullanımdan sonra ve ardından
-her hafta bu kontrolü tekrarlayın.
-
-## Kullanılmayan satın alınmış parçalar
-
-Mini breadboardlar, 22 mm devresiz buzzer, DHT11, 4,7K/22K potlar, toggle
-anahtarlar ve diğer ışıklı anahtarlar bu basit devrede kullanılmaz. Ayrıntılı
-renkli şema `docs/circuit.svg` dosyasındadır; mikrodenetleyici veya elektronik
-kart gerekmez.
+Place the two battery holders in their separate rear rails and keep wires away
+from all clips. Press the back plate tongue squarely into the body groove until
+all four clips engage. The back must not open by hand unless both opposing
+service latches are pressed at the same time with two thin tools. Pull-test
+every button, LED, switch, and the dial before each use. Do not give the box to
+the child if any part moves, cracks, or loosens.

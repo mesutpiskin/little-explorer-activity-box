@@ -27,25 +27,25 @@ class FitGuideTest(unittest.TestCase):
             "DC184",
             "DC180",
             "DC131A",
-            "12 mm AKTİF BUZZER",
-            "POT BURCU",
-            "POT MİLİ",
+            "12 mm ACTIVE BUZZER",
+            "POT BUSHING",
+            "POT SHAFT",
             "DC120",
-            "ÇARK AÇIKLIĞI",
-            "10,0",
-            "10,2",
-            "12,0",
-            "12,2",
-            "16,0",
-            "16,2",
-            "20,0",
-            "20,2",
-            "5,8",
-            "6,0",
-            "6,2",
-            "19,0×13,0",
-            "19,4×13,4",
-            "Ø34,0",
+            "DIAL OPENING",
+            "10.0",
+            "10.2",
+            "12.0",
+            "12.2",
+            "16.0",
+            "16.2",
+            "20.0",
+            "20.2",
+            "5.8",
+            "6.0",
+            "6.2",
+            "19.0×13.0",
+            "19.4×13.4",
+            "Ø34.0",
         ):
             self.assertIn(label, text)
 
@@ -57,7 +57,7 @@ class FitGuideTest(unittest.TestCase):
 
     def test_readme_displays_fit_guide(self):
         text = pathlib.Path("README.md").read_text(encoding="utf-8")
-        self.assertIn("![Komponent test plakası kılavuzu]", text)
+        self.assertIn("![Component fit-test guide]", text)
         self.assertIn("docs/component-fit-test-guide.png", text)
 
 

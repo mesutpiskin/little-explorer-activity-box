@@ -1,202 +1,176 @@
-# Minik Keşif Kutusu
+# Little Explorer Activity Box
 
-Elektronik kart veya yazılım kullanmadan hazırlanan, ışık–renk–ses ilişkisini
-öğreten bir etkinlik kutusu. Kutu 200 × 160 × 52 mm'dir; geçmeli arka kapağı
-vardır ve seri bağlanan iki adet 2×AA pil yuvasıyla çalışır.
+[English](README.md) | [Türkçe](README.tr.md)
 
-![Tamamlanmış kutu ön izlemesi](artwork/activity-box-assembled-preview.png)
+A no-code, no-PCB activity box that teaches cause and effect through lights,
+switches, a dimmer, and sound. The enclosure is parametric, printable on a
+standard 3D printer, and closed with serviceable snap fits instead of screws.
+
+![Completed activity box](artwork/activity-box-assembled-preview.png)
 
 > [!WARNING]
-> Bu proje sertifikalı bir oyuncak değildir. 18 aylık çocuk yalnızca bir
-> yetişkinin doğrudan gözetiminde kullanmalıdır. Her kullanımdan önce kapağı,
-> anahtarları, LED'leri ve çarkı çekerek gevşeklik kontrolü yapın.
+> This community hardware project is not a certified toy. A child aged 18
+> months must use it only under direct adult supervision. Pull-test every
+> exposed component and the back plate before each use. Remove the batteries
+> immediately if anything cracks, loosens, leaks, or becomes warm.
 
-## Ne öğretiyor?
+## What children can explore
 
-| Bölüm | Çocuğun yaptığı | Sonuç |
+| Activity | Input | Result |
 |---|---|---|
-| Lamba | Kırmızı DC184'e basar | Kırmızı LED yanar |
-| Ampul | Sarı DC184'e basar | Sarı LED yanar |
-| Fener | Siyah DC180'e basar | Yeşil LED yanar |
-| Aç/kapat | DC131A'yı değiştirir | Mavi LED açık kalır veya söner |
-| Az–çok | 1K pot çarkını çevirir | Beyaz LED'in parlaklığı değişir |
-| İtfaiye | Mavi DC180'e basar | 12 mm aktif buzzer çalar |
+| Lamp | Red DC184 button | Red LED lights |
+| Bulb | Yellow DC184 button | Yellow LED lights |
+| Beacon | Black DC180 button | Green LED lights |
+| On/off | DC131A switch | Blue LED stays on or off |
+| Dimmer | 1K potentiometer dial | White LED changes brightness |
+| Fire engine | Blue DC180 button | Active buzzer sounds |
 
-Elektronik bağlantıların tamamı basit paralel kollardan oluşur. Breadboard,
-mikrodenetleyici veya özel elektronik kart gerekmez.
+The six functions are simple parallel branches. No microcontroller,
+breadboard, firmware, or custom PCB is required.
 
-## Yapım sırası
+## Build order
 
-### 1. Malzemeleri hazırlayın
+### 1. Prepare the parts
 
-Temel parçalar:
+Core hardware:
 
-| Adet | Parça | Kullanıldığı yer |
+| Qty | Part | Purpose |
 |---:|---|---|
-| 2 | 2×AA yarı kapalı pil yuvası | Arka kapaktaki iki ray |
-| 4 | AA alkalin pil | İki yuvada, seri bağlantı |
-| 2 | DC184 anlık buton: kırmızı ve sarı | Lamba ve ampul |
-| 2 | DC180 anlık buton: siyah ve mavi | Fener ve buzzer |
-| 1 | DC131A 20 mm aç/kapat anahtar | Mavi LED |
-| 1 | DC120 2P aç/kapat anahtar | Kutunun sağ yanında ana güç |
-| 1 | 1K potansiyometre | Parlaklık çarkı |
-| 5 | 10 mm LED: kırmızı, sarı, yeşil, mavi, beyaz | Ön panel |
-| 5 | 330 Ω / 1 W direnç | Her LED için ayrı bir tane |
-| 1 | 12 mm aktif buzzer, 5–12 V | İtfaiye bölümü |
-| 1 | 1 A sigorta ve kapalı yuvası | Pil artı hattı |
-| — | Çok telli kablo, makaron, nötr kürlenen silikon | Güvenli montaj |
-| — | PETG filament | Gövde, kapak ve çark |
+| 2 | Semi-enclosed 2×AA battery holder | Four AA cells in series |
+| 4 | AA alkaline cell | Nominal 6 V supply |
+| 2 | DC184 momentary button, red and yellow | Red/yellow LED branches |
+| 2 | DC180 momentary button, black and blue | Green LED and buzzer |
+| 1 | DC131A 20 mm on/off switch | Blue LED branch |
+| 1 | DC120 2P on/off switch | Main power |
+| 1 | 1K potentiometer | White LED dimmer |
+| 5 | 10 mm LED: red, yellow, green, blue, white | Light outputs |
+| 5 | 330 Ω / 1 W resistor | One per LED |
+| 1 | 12 mm active buzzer, 5–12 V | Sound output |
+| 1 | 1 A fuse with enclosed holder | Battery short-circuit protection |
+| — | Stranded wire, heat-shrink, neutral-cure silicone | Safe assembly |
+| — | PETG filament | Body, back plate, and dial |
 
-Ayrıntılı ve yazdırılabilir liste: [docs/BOM.csv](docs/BOM.csv).
+See the printable [bill of materials](docs/BOM.csv) for exact specifications.
 
-### 2. Önce test parçalarını basın
+### 2. Print the test parts first
 
-OpenSCAD kurulu bir bilgisayarda:
+Generate the models with:
 
 ```sh
 make stl
 ```
 
-Önce yalnızca şu iki dosyayı yazdırın:
+Print these before the full enclosure:
 
-- `output/stl/component-fit-test.stl`: satın alınan komponentlerin delik ve mil
-  toleranslarını dener.
-- `output/stl/snap-fit-test.stl`: vidasız kapak tırnağını dener.
+- `output/stl/component-fit-test.stl` checks the purchased component sizes.
+- `output/stl/snap-fit-test.stl` checks the screwless back-plate clips.
 
-![Komponent test plakası kılavuzu](docs/component-fit-test-guide.png)
+![Component fit-test guide](docs/component-fit-test-guide.png)
 
-Komponent kuponunun üst sırasında soldan sağa LED, DC184, DC180, DC131A ve
-buzzer; alt sırasında pot burcu, üç pot mili yuvası, iki DC120 kesiti ve çark
-açıklığı bulunur. Her grupta soldaki seçenek daha sıkıdır. Parça zorlanmadan
-girmeli, fakat çekildiğinde çıkmamalıdır.
+The selected defaults are LED Ø10.2 mm, DC184 Ø12.0 mm, DC180 Ø16.0 mm,
+DC131A Ø20.2 mm, DC120 19.0×13.0 mm, pot bushing/shaft Ø7.0/Ø6.2 mm,
+and a Ø34 mm dial opening. If another fit works better, update
+[`tools/project_spec.py`](tools/project_spec.py) and run `make dimensions`.
 
-Varsayılan ana model ölçüleri:
+### 3. Print the enclosure
 
-| Parça | Kesit |
-|---|---:|
-| 10 mm LED | Ø10,2 mm |
-| DC184 | Ø12,0 mm |
-| DC180 | Ø16,0 mm |
-| DC131A | Ø20,2 mm |
-| DC120 | 19,0 × 13,0 mm |
-| Pot burcu / mil | Ø7,0 / Ø6,2 mm |
+`make stl` produces:
 
-Farklı ölçü daha iyi oturursa [tools/project_spec.py](tools/project_spec.py)
-içindeki ilgili değeri değiştirip `make dimensions` çalıştırın.
+- `activity-box-body.stl`
+- `activity-box-back.stl`
+- `activity-box-dial.stl`
+- `snap-fit-test.stl`
+- `component-fit-test.stl`
 
-### 3. Ana parçaları basın
+Recommended settings: PETG, 0.20 mm layers, at least four walls, five top and
+bottom layers, and 25% infill. The captive dial uses a Ø36 mm × 4 mm flange
+inside a Ø34 mm panel opening.
 
-`make stl` şu parçaları `output/stl/` altında üretir:
+### 4. Print and apply the label
 
-- `activity-box-body.stl` — gövde
-- `activity-box-back.stl` — geçmeli arka kapak ve çift pil bölmesi
-- `activity-box-dial.stl` — çocuk tarafından çıkarılamayan dimmer çarkı
+Print [the A4 label](artwork/activity-box-label-a4.pdf) at **actual size / 100%**
+with “fit to page” and mirror/transfer printing disabled. The control square
+must measure exactly 20 mm. Apply the label before installing components.
 
-Öneri: PETG, 0,20 mm katman, en az dört duvar, beş alt/üst katman ve yüzde 25
-dolgu. Gövdeyi ön yüzü, kapağı dış yüzü, çarkı geniş flanşı tabla üzerinde
-olacak şekilde basın. Baskı ayrıntıları için
-[montaj kılavuzuna](docs/assembly.md) bakın.
+Editable vector source: [activity-box-label.svg](artwork/activity-box-label.svg).
 
-### 4. Etiketi hazırlayın
+### 5. Install the components
 
-[A4 etiket PDF'sini](artwork/activity-box-label-a4.pdf) yüzde 100 / gerçek
-boyutta ve “sayfaya sığdır” kapalıyken yapışkanlı kâğıda basın. Sayfadaki
-kontrol karesi tam 20 mm olmalıdır. Normal beyaz yapışkanlı kâğıtta yazıcı
-ayarındaki “ayna/transfer” seçeneği kapalı olmalıdır; baskılı yüz dışa bakar.
+![Component placement guide](docs/component-placement-guide.png)
 
-1. Kırmızı dış kesim çizgisinden etiketi kesin.
-2. Beyaz komponent boşluklarını çıkarın.
-3. Gövde ön yüzünü temizleyin.
-4. Etiketi, komponentler takılmadan önce deliklere hizalayıp yapıştırın.
+Insert LEDs from inside so their wider flange remains captive. Use component
+nuts or built-in clips as the primary retainers. Neutral-cure silicone may
+support LEDs against vibration but must not be the only mechanical retention.
+Keep the buzzer sound holes open.
 
-Vektör kaynak dosyası: [artwork/activity-box-label.svg](artwork/activity-box-label.svg).
+The complete procedure is in the [assembly guide](docs/assembly.md).
 
-### 5. Bileşenleri yerleştirin
+### 6. Wire the circuit
 
-![Bileşen yerleşim şeması](docs/component-placement-guide.png)
+![Wiring diagram](docs/circuit.svg)
 
-Ön yüzden bakıldığında yerleşim şöyledir:
-
-| Konum | Üst parça | Alt kumanda | Sabitleme |
-|---|---|---|---|
-| Sol üst | Yeşil 10 mm LED | Siyah DC180 | LED iç taraftan; buton somunla |
-| Orta üst | Sarı 10 mm LED | Sarı DC184 | LED iç taraftan; buton somunla |
-| Sağ üst | Kırmızı 10 mm LED | Kırmızı DC184 | LED iç taraftan; buton somunla |
-| Sol alt | 12 mm aktif buzzer | Mavi DC180 | Buzzer baskı kabına, buton somunla |
-| Orta alt | Beyaz 10 mm LED | Baskı çarkı + 1K pot | Pot iç köprüye somunla |
-| Sağ alt | Mavi 10 mm LED | DC131A | İkisi de iç taraftan, somunla |
-| Sağ yan yüz | — | DC120 2P | Kendi tırnaklarıyla |
-| Arka kapak | — | İki 2×AA yuva | Ayrı raylara; gerekirse ince köpük bantla |
-
-LED'leri kutunun içinden dışarı itin: geniş LED flanşı içeride kalmalıdır.
-Arkadaki açık koruma halkasına az miktarda nötr kürlenen silikon sürülebilir;
-lensin önüne silikon sürmeyin. Buzzer'ı yalnızca kenarından sabitleyin, ses
-deliklerini kapatmayın. Anahtar, buton ve potta silikon yerine somun/tırnak
-kullanın.
-
-### 6. Devreyi bağlayın
-
-![Bağlantı şeması](docs/circuit.svg)
-
-Piller takılı değilken güç hattını şu sırayla kurun:
+Build the supply first, with all batteries removed:
 
 ```text
-Yuva A siyah ─────────────────────────────────────── eksi dağıtım hattı
-Yuva A kırmızı ── Yuva B siyah
-Yuva B kırmızı ── 1 A sigorta ── DC120 ─────────── artı dağıtım hattı
+Holder A black ───────────────────────────────────── negative bus
+Holder A red ─── Holder B black
+Holder B red ─── 1 A fuse ─── DC120 main switch ─── positive bus
 ```
 
-Altı işlevi artı ve eksi dağıtım hatları arasına paralel bağlayın:
+Then add the six branches in parallel:
 
 ```text
-Artı → kırmızı DC184 → 330 Ω → kırmızı LED → eksi
-Artı → sarı DC184    → 330 Ω → sarı LED    → eksi
-Artı → siyah DC180   → 330 Ω → yeşil LED   → eksi
-Artı → DC131A kontak → 330 Ω → mavi LED    → eksi
-Artı → 1K pot        → 330 Ω → beyaz LED   → eksi
-Artı → mavi DC180            → aktif buzzer → eksi
+Positive → red DC184    → 330 Ω → red LED    → negative
+Positive → yellow DC184 → 330 Ω → yellow LED → negative
+Positive → black DC180  → 330 Ω → green LED  → negative
+Positive → DC131A       → 330 Ω → blue LED   → negative
+Positive → 1K pot       → 330 Ω → white LED  → negative
+Positive → blue DC180           → active buzzer → negative
 ```
 
-DC131A'nın 12 V lamba terminalini bağlamayın; yalnızca multimetreyle tespit
-ettiğiniz iki anahtar kontağını kullanın. LED'de uzun bacak artıdır. Potun orta
-ucunu kullanılan dış uçla birleştirin; diğer dış uç boş kalır. Tüm bağlantıları
-lehimleyip makaronla yalıtın. Ayrıntılar: [docs/circuit.svg](docs/circuit.svg)
-ve [docs/assembly.md](docs/assembly.md).
+Use only the two switching contacts on the DC131A; leave its 12 V lamp terminal
+disconnected. Identify the contacts with a multimeter instead of assuming pin
+order. Join the pot wiper to the outer terminal being used.
 
-### 7. Test edin ve kapatın
+### 7. Verify and close
 
-1. Piller yokken artı–eksi arasında kısa devre olmadığını ölçün.
-2. DC120 kapalıyken pil akımının sıfır olduğunu doğrulayın.
-3. Her LED kolunu ayrı deneyin; akım 20 mA altında kalmalıdır.
-4. Buzzer'ı kısa süre deneyip ses seviyesini kontrol edin.
-5. Kabloları klipslere alın; breadboard veya gevşek jumper bırakmayın.
-6. Pil yuvalarını raylarına yerleştirip arka kapağı dört tırnak oturana kadar
-   bastırın.
-7. Tüm dış parçaları kuvvetlice çekerek son güvenlik kontrolünü yapın.
+1. With batteries removed, verify there is no short between the buses.
+2. Confirm battery current is zero with the DC120 switched off.
+3. Test one branch at a time; each LED must stay below 20 mA.
+4. Route every insulated wire away from the snap clips.
+5. Engage all four back-plate clips.
+6. Pull-test every exposed part and the back plate before each use.
 
-## Proje dosyaları
+## Repository layout
 
-| Klasör | İçerik |
+| Path | Contents |
 |---|---|
-| [cad](cad/activity_box.scad) | Parametrik OpenSCAD modeli |
-| [artwork](artwork/activity-box-label-preview.png) | Etiket, baskı PDF'si ve ön izlemeler |
-| [docs](docs/assembly.md) | Montaj kılavuzu, test plakası kılavuzu, devre şeması ve BOM |
-| [tools](tools/project_spec.py) | Ölçülerin tek kaynağı ve çıktı üreticileri |
-| [tests](tests/test_project_spec.py) | Geometri, görsel, belge ve doğrulama testleri |
-| [output/stl](output/stl/README.md) | Yerel olarak oluşturulan STL dosyalarının hedefi |
+| [`cad/`](cad/activity_box.scad) | Parametric OpenSCAD source |
+| [`artwork/`](artwork/activity-box-label.svg) | English printable label and previews |
+| [`artwork/tr/`](artwork/tr/activity-box-label.svg) | Turkish printable label and previews |
+| [`docs/`](docs/assembly.md) | English assembly, BOM, circuit, and placement guides |
+| [`docs/tr/`](docs/tr/assembly.md) | Turkish documentation set |
+| [`assets/fonts/`](assets/fonts/LICENSE.txt) | Bundled font and its upstream license for reproducible graphics |
+| [`tools/`](tools/project_spec.py) | Shared dimensions and deterministic generators |
+| [`tests/`](tests/test_project_spec.py) | Geometry, output, and documentation checks |
 
-## Çıktıları yeniden üretme
+## Rebuild and verify
 
-Görsel üretmek için Python 3 ve Pillow gerekir. OpenSCAD yalnızca STL üretimi
-için gereklidir.
+Python 3 and Pillow generate the documents and artwork. OpenSCAD is required
+only for STL export.
 
 ```sh
-python3 -m pip install Pillow
+python3 -m pip install -r requirements.txt
 make dimensions artwork docs
-python3 -m unittest discover -s tests -v
+make test
 make stl
 make validate
 ```
 
-Ana kesit ölçüleri mevcut komponentler ve yazıcıyla test kuponunda doğrulandı.
-Yazıcı, filament veya komponent partisi değişirse test kuponunu yeniden basın.
+See [CONTRIBUTING.md](CONTRIBUTING.md) before proposing changes.
+
+## License
+
+Hardware design, CAD, artwork, and documentation are licensed under
+[CERN-OHL-P-2.0](LICENSE). Build scripts and tests are licensed under the
+[MIT License](LICENSES/MIT.txt). See [license scope](LICENSES/README.md).

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="240mm" height="130mm" viewBox="0 0 240 130">
-<style>text{font-family:Arial,sans-serif;fill:#263548}.title{font-size:6px;font-weight:bold}.subtitle{font-size:3px}.group{font-size:3.2px;font-weight:bold}.size{font-size:2.25px;font-weight:bold}.note{font-size:2.55px}</style>
+<style>@font-face{font-family:'DejaVu Sans';src:url('../assets/fonts/DejaVuSans.ttf') format('truetype');font-weight:400}@font-face{font-family:'DejaVu Sans';src:url('../assets/fonts/DejaVuSans-Bold.ttf') format('truetype');font-weight:700}text{font-family:'DejaVu Sans',sans-serif;fill:#263548}.title{font-size:6px;font-weight:bold}.subtitle{font-size:3px}.group{font-size:3.2px;font-weight:bold}.size{font-size:2.25px;font-weight:bold}.note{font-size:2.55px}</style>
 <rect width="240" height="130" fill="#FFF9E9"/>
-<text x="120" y="8" text-anchor="middle" class="title">KOMPONENT UYUM TESTİ KILAVUZU</text>
-<text x="120" y="15" text-anchor="middle" class="subtitle">MODEL: 200 × 76 mm · Soldaki seçenek daha sıkı, sağdaki daha rahattır</text>
+<text x="120" y="8" text-anchor="middle" class="title">COMPONENT FIT TEST GUIDE</text>
+<text x="120" y="15" text-anchor="middle" class="subtitle">MODEL: 200 × 76 mm · Left option is tighter; right option is looser</text>
 <rect id="coupon-outline" x="20" y="34" width="200" height="76" rx="5" fill="#E9EEF3" stroke="#263548" stroke-width="0.8"/>
-<text x="23" y="39" class="note" fill="#64748B">ÜST</text>
+<text x="23" y="39" class="note" fill="#64748B">TOP</text>
 <path d="M37.0 29 V34" stroke="#E85D68" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="37.0" y="27" text-anchor="middle" class="group" fill="#E85D68">10 mm LED</text>
-<circle class="fit-led" cx="30" cy="52" r="5.0" fill="#FFFFFF" stroke="#E85D68" stroke-width="0.8"/><text x="30" y="52.8" text-anchor="middle" class="size">10,0</text>
-<circle class="fit-led" cx="44" cy="52" r="5.1" fill="#FFFFFF" stroke="#E85D68" stroke-width="0.8"/><text x="44" y="52.8" text-anchor="middle" class="size">10,2</text>
+<circle class="fit-led" cx="30" cy="52" r="5.0" fill="#FFFFFF" stroke="#E85D68" stroke-width="0.8"/><text x="30" y="52.8" text-anchor="middle" class="size">10.0</text>
+<circle class="fit-led" cx="44" cy="52" r="5.1" fill="#FFFFFF" stroke="#E85D68" stroke-width="0.8"/><text x="44" y="52.8" text-anchor="middle" class="size">10.2</text>
 <path d="M70.5 29 V34" stroke="#E5B82E" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="70.5" y="27" text-anchor="middle" class="group" fill="#E5B82E">DC184</text>
-<circle class="fit-dc184" cx="62" cy="52" r="6.0" fill="#FFFFFF" stroke="#E5B82E" stroke-width="0.8"/><text x="62" y="52.8" text-anchor="middle" class="size">12,0</text>
-<circle class="fit-dc184" cx="79" cy="52" r="6.1" fill="#FFFFFF" stroke="#E5B82E" stroke-width="0.8"/><text x="79" y="52.8" text-anchor="middle" class="size">12,2</text>
+<circle class="fit-dc184" cx="62" cy="52" r="6.0" fill="#FFFFFF" stroke="#E5B82E" stroke-width="0.8"/><text x="62" y="52.8" text-anchor="middle" class="size">12.0</text>
+<circle class="fit-dc184" cx="79" cy="52" r="6.1" fill="#FFFFFF" stroke="#E5B82E" stroke-width="0.8"/><text x="79" y="52.8" text-anchor="middle" class="size">12.2</text>
 <path d="M111.5 29 V34" stroke="#43A86B" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="111.5" y="27" text-anchor="middle" class="group" fill="#43A86B">DC180</text>
-<circle class="fit-dc180" cx="101" cy="52" r="8.0" fill="#FFFFFF" stroke="#43A86B" stroke-width="0.8"/><text x="101" y="52.8" text-anchor="middle" class="size">16,0</text>
-<circle class="fit-dc180" cx="122" cy="52" r="8.1" fill="#FFFFFF" stroke="#43A86B" stroke-width="0.8"/><text x="122" y="52.8" text-anchor="middle" class="size">16,2</text>
+<circle class="fit-dc180" cx="101" cy="52" r="8.0" fill="#FFFFFF" stroke="#43A86B" stroke-width="0.8"/><text x="101" y="52.8" text-anchor="middle" class="size">16.0</text>
+<circle class="fit-dc180" cx="122" cy="52" r="8.1" fill="#FFFFFF" stroke="#43A86B" stroke-width="0.8"/><text x="122" y="52.8" text-anchor="middle" class="size">16.2</text>
 <path d="M162.5 29 V34" stroke="#4B9AD1" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="162.5" y="27" text-anchor="middle" class="group" fill="#4B9AD1">DC131A</text>
-<circle class="fit-dc131a" cx="150" cy="52" r="10.0" fill="#FFFFFF" stroke="#4B9AD1" stroke-width="0.8"/><text x="150" y="52.8" text-anchor="middle" class="size">20,0</text>
-<circle class="fit-dc131a" cx="175" cy="52" r="10.1" fill="#FFFFFF" stroke="#4B9AD1" stroke-width="0.8"/><text x="175" y="52.8" text-anchor="middle" class="size">20,2</text>
-<path d="M207 26.5 V34" stroke="#8A6BC2" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="207" y="24.5" text-anchor="middle" class="group" fill="#8A6BC2">12 mm AKTİF BUZZER</text>
+<circle class="fit-dc131a" cx="150" cy="52" r="10.0" fill="#FFFFFF" stroke="#4B9AD1" stroke-width="0.8"/><text x="150" y="52.8" text-anchor="middle" class="size">20.0</text>
+<circle class="fit-dc131a" cx="175" cy="52" r="10.1" fill="#FFFFFF" stroke="#4B9AD1" stroke-width="0.8"/><text x="175" y="52.8" text-anchor="middle" class="size">20.2</text>
+<path d="M207 26.5 V34" stroke="#8A6BC2" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="207" y="24.5" text-anchor="middle" class="group" fill="#8A6BC2">12 mm ACTIVE BUZZER</text>
 <circle cx="207" cy="52" r="8.5" fill="#FFFFFF" stroke="#8A6BC2" stroke-width="0.8" stroke-dasharray="1.5 1"/>
 <circle cx="213.2" cy="52.0" r="1.5" fill="#263548"/>
 <circle cx="210.1" cy="57.36935750346352" r="1.5" fill="#263548"/>
@@ -27,27 +27,27 @@
 <circle cx="203.9" cy="46.63064249653648" r="1.5" fill="#263548"/>
 <circle cx="210.1" cy="46.63064249653648" r="1.5" fill="#263548"/>
 <circle cx="207" cy="52" r="1.5" fill="#263548"/>
-<text x="207" y="64" text-anchor="middle" class="note">arka yuva Ø12,4</text>
+<text x="207" y="64" text-anchor="middle" class="note">rear socket Ø12.4</text>
 <circle class="fit-pot-bushing" cx="30" cy="90" r="3.5" fill="#FFFFFF" stroke="#E68C3A" stroke-width="0.8"/>
-<text x="30" y="98" text-anchor="middle" class="size">7,0</text>
+<text x="30" y="98" text-anchor="middle" class="size">7.0</text>
 <circle class="fit-pot-bushing" cx="42" cy="90" r="3.6" fill="#FFFFFF" stroke="#E68C3A" stroke-width="0.8"/>
-<text x="42" y="98" text-anchor="middle" class="size">7,2</text>
+<text x="42" y="98" text-anchor="middle" class="size">7.2</text>
 <circle cx="58" cy="90" r="6" fill="#D9C5B4" stroke="#A56F45" stroke-width="0.8"/>
 <circle class="fit-shaft" cx="58" cy="90" r="2.9" fill="#FFFFFF" stroke="#A56F45" stroke-width="0.8"/>
-<text x="58" y="98" text-anchor="middle" class="size">5,8</text>
+<text x="58" y="98" text-anchor="middle" class="size">5.8</text>
 <circle cx="74" cy="90" r="6" fill="#D9C5B4" stroke="#A56F45" stroke-width="0.8"/>
 <circle class="fit-shaft" cx="74" cy="90" r="3.0" fill="#FFFFFF" stroke="#A56F45" stroke-width="0.8"/>
-<text x="74" y="98" text-anchor="middle" class="size">6,0</text>
+<text x="74" y="98" text-anchor="middle" class="size">6.0</text>
 <circle cx="90" cy="90" r="6" fill="#D9C5B4" stroke="#A56F45" stroke-width="0.8"/>
 <circle class="fit-shaft" cx="90" cy="90" r="3.1" fill="#FFFFFF" stroke="#A56F45" stroke-width="0.8"/>
-<text x="90" y="98" text-anchor="middle" class="size">6,2</text>
+<text x="90" y="98" text-anchor="middle" class="size">6.2</text>
 <rect class="fit-dc120" x="104.5" y="83.5" width="19.0" height="13.0" rx="1" fill="#FFFFFF" stroke="#2D9C95" stroke-width="0.8"/>
-<text x="114" y="90.8" text-anchor="middle" class="size">19,0×13,0</text>
+<text x="114" y="90.8" text-anchor="middle" class="size">19.0×13.0</text>
 <rect class="fit-dc120" x="130.3" y="83.3" width="19.4" height="13.4" rx="1" fill="#FFFFFF" stroke="#2D9C95" stroke-width="0.8"/>
-<text x="140" y="90.8" text-anchor="middle" class="size">19,4×13,4</text>
-<circle class="fit-dial" cx="173" cy="90" r="17.0" fill="#FFFFFF" stroke="#5C78C7" stroke-width="0.8"/><text x="173" y="90.8" text-anchor="middle" class="size">Ø34,0</text>
-<path d="M36 125 V110" stroke="#E68C3A" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="36" y="123" text-anchor="middle" class="group" fill="#E68C3A">POT BURCU</text>
-<path d="M74 125 V110" stroke="#A56F45" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="74" y="123" text-anchor="middle" class="group" fill="#A56F45">POT MİLİ</text>
+<text x="140" y="90.8" text-anchor="middle" class="size">19.4×13.4</text>
+<circle class="fit-dial" cx="173" cy="90" r="17.0" fill="#FFFFFF" stroke="#5C78C7" stroke-width="0.8"/><text x="173" y="90.8" text-anchor="middle" class="size">Ø34.0</text>
+<path d="M36 125 V110" stroke="#E68C3A" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="36" y="123" text-anchor="middle" class="group" fill="#E68C3A">POT BUSHING</text>
+<path d="M74 125 V110" stroke="#A56F45" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="74" y="123" text-anchor="middle" class="group" fill="#A56F45">POT SHAFT</text>
 <path d="M127 125 V110" stroke="#2D9C95" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="127" y="123" text-anchor="middle" class="group" fill="#2D9C95">DC120</text>
-<path d="M173 125 V110" stroke="#5C78C7" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="173" y="123" text-anchor="middle" class="group" fill="#5C78C7">ÇARK AÇIKLIĞI</text>
+<path d="M173 125 V110" stroke="#5C78C7" stroke-width="0.6" stroke-dasharray="1.5 1"/><text x="173" y="123" text-anchor="middle" class="group" fill="#5C78C7">DIAL OPENING</text>
 </svg>
